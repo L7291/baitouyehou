@@ -12,7 +12,6 @@ frontpage_dir = os.path.join(os.path.dirname(base_dir), 'frontpage')
 app = Flask(__name__, 
             template_folder=frontpage_dir,
             static_folder=frontpage_dir)
-
 CORS(app)
 
 # 用户数据文件路径
