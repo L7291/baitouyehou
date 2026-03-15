@@ -1,16 +1,17 @@
 from flask import Flask, request, jsonify, render_template, redirect, url_for
 from flask_cors import CORS
 import json
-import os
+import os  # 新增：引入系统路径工具
 from langchain_classic.chains import ConversationChain
 from langchain_classic.memory import ConversationBufferMemory
 from langchain_community.llms import Tongyi
 
-os.environ["DASHSCOPE_API_KEY"] = "sk-a3549a83674d4076bd473eb42dd0c8eb"
+base_dir = os.path.abspath(os.path.dirname(__file__))
+frontpage_dir = os.path.join(os.path.dirname(base_dir), 'frontpage')
 
 app = Flask(__name__, 
-            template_folder='../frontpage',
-            static_folder='../frontpage')
+            template_folder=frontpage_dir,
+            static_folder=frontpage_dir)
 
 CORS(app)
 
