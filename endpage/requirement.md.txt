@@ -1,0 +1,11 @@
+flask：你的“后厨主心骨”，轻量级的 Python Web 框架，负责启动 5000 端口、接收网页请求和渲染页面。
+
+flask-cors：跨域安全卫士，专门解决前端访问后端时产生的浏览器跨域拦截（CORS）问题，确保 AI 聊天能顺利通信。
+
+langchain：AI 应用开发的底层核心底座。
+
+langchain-classic：LangChain 官方的怀旧经典包，专门用来提供带有上下文记忆功能的 ConversationChain 和 ConversationBufferMemory（就是咱们之前加了 _classic 后缀修好的那部分）。
+
+langchain-community：社区扩展包，提供连接市面上各种第三方大模型的接口（在这里主要是为了导入 Tongyi 模型模块）。
+
+dashscope：阿里云通义千问的官方底层通信包，负责带着你的 API Key 真正去和阿里的服务器进行加密通信。
