@@ -1,0 +1,944 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; /* 新增防止滚动条 */
+}
+
+/* ======== 新增视频背景样式 ======== */
+.bg-video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    filter: brightness(0.7);
+    object-fit: cover;
+}
+
+.container{
+    position: relative;
+    width: 850px;
+    height: 550px;
+    background: rgba(255, 255, 255, 0.08); /* 降低透明度 */
+    backdrop-filter: blur(12px); /* 增强模糊 */
+    margin: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15); /* 新增微透明边框 */
+    border-radius: 16px; /* 调整圆角 */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); /* 强化阴影 */
+    overflow: visible !important; /* 允许溢出显示描边 */
+}
+
+    .container h1{
+        font-size: 36px;
+        margin: -10px 0;
+    }
+
+    .container .toggle-panel.toggle-left h1 {
+        font-size: 1.7rem !important; /* 桌面端放大到56px (假设根字体16px) */
+        line-height: 1.1;
+        margin-bottom: 15px !important;
+        color: hsl(175, 100%, 50%) !important;
+        text-shadow: 
+            0 0 8px hsla(175, 100%, 50%, 0.4),
+            0 0 16px hsla(195, 100%, 50%, 0.3),
+            0 2px 1px rgba(0,0,0,0.15);
+        /* 其他属性保持原样 */
+    }
+
+    /* ====== 霓虹标题动画 ====== */
+/* 主标题量子级透光处理 */
+.toggle-panel.toggle-left h1 {
+    font-size: 3.5rem !important; /* 原28px改为响应式单位 */
+    line-height: 1.2;
+    margin-bottom: 15px !important;
+    color: hsl(175, 100%, 50%) !important; /* 量子蓝绿色 */
+    text-shadow: 
+        0 0 8px hsla(175, 100%, 50%, 0.4), /* 核心光晕层 */
+        0 0 16px hsla(195, 100%, 50%, 0.3), /* 次光晕层 */
+        0 2px 1px rgba(0,0,0,0.15); /* 立体投影 */
+    font-weight: 700;
+    letter-spacing: -0.5px; /* 紧凑字距 */
+    background: linear-gradient(45deg, 
+        hsl(175, 100%, 60%), 
+        hsl(195, 100%, 60%)); /* 渐变流光 */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: quantum-glow 2.4s ease-in-out infinite alternate, 
+               text-scale 3s ease-in-out infinite alternate;
+}
+
+@keyframes text-scale {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+}
+
+.register-btn {
+    background: hsla(200, 100%, 50%, 0.15) !important;
+    border: 2px solid hsl(195, 100%, 60%) !important;
+    backdrop-filter: blur(12px);
+    box-shadow: 
+        0 0 16px hsla(195, 100%, 50%, 0.3),
+        inset 0 0 12px hsla(195, 100%, 60%, 0.2);
+    color: hsl(190, 100%, 70%) !important;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 按钮动态光效 */
+.register-btn:hover {
+    color: hsl(190, 100%, 85%) !important; /* 悬态更亮 */
+    background: hsla(200, 100%, 50%, 0.4) !important;
+    box-shadow: 
+        0 0 24px hsla(195, 84%, 52%, 0.5),
+        inset 0 0 16px hsla(195, 100%, 60%, 0.3);
+    transform: translateY(-1px) scale(1.02);
+}
+
+.register-btn:active {
+    transform: translateY(1px) scale(0.98);
+    filter: brightness(0.9);
+    color: hsl(190, 100%, 65%) !important; /* 点击态更暗 */
+}
+
+
+@keyframes quantum-glow {
+    0% { 
+        opacity: 0.96;
+        filter: brightness(1.1);
+    }
+    100% { 
+        opacity: 1;
+        filter: brightness(1.3);
+        text-shadow: 
+            0 0 12px hsla(175, 100%, 50%, 0.6),
+            0 0 24px hsla(195, 100%, 50%, 0.4),
+            0 4px 2px rgba(0,0,0,0.1);
+    }
+}
+
+    .container p{
+        font-size: 14.5px;
+        margin: 15px 0;
+    }
+
+form{ width: 100%; }
+
+.form-box{
+    position: absolute;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2) !important; /* 增加透明度 */
+    backdrop-filter: blur(16px) saturate(180%) !important; /* 增强模糊 */
+    border-left: 2px solid #00b894 !important; /* 改为实线分隔 */
+    box-shadow: inset 8px 0 12px rgba(0,184,148,0.3) !important; /* 添加内发光 */
+    display: flex;
+    align-items: center;
+    color: #333;
+    text-align: center;
+    padding: 40px;
+    z-index: 1;
+    transition: .6s ease-in-out 1.2s, visibility 0s 1s;
+}
+
+/* 右侧表单全描边 */
+.form-box::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: conic-gradient(
+        from 0deg at 50% 50%,
+        #1890ff 0deg,
+        #c471ed 180deg,
+        #1890ff 360deg
+    );
+    mask: 
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    padding: 2px;
+    border-radius: 18px;
+    animation: cyber-border-glow 3s linear infinite;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* 中间分隔线强化 */
+.form-box::before {
+    content: "";
+    position: absolute;
+    left: -1px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 80%;
+    width: 2px;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        #00b894 30%,
+        #00b894 70%,
+        transparent 100%
+    );
+    box-shadow: 0 0 12px #00b894;
+    z-index: 2;
+}
+
+/* 新增标题样式 */
+.form-box h1 {
+    font-weight: 700; /* 加粗 */
+    color: #2d3436; /* 深灰色 */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 文字阴影 */
+}
+
+/* 新增段落样式 */
+.form-box p {
+    font-weight: 500; /* 中等加粗 */
+    color: #636e72; /* 中灰色 */
+}
+
+    .container.active .form-box{ right: 50%; }
+
+    .form-box.register{ 
+        flex: 1; /* 占用 50% 的宽度 */
+        height: 100%; /* 高度与父容器一致 */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* 垂直居中 */
+        align-items: center; /* 水平居中 */
+        padding: 20px; /* 内边距 */
+        box-sizing: border-box; /* 包括内边距在内 */
+    }
+        .container.active .form-box.register{ visibility: visible; }
+
+.input-box{
+    position: relative;
+    margin: 30px 0;
+    cursor: default; /* 修复父元素强制手型问题 */
+}
+
+.input-box input {
+    width: 100%;
+    padding: 13px 50px 13px 20px;
+    background: rgba(245,245,245,0.9);
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.1);
+    outline: none;
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* 新增过渡效果 */
+}
+        .input-box input::placeholder{
+            color: #888;
+            font-weight: 400;
+        }
+    
+    .input-box i{
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 20px;
+        cursor: pointer !important;
+    }
+
+.forgot-link{ margin: -15px 0 15px; }
+    .forgot-link a{
+        font-size: 14.5px;
+        color: #333;
+        cursor: pointer !important; /* 强制手型 */
+        display: inline-block; /* 确保点击区域正确 */
+    }
+
+.btn{
+    width: 100%;
+    height: 48px;
+    background: #00b894; /* 更醒目的绿色 */
+    box-shadow: 0 4px 12px rgba(0,184,148,0.3); /* 新增发光阴影 */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    transition: all 0.3s; /* 新增过渡动画 */
+}
+    /* 新增悬停效果 */
+.btn:hover {
+    background: #00a383; /* 悬停深绿色 */
+    transform: translateY(-2px);
+}
+
+/* ====== 忘记密码模块特效 ====== */
+.neon-link {
+    position: relative;
+    margin: 20px 0;
+}
+
+.cyber-glow {
+    color: rgba(255,255,255,0.7) !important;
+    font-size: 14px;
+    padding: 8px 15px;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cyber-glow:hover {
+    color: #1890ff !important;
+    box-shadow: 0 0 15px rgba(24,144,255,0.3);
+}
+
+.cyber-glow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(24,144,255,0.5);
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.cyber-glow:hover::before {
+    opacity: 1;
+}
+
+.cyber-glow::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #1890ff, #c471ed);
+    transform: translateX(-50%);
+    transition: width 0.3s;
+}
+
+.cyber-glow:hover::after {
+    width: 80%;
+}
+
+.social-icons{
+    display: flex;
+    justify-content: center;
+}
+
+/* ====== 社交图标特效 ====== */
+.social-section {
+    margin-top: 25px;
+    position: relative;
+    z-index: 1;
+}
+
+.neon-text {
+    color: rgba(255,255,255,0.8);
+    text-shadow: 0 0 10px rgba(24,144,255,0.3);
+    font-size: 14px;
+    margin-bottom: 15px !important;
+}
+
+.cyber-icons {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.icon-glow {
+    position: relative;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-glow:hover {
+    background: rgba(24,144,255,0.15);
+    transform: translateY(-3px);
+}
+
+.icon-glow i {
+    font-size: 26px;
+    color: #fff !important;
+    z-index: 2;
+}
+
+.icon-halo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, 
+        rgba(24,144,255,0.3) 0%, 
+        rgba(24,144,255,0) 70%);
+    filter: blur(15px);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.icon-glow:hover .icon-halo {
+    opacity: 1;
+}
+
+/* 各平台专属光效 */
+.icon-glow:nth-child(1) .icon-halo { background: radial-gradient(circle, #ea4335 0%, transparent 70%); }
+.icon-glow:nth-child(2) .icon-halo { background: radial-gradient(circle, #1877f2 0%, transparent 70%); }
+.icon-glow:nth-child(3) .icon-halo { background: radial-gradient(circle, #333 0%, transparent 70%); }
+.icon-glow:nth-child(4) .icon-halo { background: radial-gradient(circle, #0a66c2 0%, transparent 70%); }
+
+.social-icons a, 
+.social-icons a i { /* 新增图标元素 */
+    display: inline-flex;
+    padding: 10px;
+    border-color: #00b894;
+    border-radius: 8px;
+    font-size: 24px;
+    color: #00b894;
+    background: rgba(0, 184, 148, 0.1);
+    margin: 0 8px;
+    cursor: pointer !important; /* 强制手型 */
+    pointer-events: auto !important; /* 允许事件穿透 */
+}
+
+.input-box i[class^="bx"] { 
+    cursor: pointer !important; /* 所有Boxicons图标强制手型 */
+}
+
+.toggle-box{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+    .toggle-box::before{
+        content: '';
+        position: absolute;
+        left: -250%;
+        width: 300%;
+        height: 100%;
+        background: #4CAF50; /* 统一绿色主题 */
+        border-radius: 150px;
+        z-index: 2;
+        transition: 1.8s ease-in-out;
+    }
+
+        .container.active .toggle-box::before{ left: 50%; }
+
+.toggle-panel{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    /* background: seagreen; */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    transition: .6s ease-in-out;
+}
+    /* ----------- 新增以下代码 ----------- */
+.toggle-panel.toggle-left {
+    flex: 1; /* 占用 50% 的宽度 */
+    height: 100%; /* 高度与父容器一致 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 垂直居中 */
+    align-items: center; /* 水平居中 */
+    padding: 20px; /* 内边距 */
+    box-sizing: border-box; /* 包括内边距在内 */
+}
+
+.toggle-panel.toggle-left::after {
+    content: "";
+    position: absolute;
+    inset: -2px; /* 外扩2px */
+    background: conic-gradient(
+        from 180deg at 50% 50%,
+        #00b894 0deg,
+        #4CAF50 180deg,
+        #00b894 360deg
+    );
+    mask: 
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    padding: 2px;
+    border-radius: 18px; /* 比容器大2px */
+    animation: cyber-border-glow 3s linear infinite;
+    z-index: -1; /* 确保在内容下方 */
+    pointer-events: none; /* 禁止交互 */
+}
+
+@keyframes cyber-border-glow {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+
+.toggle-panel.toggle-left h1,
+/* 次文本晶体渲染 */
+.toggle-panel.toggle-left p {
+    font-size: 18px !important;
+    color: hsl(165, 100%, 70%) !important; /* 晶透青绿色 */
+    text-shadow: 
+        0 0 4px hsla(165, 100%, 50%, 0.3),
+        0 1px 1px rgba(0,0,0,0.2);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.toggle-panel.toggle-left .btn {
+    color: #333 !important;
+    border-color: #333 !important; /* 按钮文字和边框改为黑色 */
+}
+
+
+    .toggle-panel.toggle-left{ 
+        left: 0;
+        transition-delay: 1.2s; 
+    }
+        .container.active .toggle-panel.toggle-left{
+            left: -50%;
+            transition-delay: .6s;
+        }
+
+    .toggle-panel.toggle-right{ 
+        right: -50%;
+        transition-delay: .6s;
+    }
+        .container.active .toggle-panel.toggle-right{
+            right: 0;
+            transition-delay: 1.2s;
+        }
+
+    .toggle-panel p{ margin-bottom: 20px; }
+
+    .toggle-panel .btn{
+        width: 160px;
+        height: 46px;
+        background: transparent;
+        border: 2px solid #fff;
+        box-shadow: none;
+    }
+
+@media screen and (max-width: 650px){
+    .container{ height: calc(100vh - 40px); }
+
+    .form-box{
+        bottom: 0;
+        width: 100%;
+        height: 70%;
+    }
+
+        .container.active .form-box{
+            right: 0;
+            bottom: 30%;
+        }
+
+    .toggle-box::before{
+        left: 0;
+        top: -270%;
+        width: 100%;
+        height: 300%;
+        border-radius: 20vw;
+    }
+
+        .container.active .toggle-box::before{
+            left: 0;
+            top: 70%;
+        }
+
+        .container.active .toggle-panel.toggle-left{
+            left: 0;
+            top: -30%;
+        }
+
+    .toggle-panel{ 
+        width: 100%;
+        height: 30%;
+    }
+        .toggle-panel.toggle-left{ top: 0; }
+        .toggle-panel.toggle-right{
+            right: 0;
+            bottom: -30%;
+        }
+
+            .container.active .toggle-panel.toggle-right{ bottom: 0; }
+}
+
+/* 新增QQ风格光影系统 */
+:root {
+    --neon-blue: #1890ff;
+    --cyber-purple: #c471ed;
+    --glow-opacity: 0.4;
+}
+
+/* 背景动态光斑 */
+.glow-circle {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, 
+        rgba(24,144,255,0.3) 0%,
+        rgba(196,113,237,0) 70%);
+    filter: blur(80px);
+    z-index: 0;
+}
+
+/* 输入框霓虹效果 */
+.neon-input {
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(0,0,0,0.4);
+    box-shadow: 0 0 15px rgba(24,144,255,0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+             box-shadow 0.5s ease-in-out !important; /* 新增阴影过渡 */
+}
+
+.neon-input:focus {
+    border-color: #00f3ff !important; /* 更亮的青色 */
+    box-shadow: 
+        0 0 15px rgba(0,243,255,0.8),  /* 核心光晕层 */
+        0 0 25px rgba(0,184,148,0.6),  /* 中间扩散层 */
+        0 0 35px rgba(0,114,255,0.4) !important; /* 外围辉光层 */
+    animation: input-glow-pulse 0.8s ease-in-out infinite alternate;
+}
+
+/* 量子按钮特效 */
+.quantum-btn {
+    width: 95%;       /* 新增：横向拉长 */
+    height: 46px !important;  /* 新增：高度放大 */
+    margin-left: 0%; /* 新增：保持居中 */
+    font-size: 16px;   /* 新增：字体放大 */
+    padding: 0 15px;   /* 新增：增加左右间距 */
+    transform: none !important; /* 取消所有位移 */
+    background: linear-gradient(45deg, 
+        #1890ff 0%, 
+        #4dabf7 50%, 
+        #1890ff 100%);
+    box-shadow: 0 4px 30px rgba(24,144,255,0.3);
+    position: relative;
+    overflow: hidden !important;  /* 约束溢出范围 */
+    padding: 0 20px;             /* 增加内边距 */
+}
+
+/* 在.quantum-btn原有样式中添加 */
+.quantum-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0,198,255,0.3), /* 新增外发光 */
+                0 8px 40px rgba(0, 114, 255, 0.6);
+}
+
+/* 新增激活状态 */
+.quantum-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 4px 20px rgba(0, 114, 255, 0.4);
+}
+
+.quantum-btn span:last-child {
+    position: relative;
+    z-index: 3; /* 文字保持在最上层 */
+    color: white !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    display: inline-block;       /* 确保文字容器正确 */
+    width: 100%;
+}
+
+.btn-glow {
+    z-index: 1; /* 设置层级 */
+    left: 0 !important;        /* 取消横向偏移 */
+    top: -40% !important;      /* 垂直居中定位 */
+    position: absolute;
+    width: 100% !important;    /* 加宽流光层 */
+    height: 180% !important;    /* 根据按钮高度比例调整 */
+    background: linear-gradient(
+        90deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.4) 50%,
+        rgba(255,255,255,0) 100%
+    );
+    animation: glow-sweep 1.2s infinite;
+}
+
+@keyframes glow-sweep {
+    0% { transform: translateX(-110%) rotate(20deg); }
+    100% { transform: translateX(110%) rotate(20deg); }
+}
+
+/* 赛博朋克边框 */
+.cyber-border {
+    position: absolute;
+    inset: 0;
+    background: conic-gradient(
+        from 180deg at 50% 50%,
+        #1890ff 0deg,
+        #c471ed 180deg,
+        #1890ff 360deg
+    );
+    mask: 
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    padding: 2px;
+    border-radius: 12px;
+}
+
+/* 社交图标容器+图标 */
+.social-icons a,
+.social-icons a i {
+    cursor: pointer !important;
+}
+
+/* 安全登录按钮 */
+.quantum-btn {
+    cursor: pointer !important; 
+}
+
+/* 注册/登录切换按钮 */
+.toggle-panel .btn {
+    cursor: pointer !important;
+}
+
+/* 密码输入框的图标指针 */
+.input-box .bxs-lock-alt { 
+    cursor: pointer; /* 手型 */
+}
+
+@media (max-width: 768px) {
+    .quantum-btn {
+        width: 92% !important;  /* 更紧凑的宽度 */
+        margin-left: 4%;       /* 居中修正 */
+        height: 44px !important;
+        font-size: 15px;
+        padding: 0 20px;
+        transform: none;       /* 移动端取消定位偏移 */
+    }
+}
+
+/* ====== 新增：修复平台徽章定位问题 ====== */
+.platform-badge {
+    position: static !important; /* 取消绝对定位 */
+    margin-top: 20px;            /* 添加与按钮的间距 */
+}
+
+/* ====== 底部科技说明 ====== */
+.neon-footer {
+    position: absolute;
+    bottom: 0.1px;
+    width: 100%;
+    text-align: center;
+}
+
+.neon-footer p {
+    font-size: 1px !important;
+    color: hsl(165, 100%, 70%) !important; /* 使用左侧面板同款青绿色 */
+    text-shadow: 
+        0 0 8px hsla(175, 100%, 50%, 0.3),
+        0 0 12px hsla(195, 100%, 50%, 0.3);
+    padding: 0 !important;  /* 移除内边距 */
+    background: none !important;  /* 移除渐变背景 */
+    border: none !important;  /* 移除边框 */
+    backdrop-filter: none !important;  /* 移除滤镜效果 */
+    white-space: nowrap;  /* 强制不换行 */
+    line-height: 0.4;
+}
+
+/* ====== 呼吸动画 ====== */
+@keyframes text-glow {
+    from { opacity: 0.9; }
+    to { 
+        opacity: 1; 
+        text-shadow: 0 0 15px rgba(24,144,255,1),
+                     0 0 30px rgba(24,144,255,0.6);
+    }
+}
+
+/* ====== 移动端适配 ====== */
+@media (max-width: 768px) {
+    .neon-footer {
+        bottom: 15px;
+        padding: 0 10%;
+    }
+    .neon-footer p {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+/* 移动端量子适配 */
+@media (max-width: 768px) {
+    .toggle-panel.toggle-left h1 {
+        font-size: 2.8rem !important; 
+        text-shadow: 
+            0 0 6px hsla(175, 100%, 50%, 0.4),
+            0 0 12px hsla(195, 100%, 50%, 0.3);
+    }
+    
+    .neon-footer p {
+        font-size: 12px !important;
+        padding: 8px 16px;
+    }
+}
+
+/* 新增logo样式 */
+.card-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 999;
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(8px);
+    padding: 5px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    animation: logo-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes logo-glow {
+    from {
+        box-shadow: 0 0 10px rgba(24,144,255,0.3);
+    }
+    to {
+        box-shadow: 0 0 20px rgba(24,144,255,0.5),
+                   0 0 30px rgba(196,113,237,0.3);
+    }
+}
+
+.card-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(24,144,255,0.3));
+}
+
+.hologram-title {
+    text-shadow: 
+        0 0 10px rgba(0,184,148,0.5),
+        0 0 20px rgba(0,255,128,0.3),
+        0 0 30px rgba(0,255,128,0.2) !important;
+    animation: hologram-pulse 2s ease-in-out infinite;
+}
+
+@keyframes hologram-pulse {
+    0% { text-shadow: 0 0 10px rgba(0,184,148,0.5), 0 0 20px rgba(0,255,128,0.3), 0 0 30px rgba(0,255,128,0.2); }
+    50% { text-shadow: 0 0 15px rgba(0,255,128,0.6), 0 0 25px rgba(0,255,128,0.4), 0 0 35px rgba(0,255,128,0.3); }
+    100% { text-shadow: 0 0 10px rgba(0,184,148,0.5), 0 0 20px rgba(0,255,128,0.3), 0 0 30px rgba(0,255,128,0.2); }
+}
+
+@keyframes input-glow-pulse {
+    from {
+        filter: brightness(1);
+        box-shadow: 
+            0 0 15px rgba(0,243,255,0.8),
+            0 0 25px rgba(0,184,148,0.6),
+            0 0 35px rgba(0,114,255,0.4);
+    }
+    to {
+        filter: brightness(1.2);
+        box-shadow: 
+            0 0 25px rgba(0,243,255,1),
+            0 0 35px rgba(0,184,148,0.8),
+            0 0 45px rgba(0,114,255,0.6);
+    }
+}
+
+/* 调整注册按钮样式 */
+.register-submit-btn {
+    width: 100%; /* 按钮宽度占满表单 */
+    height: 48px; /* 按钮高度 */
+    background: #00b894; /* 绿色背景 */
+    border: none;
+    border-radius: 8px; /* 圆角 */
+    color: #fff; /* 白色文字 */
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; /* 添加过渡效果 */
+}
+
+.register-submit-btn:hover {
+    background: #00a383; /* 悬停时更深的绿色 */
+    transform: translateY(-2px); /* 悬停时轻微上移 */
+}
+
+.register-submit-btn:active {
+    transform: translateY(1px); /* 点击时轻微下移 */
+    filter: brightness(0.9); /* 点击时降低亮度 */
+}
+
+/* 调整输入框样式 */
+.form-box.register .input-box {
+    margin-bottom: 20px; /* 增加输入框之间的间距 */
+}
+
+.form-box.register .input-box input {
+    width: 100%; /* 输入框宽度占满表单 */
+    padding: 12px 16px; /* 内边距 */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* 边框颜色 */
+    border-radius: 8px; /* 圆角 */
+    background: rgba(255, 255, 255, 0.8); /* 背景颜色 */
+    font-size: 16px;
+    color: #333; /* 文字颜色 */
+ 
+    transition: all 0.3s ease-in-out; /* 添加过渡效果 */
+}
+
+.form-box.register .input-box input:focus {
+    border-color: #00b894; /* 聚焦时边框颜色 */
+    box-shadow: 0 0 8px rgba(0, 184, 148, 0.4); /* 聚焦时阴影效果 */
+}
+
+/* 调整标题样式 */
+.form-box.register h1 {
+    font-size: 24px; /* 标题字体大小 */
+    color: #2d3436; /* 深灰色 */
+    margin-bottom: 20px; /* 标题与输入框之间的间距 */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加文字阴影 */
+}
+
+/* 调整忘记密码链接样式 */
+.form-box.register .forgot-link a {
+    font-size: 14px;
+    color: #00b894; /* 绿色文字 */
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.form-box.register .forgot-link a:hover {
+    color: #00a383; /* 悬停时更深的绿色 */
+}
+
+/* 调整 .glassmorphism-card 的布局 */
+.glassmorphism-card {
+    display: flex; /* 使用 Flexbox 布局 */
+    justify-content: space-between; /* 子元素均匀分布 */
+    align-items: center; /* 垂直居中对齐 */
+    width: 100%; /* 占满父容器宽度 */
+    height: 100%; /* 占满父容器高度 */
+    padding: 20px; /* 增加内边距 */
+    box-sizing: border-box; /* 包括内边距在内 */
+}

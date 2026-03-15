@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>白头叶猴保护平台 - 登录</title>
+
+    <!-- 修改这里：使用 url_for 引用 CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='wangye.css') }}">
+</head>
+
+<body>
+    <!-- ======= 新增光影层 ======= -->
+    <div class="light-effects">
+        <div class="glow-circle blue" style="top:20%; left:10%"></div>
+        <div class="glow-circle purple" style="top:70%; right:15%"></div>
+    </div>
+    <!-- 新增视频背景 -->
+    <!-- 新增视频背景 - 修改这里 -->
+    <video class="bg-video" autoplay muted loop playsinline>
+        <source src="{{ url_for('static', filename='videos/bg-video.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="container">
+        <div class="card-logo">
+            <!-- 修改这里：logo图片 -->
+            <img src="{{ url_for('static', filename='wangyelogo.png') }}" alt="白头叶猴保护平台">
+        </div>
+        <div class="glassmorphism-card">
+            <!-- 登录表单 -->
+            <div class="form-box login">
+                <div class="cyber-border"></div>
+                <form action="#">
+                    <h1 class="hologram-title">守护者认证</h1>
+                    <div class="input-box">
+                        <input type="text" placeholder="守护者ID" class="neon-input" required id="username">
+                        <div class="input-glow"></div>
+                        <i class='bx bxs-user'></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" placeholder="密码" class="neon-input" required id="password">
+                        <i class='bx bxs-lock-alt'></i>
+                    </div>
+                    <div class="forgot-link neon-link">
+                        <a href="javascript:void(0);"
+                            onclick="alert('🌱 系统提示：\n当前为生态保护演示系统，暂未开放自助找回密码功能。\n\n如需找回，请联系保护区管理员（队长：林俊杰）进行人工重置，或者点击右侧直接注册一个新账号！');"
+                            class="cyber-glow">忘记密码？</a>
+                    </div>
+                    <button type="button" class="quantum-btn" onclick="verify()">
+                        <span class="btn-glow"></span>
+                        <span>安全登录</span>
+                    </button>
+                </form>
+            </div>
+
+            <div class="toggle-panel toggle-left">
+                <h1>🐒 欢迎来到白头叶猴守护区！</h1>
+                <p>还没有守护者账号？</p>
+                <!-- 注册按钮，跳转到注册页面 -->
+                <!-- 注册按钮 - 改为 url_for -->
+                <button class="btn register-btn" onclick="window.location.href='/register'">立即注册</button>
+                <!-- 新增科技说明文字 -->
+                <div class="neon-footer">
+                    <p>--基于RNNoise的濒危灵长类生态监测与降噪系统</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = '/api';
+        async function verify() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/verify`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password }),
+                });
+                const data = await response.json();
+                alert(data.message);
+
+                // 如果登录成功，跳转到服务器响应的 redirect_url
+                if (data.success) {
+                    window.location.href = data.redirect_url;
+                }
+            } catch (error) {
+                alert('验证请求失败');
+            }
+        }
+
+        // 添加页面加载事件，清空用户名和密码输入框
+        window.onload = function () {
+            // 清空用户名和密码输入框
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        };
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+    <script>
+        // 给玻璃卡片加上 3D 动效和反光
+        VanillaTilt.init(document.querySelector(".glassmorphism-card"), {
+            max: 8,           // 最大倾斜角度
+            speed: 400,       // 倾斜速度
+            glare: true,      // 开启反光效果
+            "max-glare": 0.2  // 反光强度
+        });
+    </script>
+
+    <script>
+        // 打字机特效
+        const titleElement = document.querySelector('.toggle-panel h1');
+        const originalText = titleElement.innerText;
+        titleElement.innerText = ''; // 清空原本的字
+
+        let i = 0;
+        function typeWriter() {
+            if (i < originalText.length) {
+                titleElement.innerHTML += originalText.charAt(i);
+                i++;
+                // 打字速度，50-150毫秒随机，模拟真人敲击
+                setTimeout(typeWriter, Math.random() * 100 + 50);
+            }
+        }
+        // 页面加载完成后延迟 0.5 秒开始打字
+        setTimeout(typeWriter, 500);
+    </script>
+
+</body>
+
+</html>

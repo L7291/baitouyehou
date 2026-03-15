@@ -1,0 +1,384 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    line-height: 1.8; 
+    color: #2c3e50; 
+    background: linear-gradient(-45deg, #23a6d5, #52cfee, #40be85, #42926a, #e30505);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+    font-size: 18px; 
+    -webkit-font-smoothing: antialiased;
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+/* Header Styles */
+header {
+    background-color: #6ac593;
+	height: 60px;
+	padding: 0.1rem;
+	position:fixed;
+	top:0;
+	width:100%;
+    z-index: 10; 
+    padding: 0 20px;      
+  height: auto;
+}
+
+header .logo{
+    height: 60px; 
+}
+header .logo img {
+	width: auto;
+    height: 100%;
+	object-fit: contain;
+	border-radius: 8px;
+}
+.nav{
+	align-items: center;
+    
+}
+.nav ul {
+    list-style-type: none;
+    display: flex;
+}
+.nav .btli {
+    position: relative;  
+   z-index: 100;
+  }
+  
+.nav ul li {
+    margin: 8px 30px;
+}
+
+.navlist a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative; 
+    padding: 5px 0;
+    transition: color 0.3s;
+}
+
+/* 创建一个自中间向两端延伸的线条 */
+.navlist a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navlist a:hover::after {
+    width: 100%;
+}
+
+/* 移除原有的 a:hover 背景色改变，避免视觉太乱 */
+.navlist a:hover {
+    background-color: transparent; 
+}
+.nav .droplist {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background-color: #6ac593;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+    opacity: 1;
+}
+.nav .droplist li {
+    text-align: center;
+    padding: 0;
+}  
+.nav .droplist a {
+    color: rgb(247, 245, 245);
+    padding: 0;
+    text-decoration: none;
+}
+
+.nav .droplist a:hover {
+    background-color: #449280;
+}
+.btli:hover .droplist{
+    display: block;
+
+}
+.navlist a:hover {
+    background-color: #4d8d7d;
+    display:block;
+}
+.nav::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+/* Hero Section */
+.hero {
+    background: url('img/hero.png') no-repeat center center/cover;
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+	margin-top:80px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #3b9d67;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.btn:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+/* Project Background Section */
+.background {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.background h2 {
+    font-size: 2.2rem;       /* 增大字号 */
+    font-weight: 700;
+    color: #1a5336;          /* 深森林绿 */
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.background .content {
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+    gap: 40px;
+	border-radius: 25px;               /* Բ�� */
+	box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* �����Ӱ */
+	padding: 20px;                     /* �ڱ߾� */
+	margin-bottom: 30px; 
+	background-color: white;
+}
+.background .content .slider{
+    width: 5ren;
+   height: 400px;
+   margin: 50px auto;
+   position: relative;
+   overflow: hidden; 
+}
+.background .content .slider .slider-inner {
+   width: 300%;
+   height: 100%;
+   display: flex;  
+   transition: transform 0.5s ease;
+}
+   
+.background .content .slider .slider-inner .slide {
+   width: 100%;
+   height: 100%;
+}
+   
+.background .content .slider .slider-controls {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   padding: 0 20px;
+   z-index: 10;   
+}
+.background .content .slider .slider-controls span{
+    cursor: pointer;
+    padding: 10px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border-radius: 50%; 
+}
+   
+.background .content .slider .slider-controls .prev,   
+.background .content .slider .slider-controls .next {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    cursor: pointer;  
+}
+   
+.background .content .slider .slider-indicators {
+   position: absolute;
+   bottom: 10px;
+   left: 50%;
+   transform: translateX(-50%);
+   display: flex;   
+   justify-content: center;
+}
+   
+.background .content .slider .slider-indicators span {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;      
+}
+   
+.background .content .slider .slider-indicators span.active {
+    background-color: white; 
+} 
+
+
+
+.background .content .text {
+    max-width: 800px;
+    text-align: left;
+}
+
+/* Work Section */
+.work {
+    padding: 70px 20px;
+    text-align: center;
+}
+
+.work h2 {
+    font-size: 2.2rem;       /* 增大字号 */
+    font-weight: 700;
+    color: #1a5336;          /* 深森林绿 */
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+.work .work-item h3 {
+  font-size: 1.6rem;                /* �ӱ����ֺ� (Լ 25.6px) */             
+  margin-bottom: 10px;             /* ���������ݼ�� */
+  font-weight: bold;               /* �Ӵ� */
+}
+.work .work-item p {
+  text-align: center;    
+}
+.work .work-item {
+    /* 替换背景颜色 */
+    background: rgba(255, 255, 255, 0.85); /* 半透明白 */
+    backdrop-filter: blur(10px); /* 核心：毛玻璃模糊效果 */
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3); /* 增加一道极细的高光边框 */
+    
+    border-radius: 25px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05); /* 阴影调淡，让层级更高级 */
+    transition: transform 0.3s ease;
+}
+.work .work-item .content {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 40px;
+	margin-bottom: 20px;
+	align-items: center;
+}
+.work .work-item .content .image {
+  flex-basis: 40%;                /* �̶�ͼƬ������� */
+  align-items: center;            /* ��ֱ���� */
+}
+.work .work-item .content .image img {
+    max-width: 100%;;
+    height: auto;
+    border-radius: 8px;
+}
+.work .work-item .content .text {
+    max-width: 600px;
+    text-align: left;
+	padding: 50px 20px;
+	flex: 1;                         /* ռ��ʣ��ռ� */
+	font-size: 20px;                 /* ���ı�׼�ֺ� (16px) */
+}
+.work .work-item .content .text p {
+  margin-bottom: 15px;            /* ������ */
+}
+
+.work .work-item .text ul {
+  list-style-type: disc;          /* ��Ŀ����Բ�� */
+  padding-left: 20px;            /* �������� */
+}
+
+.work .work-item .text {
+    max-width: 600px;
+    text-align: left;
+	margin: 20px;
+	padding: 50px;
+}
+.work .work-item .image2 img {
+    max-width: 800px;;
+    height: 400px;
+    border-radius: 8px;
+}
+.work .work-item .vbox {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 40px;
+	margin-bottom: 20px;
+	align-items: center;
+    flex-direction: row;
+}
+.work .work-item .vbox .image {
+	margin-bottom: 20px;
+	align-items: center;
+    flex-basis: 50%;
+}
+.work .work-item .vbox .vbox1 {
+    display: flex;
+    gap: 40px;
+	margin-bottom: 20px;
+	align-items: center;
+    flex-direction: column;
+    flex-basis: 50%;
+}
+
+
+/* Contact Section */
+.contact {
+    padding: 50px 20px;
+    text-align: center;
+}
+/* Footer Section */
+footer {
+    padding: 20px;
+    background-color: #3b9d67;
+    color: white;
+    text-align: center;
+    margin-top: auto; /* 使footer始终位于页面底部 */
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}

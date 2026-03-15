@@ -1,0 +1,605 @@
+.work .work-item .content .mvoice{
+	flex-basis: 50%;
+    text-align: center;
+    width: 10px;
+
+}
+.work .work-item .content .image3 {
+    flex-basis: 50%;
+    text-align: center;
+    width: 10px;
+}
+
+.work .work-item .content .text1 {
+    flex-basis: 50%;
+    max-width: 800px;
+    text-align: justify;
+    padding: 0 20px;
+}
+.work .work-item .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+/* 修改卡片基础样式：增加丝滑过渡 */
+.work .work-item .card {
+    background-color: white;
+    border-radius: 12px; /* 稍微圆润一点更现代 */
+    padding: 20px;
+    flex: 1 1 calc(50% - 20px);
+    min-width: 300px;
+    box-sizing: border-box;
+    /* 初始投影调轻，显得更轻盈 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
+    /* 核心修改：使用贝塞尔曲线控制速度，先快后慢 */
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    top: 0;
+}
+.work .work-item .card h3 {
+    color: #333;
+    margin-top: 0;
+}
+.work .work-item .card p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+/* 修改悬停状态：组合缩放与位移 */
+.card:hover {
+    top: -8px; /* 向上平移 */
+    transform: scale(1.02); /* 配合轻微放大 */
+    /* 阴影颜色改用项目主色调的透明色，更有生态感 */
+    box-shadow: 0 15px 30px rgba(25, 135, 84, 0.15); 
+}
+/* 设置容器的内边距 */
+.container.py-2 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* 列的间距 */
+.row.g-2 {
+    gap: 2rem;
+}
+
+/* 卡片的样式 */
+.bg-white.shadow.p-3 {
+    background-color: white;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    padding: 1rem;
+}
+
+/* 通知标题的样式 */
+.fs-3.pb-1.text-success {
+    font-size: 1.75rem;
+    padding-bottom: 0.5rem;
+    color: #198754;
+    border-bottom: solid 3px #198754;
+}
+
+/* 列表项的样式 */
+.list-group-item {
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent; /* 预留一个边框位 */
+    cursor: pointer;
+}
+
+.list-group-item:hover {
+    background-color: rgba(25, 135, 84, 0.05) !important;
+    padding-left: 15px !important; /* 向右微移，产生“被吸引”的错觉 */
+    border-left: 3px solid #198754; /* 显现出绿色的引导线 */
+    color: #198754;
+}
+
+/* 设置日期样式 */
+small {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+/* 右对齐的日期样式 */
+.text-end.fs-6.fw-light.text-black-50.pt-3 {
+    text-align: right;
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: #6c757d;
+    padding-top: 1rem;
+}
+
+/* 设置每个卡片的宽度 */
+.col-lg-6 {
+    width: 50%;
+}
+
+/* 保证卡片在大屏幕上水平均分 */
+.row.g-2 {
+    display: flex;
+    justify-content: space-between;
+}
+.text-wrap {
+    word-wrap: break-word; /* 强制长单词在合适的位置换行 */
+    word-break: break-word; /* 如果没有空格，也可以强制换行 */
+    white-space: normal; /* 使文本在需要时换行 */
+    display: block; /* 让链接占据整个容器宽度 */
+}
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.fadeIn {
+    animation: fadeIn 1s ease-out;
+}
+
+
+/* ========== 小机器人样式 开始 ========== */
+#chatbot-toggle {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 60px;
+    height: 60px;
+    background: #4CAF50;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 9999;
+    transition: transform 0.3s;
+    /* 核心修改：添加无限循环的呼吸效果 */
+    animation: botBreath 3s infinite ease-in-out;
+}
+
+#chatbot-toggle:hover {
+    transform: scale(1.1);
+}
+
+#chatbot-window {
+    position: fixed;
+    right: 20px;
+    bottom: 90px;
+    width: 320px;
+    height: 450px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#chatbot-window.chatbot-hidden {
+    display: none !important;
+}
+
+.chatbot-header {
+    background: #4CAF50;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbot-header button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.chatbot-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background: #f5f5f5;
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 80%;
+    word-wrap: break-word;
+    font-size: 14px;
+}
+
+.message.user {
+    background: #4CAF50;
+    color: white;
+    margin-left: auto;
+}
+
+.message.assistant {
+    background: white;
+    color: #333;
+    margin-right: auto;
+}
+
+.chatbot-input {
+    display: flex;
+    padding: 10px;
+    background: white;
+    border-top: 1px solid #eee;
+}
+
+.chatbot-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+}
+
+.chatbot-input button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+/* ========== 小机器人样式 结束 ========== */
+
+/* 容器背景微反馈 */
+.work .work-item .vbox {
+    transition: background 0.3s ease, border-radius 0.3s ease;
+}
+
+.vbox:hover {
+    background: #f0fdf4 !important; /* 极淡的翠绿色 */
+    border-radius: 15px;
+}
+
+/* 模拟声波的图片微动效 */
+.vbox:hover .image img {
+    animation: voiceRipple 2s infinite ease-in-out;
+}
+
+@keyframes voiceRipple {
+    0%, 100% { transform: scale(1); filter: contrast(100%); }
+    50% { transform: scale(1.015); filter: contrast(110%) brightness(1.05); }
+}
+
+/* 在 styles.css 最后面添加这个关键帧 */
+@keyframes botBreath {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    50% {
+        transform: scale(1.1); /* 机器人微微胀大 */
+        /* 产生深绿色的光晕，像是在监测声音 */
+        box-shadow: 0 0 20px rgba(76, 175, 80, 0.7);
+    }
+}
+/* ========== 导航栏灵动化优化 开始 ========== */
+
+/* 1. 导航栏容器优化 */
+header {
+    background: linear-gradient(135deg, #6ac593 0%, #4d8d7d 100%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* 2. 导航链接基础样式优化 */
+.navlist a {
+    position: relative;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    overflow: hidden;
+}
+
+/* 3. 导航链接悬停效果 - 光晕背景 */
+.navlist a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.navlist a:hover::before {
+    opacity: 1;
+}
+
+.navlist a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 4. 下划线动画优化 - 从中心向两边展开 */
+.navlist a::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #fff, transparent);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.navlist a:hover::after {
+    width: 80%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* 5. 下拉菜单容器优化 */
+.nav .droplist {
+    min-width: 180px;
+    background: linear-gradient(180deg, #6ac593 0%, #4d8d7d 100%);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 0;
+    margin-top: 8px;
+    transform-origin: top center;
+    animation: dropdownSlide 0.3s ease-out;
+}
+
+@keyframes dropdownSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* 6. 下拉菜单项 - 逐条淡入动画 */
+.nav .droplist li {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+.btli:hover .droplist li {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.btli:hover .droplist li:nth-child(1) { transition-delay: 0.05s; }
+.btli:hover .droplist li:nth-child(2) { transition-delay: 0.1s; }
+.btli:hover .droplist li:nth-child(3) { transition-delay: 0.15s; }
+.btli:hover .droplist li:nth-child(4) { transition-delay: 0.2s; }
+
+/* 7. 下拉菜单项悬停效果 */
+.nav .droplist a {
+    display: block;
+    padding: 12px 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav .droplist a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: #fff;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+    transform-origin: bottom;
+}
+
+.nav .droplist a:hover::before {
+    transform: scaleY(1);
+}
+
+.nav .droplist a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding-left: 25px;
+    color: #fff;
+}
+
+/* 8. 导航项间距优化 */
+.nav ul li {
+    margin: 8px 15px;
+    position: relative;
+}
+
+/* 9. 当前页面高亮标识 */
+.navlist a.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+.navlist a.active::after {
+    width: 80%;
+    background: linear-gradient(90deg, transparent, #fff, transparent);
+}
+
+/* 10. 导航栏 Logo 区域优化 */
+header .hh2 {
+    transition: transform 0.3s ease;
+}
+
+header:hover .hh2 {
+    transform: translateX(5px);
+}
+
+header .logo img {
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+}
+
+header .logo img:hover {
+    transform: scale(1.05) rotate(2deg);
+    filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.3));
+}
+
+/* 11. 主题文字优化 */
+/* 顶部标题：增加字间距和渐变色感 */
+.topic p {
+    font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-weight: 600 !important;
+    letter-spacing: 2px; /* 字间距拉开，更具高级感 */
+    font-size: 1.2rem !important;
+    background: linear-gradient(to right, #ffffff, #d1fae5); /* 淡淡的绿白渐变 */
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 12. 移动端适配 */
+@media (max-width: 768px) {
+    .nav ul li {
+        margin: 5px 8px;
+    }
+    
+    /* 导航链接：变细一点，更有呼吸感 */
+    .navlist a {
+        font-weight: 500;
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+    }
+    
+    .nav .droplist {
+        min-width: 150px;
+    }
+}
+
+/* ========== 导航栏灵动化优化 结束 ========== */
+/* ========== "了解更多"按钮灵动化优化 开始 ========== */
+
+/* 1. 按钮基础样式升级 */
+.hero .btn {
+    position: relative;
+    display: inline-block;
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #3b9d67 0%, #2d7a52 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px; /* 更圆润的圆角 */
+    font-weight: bold;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 4px 15px rgba(59, 157, 103, 0.4);
+    border: 2px solid transparent;
+}
+
+/* 2. 按钮光晕背景层 */
+.hero .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.hero .btn:hover::before {
+    left: 100%;
+}
+
+/* 3. 按钮内发光层 */
+.hero .btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.hero .btn:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* 4. 按钮悬停效果 */
+.hero .btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(59, 157, 103, 0.6),
+                0 0 20px rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* 5. 按钮点击效果 */
+.hero .btn:active {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 5px 15px rgba(59, 157, 103, 0.4);
+}
+
+/* 6. 按钮文字动画 */
+.hero .btn span {
+    position: relative;
+    z-index: 1;
+}
+
+/* 7. 脉冲光效动画 */
+@keyframes btnPulse {
+    0% {
+        box-shadow: 0 4px 15px rgba(59, 157, 103, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 25px rgba(59, 157, 103, 0.6),
+                    0 0 15px rgba(255, 255, 255, 0.2);
+    }
+    100% {
+        box-shadow: 0 4px 15px rgba(59, 157, 103, 0.4);
+    }
+}
+
+.hero .btn {
+    animation: btnPulse 2s infinite ease-in-out;
+}
+
+.hero .btn:hover {
+    animation: none; /* 悬停时停止脉冲，避免冲突 */
+}
+
+/* 8. 箭头图标（可选） */
+.hero .btn::before {
+    content: '→';
+    position: absolute;
+    right: 20px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+.hero .btn:hover::before {
+    opacity: 1;
+    transform: translateX(0);
+    right: 25px;
+}
+
+/* 9. 兼容原有内容 */
+.hero .btn {
+    z-index: 1;
+}
+
+/* ========== "了解更多"按钮灵动化优化 结束 ========== */
+
