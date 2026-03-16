@@ -75,47 +75,84 @@
         </div>
     </section>
 
-    <!-- Project Background Section -->
-    <section id="background" class="background fadeIn">
-        <h2>项目介绍</h2>
-        <div class="content">
-            <div class="slider">
-                <div class="slider-inner">
-                    <img class="slide" src="{{ url_for('static', filename='img/VCG1.png') }}" alt="Slide 1">
-                    <img class="slide" src="{{ url_for('static', filename='img/VCG2.png') }}" alt="Slide 2">
-                    <img class="slide" src="{{ url_for('static', filename='img/VCG3.png') }}" alt="Slide 3">
+<section id="background" class="background fadeIn" style="padding: 60px 20px; background-color: #f8f9fa;">
+    <h2 style="text-align: center; margin-bottom: 40px; color: #333;">项目聚焦与核心技术</h2>
+    
+    <div class="zr-carousel-container" style="max-width: 1200px; margin: 0 auto; position: relative; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-radius: 12px; overflow: hidden;">
+        
+        <div class="zr-carousel-track" style="display: flex; transition: transform 0.5s ease-in-out; width: 100%;">
+            
+            <div class="zr-slide" style="min-width: 100%; display: flex; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px;">
+                    <img src="{{ url_for('static', filename='img/VCG1.png') }}" alt="白头叶猴" style="width: 100%; height: 100%; object-fit: cover; min-height: 350px;">
                 </div>
-                <div class="slider-controls">
-                    <span class="prev">&lt;</span>
-                    <span class="next">&gt;</span>
-                </div>
-                <div class="slider-indicators">
-                    <span class="active"></span>
-                    <span></span>
-                    <span></span>
+                <div style="flex: 1; padding: 40px; display: flex; flex-direction: column; justify-content: center; min-width: 300px;">
+                    <h3 style="font-size: 24px; color: #198754; margin-bottom: 20px; border-bottom: 2px solid #198754; display: inline-block; padding-bottom: 5px;">绝壁精灵：喀斯特地貌的守护者</h3>
+                    <p style="color: #555; line-height: 1.8; text-align: justify;">全球野生动物栖息地减少与非法猎杀加剧，使中国特有濒危物种白头叶猴面临严峻生存威胁。其栖息地集中于广西石灰岩地带，地形复杂且高度碎片化。传统监测手段因动物高敏感性和活动隐蔽性难以实施，而侵入式追踪装置成本高且可能伤害动物，亟需开发非干扰、可持续的研究方法。</p>
                 </div>
             </div>
-            <div class="text">
-                <!-- ‌第一段：问题与挑战‌
 
-
-‌第二段：声音分析的价值与难点‌
-
-
-‌第三段：技术方案与意义‌ -->
-
-                <p>全球野生动物栖息地减少与非法猎杀加剧，使中国特有濒危物种白头叶猴面临严峻生存威胁。其栖息地集中于广西石灰岩地带，地形复杂且高度碎片化，传统监测手段因动物高敏感性和活动隐蔽性难以实施，而侵入式追踪装置成本高且可能伤害动物，亟需开发非干扰、可持续的研究方法。
-                </p>
-                <br>
-                <p>声音是白头叶猴社会交互的核心方式，用于领地防御、群体协作及生存预警。然而，其鸣叫常被风声、水流等环境噪声掩盖，导致野外录音数据信噪比低，严重制约声音特征提取与行为解析，需通过高效降噪技术分离目标声源，为生态研究提供可靠数据基础。
-                </p>
-                <br>
-                <p></p>
-                <p>基于RNNoise的降噪算法可自动识别并分离目标声音与背景噪声，显著提升声音数据质量。该技术无需近距离干扰动物，支持全天候、大范围连续监测，为解析种群动态、栖息地适应性及制定保护策略提供创新工具，推动濒危物种研究与保护迈向智能化、非侵入化新阶段。
-                </p>
+            <div class="zr-slide" style="min-width: 100%; display: flex; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px;">
+                    <img src="{{ url_for('static', filename='img/VCG2.png') }}" alt="声学挑战" style="width: 100%; height: 100%; object-fit: cover; min-height: 350px;">
+                </div>
+                <div style="flex: 1; padding: 40px; display: flex; flex-direction: column; justify-content: center; min-width: 300px;">
+                    <h3 style="font-size: 24px; color: #198754; margin-bottom: 20px; border-bottom: 2px solid #198754; display: inline-block; padding-bottom: 5px;">破译自然：复杂环境下的声学挑战</h3>
+                    <p style="color: #555; line-height: 1.8; text-align: justify;">声音是白头叶猴社会交互的核心方式，用于领地防御、群体协作及生存预警。然而，在野外被动声学监测中，其鸣叫常被风声、水流及虫鸣等复杂环境噪声严重掩盖。极低的信噪比导致传统的音频分析方法束手无策，严重制约了种群动态特征的提取与行为解析。</p>
+                </div>
             </div>
+
+            <div class="zr-slide" style="min-width: 100%; display: flex; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px;">
+                    <img src="{{ url_for('static', filename='img/VCG3.png') }}" alt="技术赋能" style="width: 100%; height: 100%; object-fit: cover; min-height: 350px;">
+                </div>
+                <div style="flex: 1; padding: 40px; display: flex; flex-direction: column; justify-content: center; min-width: 300px;">
+                    <h3 style="font-size: 24px; color: #198754; margin-bottom: 20px; border-bottom: 2px solid #198754; display: inline-block; padding-bottom: 5px;">科技向善：RNNoise 深度学习降噪</h3>
+                    <p style="color: #555; line-height: 1.8; text-align: justify;">本项目引入基于 RNN (循环神经网络) 的深度降噪算法，可自动识别并分离目标声音与背景噪声。该技术无需近距离干扰动物，支持全天候、大范围连续监测。不仅能有效复原叶猴声纹，更为解析种群动态、栖息地适应性及制定保护策略提供了强大的智能化创新工具。</p>
+                </div>
+            </div>
+
         </div>
-    </section>
+
+        <button onclick="moveZrSlide(-1)" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.3); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 20px; cursor: pointer; z-index: 10;">&#10094;</button>
+        <button onclick="moveZrSlide(1)" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.3); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 20px; cursor: pointer; z-index: 10;">&#10095;</button>
+        
+        <div style="text-align: center; position: absolute; bottom: 15px; width: 100%; z-index: 10;" id="zr-dots">
+            <span class="zr-dot" onclick="currentZrSlide(0)" style="cursor: pointer; height: 8px; width: 30px; margin: 0 4px; background-color: rgba(25, 135, 84, 0.4); display: inline-block; transition: background-color 0.3s; border-radius: 4px;"></span>
+            <span class="zr-dot" onclick="currentZrSlide(1)" style="cursor: pointer; height: 8px; width: 30px; margin: 0 4px; background-color: rgba(25, 135, 84, 0.4); display: inline-block; transition: background-color 0.3s; border-radius: 4px;"></span>
+            <span class="zr-dot" onclick="currentZrSlide(2)" style="cursor: pointer; height: 8px; width: 30px; margin: 0 4px; background-color: rgba(25, 135, 84, 0.4); display: inline-block; transition: background-color 0.3s; border-radius: 4px;"></span>
+        </div>
+    </div>
+</section>
+
+<script>
+    let zrIndex = 0;
+    const track = document.querySelector('.zr-carousel-track');
+    const dots = document.querySelectorAll('.zr-dot');
+
+    function updateZrCarousel() {
+        track.style.transform = `translateX(-${zrIndex * 100}%)`;
+        dots.forEach((dot, index) => {
+            dot.style.backgroundColor = index === zrIndex ? '#198754' : 'rgba(25, 135, 84, 0.4)';
+        });
+    }
+
+    function moveZrSlide(direction) {
+        zrIndex = (zrIndex + direction + 3) % 3;
+        updateZrCarousel();
+    }
+
+    function currentZrSlide(index) {
+        zrIndex = index;
+        updateZrCarousel();
+    }
+    
+    // 初始化指示器颜色
+    updateZrCarousel();
+    
+    // 自动播放 (每 5 秒滑动一次)
+    setInterval(() => { moveZrSlide(1); }, 5000);
+</script>
 
     <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin: 40px 20px;">
 
@@ -275,118 +312,7 @@
         // }
         // resethtmlfontsize();
         // window.onresize = resethtmlfontsize();
-        // 获取幻灯片相关元素
-        document.addEventListener('DOMContentLoaded', function () {
-            // 获取元素
-            const sliderInner = document.querySelector('.slider-inner');
-            const slides = document.querySelectorAll('.slide');
-            const prevBtn = document.querySelector('.prev');
-            const nextBtn = document.querySelector('.next');
-            const indicators = document.querySelectorAll('.slider-indicators span');
-
-            // 状态变量
-            let currentSlide = 0;
-            let isPlaying = true;
-            let slideInterval;
-            const SLIDE_DURATION = 3000; // 3秒切换间隔
-
-            // 初始化幻灯片
-            function initSlider() {
-                // 设置容器宽度
-                sliderInner.style.width = `${slides.length * 100}%`;
-
-                // 启动自动播放
-                startAutoPlay();
-
-                // 设置初始位置
-                goToSlide(currentSlide);
-            }
-
-            // 跳转到指定幻灯片
-            function goToSlide(index) {
-                // 边界检查
-                if (index < 0) index = slides.length - 1;
-                if (index >= slides.length) index = 0;
-
-                currentSlide = index;
-
-                // 更新位置
-                const offset = -currentSlide * (100 / slides.length);
-                sliderInner.style.transform = `translateX(${offset}%)`;
-
-                // 更新指示器
-                updateIndicators();
-            }
-
-            // 更新指示器状态
-            function updateIndicators() {
-                indicators.forEach((indicator, i) => {
-                    indicator.classList.toggle('active', i === currentSlide);
-                });
-            }
-
-            // 下一张幻灯片
-            function nextSlide() {
-                goToSlide(currentSlide + 1);
-            }
-
-            // 上一张幻灯片
-            function prevSlide() {
-                goToSlide(currentSlide - 1);
-            }
-
-            // 启动自动播放
-            function startAutoPlay() {
-                // 先清除已有定时器
-                stopAutoPlay();
-
-                slideInterval = setInterval(() => {
-                    if (isPlaying) nextSlide();
-                }, SLIDE_DURATION);
-            }
-
-            // 停止自动播放
-            function stopAutoPlay() {
-                clearInterval(slideInterval);
-            }
-
-            // 事件监听
-            prevBtn.addEventListener('click', () => {
-                prevSlide();
-                resetAutoPlay();
-            });
-
-            nextBtn.addEventListener('click', () => {
-                nextSlide();
-                resetAutoPlay();
-            });
-
-            // 指示器点击事件
-            indicators.forEach((indicator, i) => {
-                indicator.addEventListener('click', () => {
-                    goToSlide(i);
-                    resetAutoPlay();
-                });
-            });
-
-            // 鼠标悬停暂停
-            sliderInner.parentElement.addEventListener('mouseenter', () => {
-                isPlaying = false;
-            });
-
-            sliderInner.parentElement.addEventListener('mouseleave', () => {
-                isPlaying = true;
-            });
-
-            // 重置自动播放
-            function resetAutoPlay() {
-                stopAutoPlay();
-                startAutoPlay();
-            }
-
-            // 初始化
-            initSlider();
-        });
+        
 
         // window.addEventListener('scroll', function() {
         //         var workSection = document.querySelector('#team');
