@@ -138,6 +138,80 @@
                     </p>
                 </div>
             </div>
+            <h3 style="margin-top: 60px; color: #198754; text-align: center; border-bottom: 2px dashed #ccc; padding-bottom: 15px;">实时声学监测大屏 (演示)</h3>
+            <p style="text-align: center; color: #666; margin-bottom: 20px;">通过深度降噪与声纹识别，系统可在复杂地形中实时定位白头叶猴的声源位置，生成活动热点图。</p>
+            
+            <div style="position: relative; max-width: 800px; margin: 0 auto; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 2px solid #28a745;">
+                <img src="{{ url_for('static', filename='img/map1.jpg') }}" alt="喀斯特地形图" style="width: 100%; display: block; filter: brightness(0.8) contrast(1.2);">
+                
+                <canvas id="heatmapCanvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></canvas>
+                
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(25, 135, 84, 0.1) 50%, rgba(0, 0, 0, 0) 50%); background-size: 100% 4px; pointer-events: none; opacity: 0.3;"></div>
+                
+                <div style="position: absolute; top: 20px; left: 20px; background: rgba(0,0,0,0.7); padding: 15px; border-radius: 8px; color: #00ff00; font-family: monospace; border: 1px solid #198754;">
+                    <div style="font-size: 14px; margin-bottom: 5px;">🔴 监测状态: <span id="monitorStatus">扫描中...</span></div>
+                    <div style="font-size: 12px; color: #aaa;">捕获有效叫声: <span id="callCount" style="color: white; font-weight: bold;">0</span> 次</div>
+                </div>
+            </div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const canvas = document.getElementById('heatmapCanvas');
+                    const ctx = canvas.getContext('2d');
+                    let callCount = 0;
+                    const countDisplay = document.getElementById('callCount');
+
+                    // 调整画布分辨率以匹配图片
+                    function resizeCanvas() {
+                        canvas.width = canvas.offsetWidth;
+                        canvas.height = canvas.offsetHeight;
+                    }
+                    window.addEventListener('resize', resizeCanvas);
+                    setTimeout(resizeCanvas, 100); // 延迟确保证图片加载
+
+                    // 画一个发光的热点
+                    function drawHeatPoint(x, y, intensity) {
+                        const radius = intensity * 40;
+                        const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
+                        // 核心为红色，边缘过渡到绿色再到透明
+                        gradient.addColorStop(0, `rgba(255, 50, 50, ${intensity})`);
+                        gradient.addColorStop(0.4, `rgba(255, 200, 50, ${intensity * 0.8})`);
+                        gradient.addColorStop(0.8, `rgba(50, 200, 50, ${intensity * 0.3})`);
+                        gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+                        ctx.beginPath();
+                        ctx.arc(x, y, radius, 0, Math.PI * 2);
+                        ctx.fillStyle = gradient;
+                        ctx.fill();
+                    }
+
+                    // 模拟随机接收到叶猴叫声
+                    function simulateDetection() {
+                        // 随机生成坐标 (稍微集中在中间区域)
+                        const x = canvas.width * (0.2 + Math.random() * 0.6);
+                        const y = canvas.height * (0.2 + Math.random() * 0.6);
+                        const intensity = 0.5 + Math.random() * 0.5; // 强度 0.5 - 1.0
+
+                        drawHeatPoint(x, y, intensity);
+                        
+                        callCount++;
+                        countDisplay.innerText = callCount;
+
+                        // 让图上的点慢慢变淡 (模拟热量消散)
+                        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                        // 随机下一次探测的时间 (500ms 到 2000ms 之间)
+                        setTimeout(simulateDetection, 500 + Math.random() * 1500);
+                    }
+
+                    // 启动模拟
+                    setTimeout(() => {
+                        resizeCanvas();
+                        simulateDetection();
+                    }, 500);
+                });
+            </script>
         </div>
         <div style="display: flex; justify-content: center; gap: 20px; margin: 40px 0; padding-bottom: 20px;">
             <a href="work2.html"
