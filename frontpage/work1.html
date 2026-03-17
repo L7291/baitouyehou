@@ -28,9 +28,27 @@
         }
     }
 
-    #chatbot-toggle {
-        animation: breathing 3s infinite ease-in-out;
-        /* 持续 3 秒，无限循环 */
+   #chatbot-toggle {
+        animation: breathing 3s infinite ease-in-out; /* 保持呼吸灯动效 */
+        /* 下面是新增的头像适配样式 */
+        width: 60px !important; 
+        height: 60px !important;
+        border-radius: 50%; /* 变成正圆形 */
+        overflow: hidden; /* 切掉多余的边角 */
+        border: 3px solid #198754; /* 加上主题绿色的边框，更显高级 */
+        background-color: white; /* 防止透明图片透出背景 */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 !important; /* 清除默认内边距 */
+        cursor: pointer;
+    }
+
+    #chatbot-toggle img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* 保证头像比例不拉伸变形 */
+    }
     }
 </style>
 
@@ -312,19 +330,24 @@
         <p>© 2026 保护野生动物声音降噪项目</p>
     </footer>
     <!-- ========== 小机器人助手 HTML 开始 ========== -->
-    <div id="chatbot-toggle" onclick="toggleChatbot()">🤖</div>
+    <div id="chatbot-toggle" onclick="toggleChatbot()">
+        <img src="{{ url_for('static', filename='img/langur_avatar.png') }}" alt="叶猴助手">
+    </div>
 
     <div id="chatbot-window" class="chatbot-hidden">
         <div class="chatbot-header">
-            <span>生态小助手</span>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <img src="{{ url_for('static', filename='img/langur_avatar.png') }}" alt="头像" style="width: 30px; height: 30px; border-radius: 50%; border: 1px solid white; object-fit: cover;">
+                <span>叶猴生态助手</span>
+            </div>
             <div>
-                <button onclick="clearChatHistory()" style="margin-right:10px;font-size:14px;">🗑️ 清空</button>
-                <button onclick="toggleChatbot()">×</button>
+                <button onclick="clearChatHistory()" style="margin-right:10px;font-size:14px; background: rgba(255,255,255,0.2); border: none; color: white; border-radius: 4px; padding: 2px 8px; cursor: pointer;">🗑️ 清空</button>
+                <button onclick="toggleChatbot()" style="background: none; border: none; color: white; font-size: 20px; cursor: pointer;">×</button>
             </div>
         </div>
         <div id="chatbot-messages" class="chatbot-messages"></div>
         <div class="chatbot-input">
-            <input type="text" id="user-input" placeholder="请输入问题..." onkeypress="handleKeyPress(event)">
+            <input type="text" id="user-input" placeholder="问问我关于白头叶猴的事吧..." onkeypress="handleKeyPress(event)">
             <button onclick="sendMessage()">发送</button>
         </div>
     </div>
