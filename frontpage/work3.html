@@ -157,80 +157,140 @@
                 </div>
             </div>
             <h3 style="margin-top: 60px; color: #198754; text-align: center; border-bottom: 2px dashed #ccc; padding-bottom: 15px;">实时声学监测大屏 (演示)</h3>
-            <p style="text-align: center; color: #666; margin-bottom: 20px;">通过深度降噪与声纹识别，系统可在复杂地形中实时定位白头叶猴的声源位置，生成活动热点图。</p>
+<p style="text-align: center; color: #666; margin-bottom: 20px;">通过深度降噪与声纹识别，系统可在复杂地形中实时定位白头叶猴的声源位置，生成活动热点图。</p>
+
+<div style="position: relative; max-width: 1000px; margin: 0 auto; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 2px solid #28a745;">
+    <!-- 底层：原图 (仅用于加载和获取尺寸) -->
+    <img id="mapImage" src="{{ url_for('static', filename='img/map.png') }}" alt="喀斯特地形图" style="width: 100%; display: block; visibility: hidden;">
+    
+    <!-- 顶层：主画布 (绘制原图 + 黑色遮罩 + 热点) -->
+    <canvas id="heatmapCanvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></canvas>
+    
+    <!-- 离屏画布：专门存储热点层 (避免热点被遮罩覆盖后无法累积) -->
+    <canvas id="offscreenCanvas" style="display: none;"></canvas>
+
+    <div style="position: absolute; top: 20px; left: 20px; background: rgba(0,0,0,0.7); padding: 15px; border-radius: 8px; color: #00ff00; font-family: monospace; border: 1px solid #198754;">
+        <div style="font-size: 14px; margin-bottom: 5px;">🔴 监测状态: <span id="monitorStatus">扫描中...</span></div>
+        <div style="font-size: 12px; color: #aaa;">捕获有效叫声: <span id="callCount" style="color: white; font-weight: bold;">0</span> 次</div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 核心元素
+        const mainCanvas = document.getElementById('heatmapCanvas');
+        const mainCtx = mainCanvas.getContext('2d');
+        const offscreenCanvas = document.getElementById('offscreenCanvas');
+        const offscreenCtx = offscreenCanvas.getContext('2d');
+        const img = document.getElementById('mapImage');
+        
+        // 状态变量
+        let callCount = 0;
+        const countDisplay = document.getElementById('callCount');
+        let isImgLoaded = false;
+        let totalBlackOpacity = 0; // 累计黑色遮罩透明度 (0=全亮 → 0.8=接近全黑)
+        const maxBlackOpacity = 0.8; // 最终变暗的程度
+        // 关键调整：加快变暗速度 → 约1-3分钟达到最大暗度（适配演示）
+        const blackIncrement = 0.005; // 从0.00005调至0.005，速度提升100倍
+
+        // 1. 统一尺寸初始化
+        function initCanvasSize() {
+            if (!img.complete || !isImgLoaded) return;
             
-            <div style="position: relative; max-width: 800px; margin: 0 auto; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 2px solid #28a745;">
-                <img src="{{ url_for('static', filename='img/map1.jpg') }}" alt="喀斯特地形图" style="width: 100%; display: block; filter: brightness(0.8) contrast(1.2);">
-                
-                <canvas id="heatmapCanvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></canvas>
-                
-                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(25, 135, 84, 0.1) 50%, rgba(0, 0, 0, 0) 50%); background-size: 100% 4px; pointer-events: none; opacity: 0.3;"></div>
-                
-                <div style="position: absolute; top: 20px; left: 20px; background: rgba(0,0,0,0.7); padding: 15px; border-radius: 8px; color: #00ff00; font-family: monospace; border: 1px solid #198754;">
-                    <div style="font-size: 14px; margin-bottom: 5px;">🔴 监测状态: <span id="monitorStatus">扫描中...</span></div>
-                    <div style="font-size: 12px; color: #aaa;">捕获有效叫声: <span id="callCount" style="color: white; font-weight: bold;">0</span> 次</div>
-                </div>
-            </div>
+            // 同步所有画布尺寸到原图
+            mainCanvas.width = img.width;
+            mainCanvas.height = img.height;
+            offscreenCanvas.width = img.width;
+            offscreenCanvas.height = img.height;
+            
+            // 初始绘制：100%明亮的原图
+            mainCtx.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
+            mainCtx.drawImage(img, 0, 0);
+            img.style.visibility = 'visible';
+        }
 
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    const canvas = document.getElementById('heatmapCanvas');
-                    const ctx = canvas.getContext('2d');
-                    let callCount = 0;
-                    const countDisplay = document.getElementById('callCount');
+        // 2. 图片加载完成后初始化
+        img.onload = function() {
+            isImgLoaded = true;
+            initCanvasSize();
+        };
+        window.addEventListener('resize', initCanvasSize);
 
-                    // 调整画布分辨率以匹配图片
-                    function resizeCanvas() {
-                        canvas.width = canvas.offsetWidth;
-                        canvas.height = canvas.offsetHeight;
-                    }
-                    window.addEventListener('resize', resizeCanvas);
-                    setTimeout(resizeCanvas, 100); // 延迟确保证图片加载
+        // 3. 绘制热点 (仅绘制在离屏画布，避免被黑色遮罩覆盖)
+        function drawHeatPoint(x, y, intensity) {
+            const radius = intensity * 60;
+            const gradient = offscreenCtx.createRadialGradient(x, y, 0, x, y, radius);
+            
+            // 热点配色 (更鲜艳，确保变暗后仍可见)
+            gradient.addColorStop(0, `rgba(255, 0, 0, ${intensity})`);        // 核心红
+            gradient.addColorStop(0.4, `rgba(255, 200, 0, ${intensity * 0.9})`); // 亮黄
+            gradient.addColorStop(0.8, `rgba(0, 255, 0, ${intensity * 0.6})`);   // 亮绿
+            gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');                      // 透明
 
-                    // 画一个发光的热点
-                    function drawHeatPoint(x, y, intensity) {
-                        const radius = intensity * 40;
-                        const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
-                        // 核心为红色，边缘过渡到绿色再到透明
-                        gradient.addColorStop(0, `rgba(255, 50, 50, ${intensity})`);
-                        gradient.addColorStop(0.4, `rgba(255, 200, 50, ${intensity * 0.8})`);
-                        gradient.addColorStop(0.8, `rgba(50, 200, 50, ${intensity * 0.3})`);
-                        gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            offscreenCtx.beginPath();
+            offscreenCtx.arc(x, y, radius, 0, Math.PI * 2);
+            offscreenCtx.fillStyle = gradient;
+            offscreenCtx.fill();
+        }
 
-                        ctx.beginPath();
-                        ctx.arc(x, y, radius, 0, Math.PI * 2);
-                        ctx.fillStyle = gradient;
-                        ctx.fill();
-                    }
+        // 4. 核心渲染逻辑 (原图+遮罩+热点)
+        function renderFrame() {
+            if (!isImgLoaded) return;
 
-                    // 模拟随机接收到叶猴叫声
-                    function simulateDetection() {
-                        // 随机生成坐标 (稍微集中在中间区域)
-                        const x = canvas.width * (0.2 + Math.random() * 0.6);
-                        const y = canvas.height * (0.2 + Math.random() * 0.6);
-                        const intensity = 0.5 + Math.random() * 0.5; // 强度 0.5 - 1.0
+            // 步骤1：清空主画布，重新绘制100%明亮的原图
+            mainCtx.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
+            mainCtx.drawImage(img, 0, 0);
 
-                        drawHeatPoint(x, y, intensity);
-                        
-                        callCount++;
-                        countDisplay.innerText = callCount;
+            // 步骤2：叠加黑色遮罩 (模拟原图慢慢变黑)
+            if (totalBlackOpacity < maxBlackOpacity) {
+                totalBlackOpacity += blackIncrement;
+                // 确保不超过最大透明度
+                totalBlackOpacity = Math.min(totalBlackOpacity, maxBlackOpacity);
+            }
+            mainCtx.fillStyle = `rgba(0, 0, 0, ${totalBlackOpacity})`;
+            mainCtx.fillRect(0, 0, mainCanvas.width, mainCanvas.height);
 
-                        // 让图上的点慢慢变淡 (模拟热量消散)
-                        ctx.fillStyle = 'rgba(0, 0, 0, 0.001)';
-                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+            // 步骤3：叠加热点层 (热点不受遮罩影响，始终清晰)
+            mainCtx.drawImage(offscreenCanvas, 0, 0);
 
-                        // 随机下一次探测的时间 (500ms 到 2000ms 之间)
-                        setTimeout(simulateDetection, 2000 + Math.random() * 6000);
-                    }
+            // 步骤4：热点缓慢消散 (仅作用于离屏画布的热点)
+            offscreenCtx.fillStyle = 'rgba(0, 0, 0, 0.001)';
+            offscreenCtx.fillRect(0, 0, offscreenCanvas.width, offscreenCanvas.height);
+        }
 
-                    // 启动模拟
-                    setTimeout(() => {
-                        resizeCanvas();
-                        simulateDetection();
-                    }, 500);
-                });
-            </script>
-        </div>
+        // 5. 模拟探测逻辑 (也可适当加快热点生成频率，适配演示)
+        function simulateDetection() {
+            if (!isImgLoaded) {
+                setTimeout(simulateDetection, 100);
+                return;
+            }
+
+            // 随机生成热点坐标 (集中在中间区域)
+            const x = mainCanvas.width * (0.1 + Math.random() * 0.8);
+            const y = mainCanvas.height * (0.1 + Math.random() * 0.8);
+            const intensity = 0.7 + Math.random() * 0.3; // 热点强度 (0.7-1.0，更亮)
+
+            // 绘制新热点
+            drawHeatPoint(x, y, intensity);
+            
+            // 更新计数
+            callCount++;
+            countDisplay.innerText = callCount;
+
+            // 渲染当前帧 (原图+遮罩+热点)
+            renderFrame();
+
+            // 调整：加快热点生成频率 → 1-3秒一次（演示时更快看到热点累积）
+            const nextDelay = 1000 + Math.random() * 2000;
+            setTimeout(simulateDetection, nextDelay);
+        }
+
+        // 启动模拟
+        setTimeout(() => {
+            simulateDetection();
+        }, 500);
+    });
+</script>
         <div style="display: flex; justify-content: center; gap: 20px; margin: 40px 0; padding-bottom: 20px;">
             <a href="work2.html"
                 style="padding: 12px 30px; background-color: white; color: #198754; border: 2px solid #198754; text-decoration: none; border-radius: 30px; font-size: 16px; font-weight: bold; transition: background 0.2s;">⬅
