@@ -216,11 +216,11 @@
                         countDisplay.innerText = callCount;
 
                         // 让图上的点慢慢变淡 (模拟热量消散)
-                        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                        ctx.fillStyle = 'rgba(0, 0, 0, 0.001)';
                         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
                         // 随机下一次探测的时间 (500ms 到 2000ms 之间)
-                        setTimeout(simulateDetection, 500 + Math.random() * 1500);
+                        setTimeout(simulateDetection, 2000 + Math.random() * 6000);
                     }
 
                     // 启动模拟
