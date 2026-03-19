@@ -128,36 +128,63 @@
         <p>© 2026 保护野生动物声音降噪项目</p>
     </footer>
 
-    <script>
+   <script>
+        // function resethtmlfontsize(){
+        // 	document.documentElement.style.fontSize=screen.width /10 +'px';	
+        // }
+        // resethtmlfontsize();
+        // window.onresize = resethtmlfontsize();
+        
+
+        // window.addEventListener('scroll', function() {
+        //         var workSection = document.querySelector('#team');
+        //         var position = workSection.getBoundingClientRect();
+        //         if (position.top < window.innerHeight) {
+        //             workSection.classList.add('fadeIn');
+        //         }
+        //     });
+        // ========== 小机器人功能 开始 ==========
+
+        // 页面加载时恢复聊天记录
         document.addEventListener('DOMContentLoaded', function () {
             loadChatHistory();
         });
 
+        // 切换聊天窗口显示/隐藏
         function toggleChatbot() {
             const chatbotWindow = document.getElementById('chatbot-window');
             chatbotWindow.classList.toggle('chatbot-hidden');
+            // 打开时重新加载历史记录
             if (!chatbotWindow.classList.contains('chatbot-hidden')) {
                 loadChatHistory();
             }
         }
 
+        // 处理回车发送
         function handleKeyPress(event) {
             if (event.key === 'Enter') {
                 sendMessage();
             }
         }
 
+        // 发送消息
         async function sendMessage() {
             const input = document.getElementById('user-input');
             const message = input.value.trim();
 
             if (!message) return;
 
+            // 显示用户消息
             addMessage(message, 'user');
+            // 保存到 localStorage
             saveMessageToStorage('user', message);
+
             input.value = '';
+
+            // 显示加载中
             addMessage('正在思考...', 'assistant', true);
 
+            // 调用后端 API
             try {
                 const response = await fetch('/api/chat', {
                     method: 'POST',
@@ -170,6 +197,7 @@
 
                 const aiResponse = data.response || '暂无回复';
                 addMessage(aiResponse, 'assistant');
+                // 保存到 localStorage
                 saveMessageToStorage('assistant', aiResponse);
 
             } catch (error) {
@@ -180,6 +208,7 @@
             }
         }
 
+        // 添加消息到聊天窗口
         function addMessage(content, role, isLoading = false) {
             const messagesDiv = document.getElementById('chatbot-messages');
             const messageDiv = document.createElement('div');
@@ -189,51 +218,76 @@
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
         }
 
+        // 移除加载消息
         function removeLoadingMessage() {
             const loading = document.querySelector('.message.loading');
             if (loading) loading.remove();
         }
 
+        // 保存消息到 localStorage
         function saveMessageToStorage(role, content) {
             let chatHistory = JSON.parse(localStorage.getItem('chatHistory') || '[]');
             chatHistory.push({ role: role, content: content });
             localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
         }
 
+        // 从 localStorage 加载聊天记录
         function loadChatHistory() {
             const messagesDiv = document.getElementById('chatbot-messages');
+            // 清空当前显示
             messagesDiv.innerHTML = '';
+
             let chatHistory = JSON.parse(localStorage.getItem('chatHistory') || '[]');
+
             chatHistory.forEach(msg => {
                 const messageDiv = document.createElement('div');
                 messageDiv.className = `message ${msg.role}`;
                 messageDiv.textContent = msg.content;
                 messagesDiv.appendChild(messageDiv);
             });
+
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
         }
 
+        // 清空聊天记录功能
         function clearChatHistory() {
             localStorage.removeItem('chatHistory');
             const messagesDiv = document.getElementById('chatbot-messages');
             messagesDiv.innerHTML = '';
         }
+        // ========== 小机器人功能 结束 ==========
+
+
+
     </script>
-    <div id="chatbot-toggle" onclick="toggleChatbot()">🤖</div>
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2026 保护野生动物声音降噪项目</p>
+    </footer>
+    <!-- ========== 小机器人助手 HTML 开始 ========== -->
+    <div id="chatbot-toggle" onclick="toggleChatbot()">
+        <img src="{{ url_for('static', filename='img/langur_avatar.png') }}" alt="叶猴助手">
+    </div>
 
     <div id="chatbot-window" class="chatbot-hidden">
         <div class="chatbot-header">
-            <span>生态小助手</span>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <img src="{{ url_for('static', filename='img/langur_avatar.png') }}" alt="头像" style="width: 30px; height: 30px; border-radius: 50%; border: 1px solid white; object-fit: cover;">
+                <span>叶猴生态助手</span>
+            </div>
             <div>
-                <button onclick="clearChatHistory()" style="margin-right:10px;font-size:14px; background:transparent; border:none; color:white; cursor:pointer;">🗑️ 清空</button>
-                <button onclick="toggleChatbot()" style="background:transparent; border:none; color:white; cursor:pointer; font-size:18px;">×</button>
+                <button onclick="clearChatHistory()" style="margin-right:10px;font-size:14px; background: rgba(255,255,255,0.2); border: none; color: white; border-radius: 4px; padding: 2px 8px; cursor: pointer;">🗑️ 清空</button>
+                <button onclick="toggleChatbot()" style="background: none; border: none; color: white; font-size: 20px; cursor: pointer;">×</button>
             </div>
         </div>
         <div id="chatbot-messages" class="chatbot-messages"></div>
         <div class="chatbot-input">
-            <input type="text" id="user-input" placeholder="请输入问题..." onkeypress="handleKeyPress(event)">
+            <input type="text" id="user-input" placeholder="问问我关于白头叶猴的事吧..." onkeypress="handleKeyPress(event)">
             <button onclick="sendMessage()">发送</button>
         </div>
     </div>
-    </body>
+    <!-- ========== 小机器人助手 HTML 结束 ========== -->
+
+</body>
+
 </html>
