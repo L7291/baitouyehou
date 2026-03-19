@@ -81,7 +81,7 @@ def work2_page():
 def work3_page():
     return render_template('work3.html')
 
-@app.route('/monitor。html')
+@app.route('/monitor.html')
 def monitor():
     return render_template('monitor.html')
 
