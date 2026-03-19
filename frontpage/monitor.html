@@ -6,6 +6,18 @@
     <title>声学哨兵：智能监测网络 - EcoListen：基于深度降噪的濒危物种智能监测平台</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles1.css') }}">
+    <style>
+        /* AI 小助手呼吸灯动效 */
+        @keyframes breathing {
+            0% { transform: scale(1); box-shadow: 0 0 10px rgba(25, 135, 84, 0.5); }
+            50% { transform: scale(1.1); box-shadow: 0 0 25px rgba(25, 135, 84, 0.9); }
+            100% { transform: scale(1); box-shadow: 0 0 10px rgba(25, 135, 84, 0.5); }
+        }
+        #chatbot-toggle {
+            animation: breathing 3s infinite ease-in-out;
+            /* 持续 3 秒，无限循环 */
+        }
+    </style>
 </head>
 <body style="background-color: #f4f7f6;">
     <header>
@@ -23,7 +35,7 @@
                             <li><a href="work.html">关于叶猴</a></li><li><a href="work1.html">叶猴声音</a></li><li><a href="work2.html">降噪展示</a></li><li><a href="work3.html">困难与展望</a></li>
                         </ul>
                     </li>
-                    <li class="btli"><a href="monitor.html" style="color: #FFD700; border-bottom: 2px solid #FFD700;">声学哨兵(监测)</a></li>
+                    <li class="btli"><a href="monitor.html" style="color: #FFD700; border-bottom: 2px solid #FFD700;">声学哨兵</a></li>
                     <!-- <li class="btli"><a href="home.html#team">团队成员</a></li> -->
                 </ul>
             </div>
@@ -41,8 +53,8 @@
                 <div style="font-size: 40px; margin-bottom: 15px;">📡</div>
                 <h3 style="color: #333; margin-bottom: 15px; font-size: 22px; border-left: 4px solid #198754; padding-left: 10px;">硬件部署与长距捕获</h3>
                 <ul style="color: #666; font-size: 15px; line-height: 1.8; padding-left: 20px;">
-                    <li style="margin-bottom: 10px;">不同于传统行为学观测，利用分布式的太阳能 ARU 录音机阵列进行大范围捕获。</li>
-                    <li style="margin-bottom: 10px;">设备安装于 3–4m 高金属杆，按动物活动节律 (05:00–12:00及15:00–20:00) 进行无缝连续录制。</li>
+                    <li style="margin-bottom: 10px;">利用分布式的太阳能 ARU 录音机阵列进行大范围捕获。</li>
+                    <li style="margin-bottom: 10px;">设备安装于 3–4m 高金属杆，按动物活动节律进行无缝连续录制。</li>
                     <li>同步使用 44.1kHz 专业定向录音设备记录个体行为，构建高精度基准训练集。</li>
                 </ul>
             </div>
@@ -50,8 +62,8 @@
                 <div style="font-size: 40px; margin-bottom: 15px;">🧠</div>
                 <h3 style="color: #333; margin-bottom: 15px; font-size: 22px; border-left: 4px solid #198754; padding-left: 10px;">DeepADN 改进型网络</h3>
                 <ul style="color: #666; font-size: 15px; line-height: 1.8; padding-left: 20px;">
-                    <li style="margin-bottom: 10px;">摒弃传统的隐马尔可夫模型与图像转换，输入端直接提取 Fbank 多维声学特征。</li>
-                    <li style="margin-bottom: 10px;">基于 PANNs/CNN 架构，去除时间聚合算子，加入深层卷积捕捉时频依赖关系。</li>
+                    <li style="margin-bottom: 10px;">摒弃图像转换，输入端直接提取 Fbank 等多维声学特征。</li>
+                    <li style="margin-bottom: 10px;">基于 PANNs/CNN 架构加入深层卷积捕捉时频依赖关系。</li>
                     <li>引入 CBAM (通道+空间双重注意力机制)，在复杂混响中精准锁定叶猴发声特征。</li>
                 </ul>
             </div>
@@ -59,9 +71,9 @@
                 <div style="font-size: 40px; margin-bottom: 15px;">📈</div>
                 <h3 style="color: #333; margin-bottom: 15px; font-size: 22px; border-left: 4px solid #198754; padding-left: 10px;">防过拟合与落地效益</h3>
                 <ul style="color: #666; font-size: 15px; line-height: 1.8; padding-left: 20px;">
-                    <li style="margin-bottom: 10px;">结合低信噪比自然环境音与高质量动物园录音，通过混合变调解决真实野外负样本不平衡问题。</li>
-                    <li style="margin-bottom: 10px;">测试集上 DeepADN 最佳配置达到 <b style="color:#d9534f; font-size: 18px;">98.22% 召回率</b>，F1 分数达 0.93。</li>
-                    <li>相较于传统方法性能提升约 36%，将原本繁重的人工听音复核工作量大幅削减约 <b style="color:#d9534f; font-size: 18px;">87%</b>。</li>
+                    <li style="margin-bottom: 10px;">结合低信噪比自然环境音与高质量录音，通过混合变调解决真实野外负样本不平衡问题。</li>
+                    <li style="margin-bottom: 10px;">测试集上 DeepADN 最佳配置达到 <b style="color:#d9534f; font-size: 18px;">98.22% 召回率</b>。</li>
+                    <li>相较于传统方法性能提升，将原本繁重的人工听音复核工作量大幅削减约 <b style="color:#d9534f; font-size: 18px;">87%</b>。</li>
                 </ul>
             </div>
         </div>
@@ -74,8 +86,124 @@
         </div>
     </section>
 
-    <footer style="margin-top: 40px;">
-        <p>© 2026 白头叶猴生态保护团队-声学监测实验室. All rights reserved.</p>
+    <section id="contact" class="contact" style="background-color: white;">
+        <h2>团队结语:</h2>
+        <br>
+        <p>叶猴声音降噪绝非简单的“技术清洗”，而是打通生态数据价值链的关键环节——从噪声中挖掘出生物行为的真相，让科技真正服务于自然保护。</p>
+        <p>项目若能结合具体保护场景（如针对保护区痛点），我们坚信这个项目将为守护濒危物种的做出不可磨灭的贡献!</p>
+        <p>数据来源: 中国广西崇左白头叶猴国家级自然保护区,(一般基于猴王的叫声, 因其余白头叶猴的发声机会较少, 且难以人为捕捉)</p>
+    </section>
+
+    <footer>
+        <p>© 2026 保护野生动物声音降噪项目</p>
     </footer>
-</body>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            loadChatHistory();
+        });
+
+        function toggleChatbot() {
+            const chatbotWindow = document.getElementById('chatbot-window');
+            chatbotWindow.classList.toggle('chatbot-hidden');
+            if (!chatbotWindow.classList.contains('chatbot-hidden')) {
+                loadChatHistory();
+            }
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('user-input');
+            const message = input.value.trim();
+
+            if (!message) return;
+
+            addMessage(message, 'user');
+            saveMessageToStorage('user', message);
+            input.value = '';
+            addMessage('正在思考...', 'assistant', true);
+
+            try {
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: message })
+                });
+
+                const data = await response.json();
+                removeLoadingMessage();
+
+                const aiResponse = data.response || '暂无回复';
+                addMessage(aiResponse, 'assistant');
+                saveMessageToStorage('assistant', aiResponse);
+
+            } catch (error) {
+                removeLoadingMessage();
+                const errorMsg = '连接失败，请稍后重试';
+                addMessage(errorMsg, 'assistant');
+                saveMessageToStorage('assistant', errorMsg);
+            }
+        }
+
+        function addMessage(content, role, isLoading = false) {
+            const messagesDiv = document.getElementById('chatbot-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${role} ${isLoading ? 'loading' : ''}`;
+            messageDiv.textContent = content;
+            messagesDiv.appendChild(messageDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function removeLoadingMessage() {
+            const loading = document.querySelector('.message.loading');
+            if (loading) loading.remove();
+        }
+
+        function saveMessageToStorage(role, content) {
+            let chatHistory = JSON.parse(localStorage.getItem('chatHistory') || '[]');
+            chatHistory.push({ role: role, content: content });
+            localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+        }
+
+        function loadChatHistory() {
+            const messagesDiv = document.getElementById('chatbot-messages');
+            messagesDiv.innerHTML = '';
+            let chatHistory = JSON.parse(localStorage.getItem('chatHistory') || '[]');
+            chatHistory.forEach(msg => {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${msg.role}`;
+                messageDiv.textContent = msg.content;
+                messagesDiv.appendChild(messageDiv);
+            });
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function clearChatHistory() {
+            localStorage.removeItem('chatHistory');
+            const messagesDiv = document.getElementById('chatbot-messages');
+            messagesDiv.innerHTML = '';
+        }
+    </script>
+    <div id="chatbot-toggle" onclick="toggleChatbot()">🤖</div>
+
+    <div id="chatbot-window" class="chatbot-hidden">
+        <div class="chatbot-header">
+            <span>生态小助手</span>
+            <div>
+                <button onclick="clearChatHistory()" style="margin-right:10px;font-size:14px; background:transparent; border:none; color:white; cursor:pointer;">🗑️ 清空</button>
+                <button onclick="toggleChatbot()" style="background:transparent; border:none; color:white; cursor:pointer; font-size:18px;">×</button>
+            </div>
+        </div>
+        <div id="chatbot-messages" class="chatbot-messages"></div>
+        <div class="chatbot-input">
+            <input type="text" id="user-input" placeholder="请输入问题..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage()">发送</button>
+        </div>
+    </div>
+    </body>
 </html>
