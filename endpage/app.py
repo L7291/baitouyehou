@@ -81,6 +81,10 @@ def work2_page():
 def work3_page():
     return render_template('work3.html')
 
+@app.route('/monitor')
+def monitor():
+    return render_with_template('monitor.html')
+
 # ========== 2：聊天接口添加角色设定 ==========
 @app.route('/api/chat', methods=['POST'])
 def chat():
