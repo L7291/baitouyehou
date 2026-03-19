@@ -1,116 +1,81 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>声学哨兵：智能监测网络 - 白头叶猴生态守护系统</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <style>
-        .monitor-container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
-        .monitor-header { text-align: center; margin-bottom: 50px; }
-        .monitor-header h1 { color: #198754; font-size: 36px; margin-bottom: 10px; }
-        .monitor-header p { color: #666; font-size: 16px; max-width: 700px; margin: 0 auto; line-height: 1.8; }
-        
-        .section-title { color: #333; font-size: 26px; border-left: 5px solid #198754; padding-left: 15px; margin: 40px 0 25px; }
-        .paper-cite { color: #888; font-size: 13px; text-align: center; margin-top: -15px; margin-bottom: 30px; font-style: italic; }
-        
-        /* 创新点卡片排版 */
-        .innovation-grid { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 40px; }
-        .innovation-card { flex: 1; min-width: 280px; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border: 1px solid #eee; transition: transform 0.3s ease; }
-        .innovation-card:hover { transform: translateY(-5px); border-color: #198754; }
-        .innovation-card h3 { color: #198754; margin-bottom: 10px; font-size: 18px; }
-        .innovation-card p { color: #555; font-size: 14px; line-height: 1.6; }
-
-        /* 图片排版 */
-        .full-img-container { text-align: center; margin: 30px 0; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 3px 15px rgba(0,0,0,0.03); }
-        .full-img-container img { max-width: 1000px; width: 100%; border-radius: 8px; }
-        .img-caption { color: #777; font-size: 13px; margin-top: 10px; font-style: italic; }
-
-        /* 成果对比排版 */
-        .results-section { background-color: #fcfdfc; padding: 40px; border-radius: 16px; margin-top: 50px; border: 1px solid #e8f5e9; }
-        .comparison-vbox { display: flex; gap: 30px; align-items: center; }
-        .results-list { flex: 1; font-size: 15px; color: #444; line-height: 1.8; list-style-type: none; padding-left: 0; }
-        .results-list li { position: relative; padding-left: 25px; margin-bottom: 12px; }
-        .results-list li::before { content: "✓"; position: absolute; left: 0; color: #198754; font-weight: bold; }
-        .metric-highlight { color: #d9534f; font-weight: bold; font-size: 18px; }
-
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+    <title>声学哨兵：智能监测网络 - EcoListen：基于深度降噪的濒危物种智能监测平台</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles1.css') }}">
 </head>
-<body style="background-color: #f8fcf9;">
+<body style="background-color: #f4f7f6;">
     <header>
-        <div class="logo">
-            <img src="{{ url_for('static', filename='img/lgo1.png') }}" alt="logo">
-            <p>EcoListen：基于深度降噪的濒危物种智能监测平台</p>
+        <div class="hh1" style="display: flex;justify-content: space-between;">
+            <div class="hh2" style="display: flex;justify-content: center;">
+                <div class="logo"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="无法加载图片"></div>
+                <div class="topic" style="margin: 15px;color: white;font-weight: bold;font-size: 20px;width: 500px;"><p>EcoListen：基于深度降噪的濒危物种智能监测平台</p></div>
+            </div>
+            <div class="nav">
+                <ul class="navlist">
+                    <li class="btli"><a href="home.html">首页</a></li>
+                    <li class="btli"><a href="home.html#background">项目介绍</a></li>
+                    <li class="btli"><a href="work.html" class="btli">我们的工作</a>
+                        <ul class="droplist">
+                            <li><a href="work.html">关于叶猴</a></li><li><a href="work1.html">叶猴声音</a></li><li><a href="work2.html">降噪展示</a></li><li><a href="work3.html">困难与展望</a></li>
+                        </ul>
+                    </li>
+                    <li class="btli"><a href="monitor.html" style="color: #FFD700; border-bottom: 2px solid #FFD700;">声学哨兵(监测)</a></li>
+                    <!-- <li class="btli"><a href="home.html#team">团队成员</a></li> -->
+                </ul>
+            </div>
         </div>
-        <nav style="display: flex; gap: 20px;">
-            <a href="{{ url_for('home') }}">项目首页</a>
-            <a href="{{ url_for('work') }}">项目详情</a>
-            <a href="{{ url_for('monitor') }}" style="color: #198754; font-weight: bold;">声学哨兵 (智能监测)</a>
-            <a href="{{ url_for('home') }}#chatbot-toggle" style="background: rgba(25,135,84,0.1); padding: 2px 10px; border-radius: 4px;">生态助手</a>
-        </nav>
     </header>
 
-    <div class="monitor-container fadeIn">
-        <div class="monitor-header">
-            <h1>声学哨兵：智能声学监测守护系统</h1>
-            <p>通过部署广泛的被动声学监测（PAM）网络，结合本平台提出的深度音频检测网络，为中国特有极危物种白头叶猴提供非侵入、全天候、高精度的自动化守护方案。</p>
-        </div>
-        <p class="paper-cite">主要核心依据：Hong Y, et al. "Deep Audio Detection Networks from Passive Acoustic Monitoring of a Critically Endangered Primate."</p>
+    <section id="monitoring-system" style="padding: 60px 20px; max-width: 1200px; margin: 0 auto; animation: fadeIn 1s;">
+        <h1 style="text-align: center; color: #198754; margin-bottom: 15px; font-size: 36px; font-weight: bold;">声学哨兵：智能生态声学监测体系</h1>
+        <p style="text-align: center; color: #555; margin-bottom: 50px; font-size: 16px; line-height: 1.8;">
+            采用被动声学监测（PAM）结合 <b>DeepADN 深度音频检测网络</b>，自动识别白头叶猴长距离呼叫。为复杂喀斯特地貌下的极危物种提供非侵入、长期、高精度的自动化守护方案。
+        </p>
 
-        <h2 class="section-title">💡 项目核心创新点与技术路线 (Synthesis)</h2>
-        <div class="innovation-grid">
-            <div class="innovation-card">
-                <h3>基于 PAM 的长距离呼叫检测</h3>
-                <p>不同于依赖行为学观测的传统方法，系统聚焦于白头叶猴成年雄性的长距离呼叫（Long Call），利用多站点被动录音机阵列进行大范围捕获，克服了喀斯特复杂地形带来的干扰。</p>
-            </div>
-            <div class="innovation-card">
-                <h3>深度卷积神经网络 (CNN-4)</h3>
-                <p>摒弃了传统的隐马尔可夫模型（GMM-HMM），引入基于改进型全卷积神经网络（CNN-4）的音频检测框架，在召回率与 F1 指标上全面超越了传统方法和 LSTM 循环网络。</p>
-            </div>
-            <div class="innovation-card">
-                <h3>混合信噪比数据增强 (Augmentation)</h3>
-                <p>创新性地结合了野外低信噪比（low-SNR）自然环境音与高信噪比（high-SNR）动物园高质量录音，并通过混合、变调等数据增强策略，解决了真实野外负样本不平衡的问题。</p>
-            </div>
-        </div>
-
-        <h2 class="section-title">🔍 技术细节：Log-Mel 语谱图声学特征提取</h2>
-        <p style="color: #666; font-size: 15px; margin-bottom: 25px;">为适应卷积网络对二维数据的处理能力，系统未采用传统的MFCC特征，而是将录音分割为 12s 片段，并利用 Log-Mel 语谱图作为模型的原始输入特征，以保留最完整的时频结构（见 Figure 1）。</p>
-        <div class="full-img-container">
-            <img src="{{ url_for('static', filename='img/detection_framework.png') }}" alt="整体框架">
-            <p class="img-caption">Figure 2: 系统声学预处理与深度音频检测全流程框架 (Hong, et al.)</p>
-        </div>
-        <div class="full-img-container" style="background: transparent; box-shadow: none; padding: 0;">
-            <img src="{{ url_for('static', filename='img/langur_spec.png') }}" alt="叶猴鸣叫特征">
-            <p class="img-caption">Figure 1: 白头叶猴鸣叫声、自然噪声与 Log-Mel 语谱图对比示例</p>
-        </div>
-
-        <h2 class="section-title">🧠 核心架构：改进型 CNN-4 深度检测网络</h2>
-        <p style="color: #666; font-size: 15px; margin-bottom: 25px;">系统最终采用了性能最佳的改进型全卷积网络（CNN-4）。该网络移除了时间聚合算子（TA），直接通过深层卷积捕捉时频依赖关系，并引入了 Batch Normalization (BN) 和 Dropout (p=0.2) 策略，有效防止过拟合，增强了野外复杂声场下的鲁棒性。</p>
-        <div class="full-img-container">
-            <img src="{{ url_for('static', filename='img/cnn_architecture.png') }}" alt="CNN-4 架构图">
-            <p class="img-caption">Figure 3: 本项目提出的核心检测模型——CNN-4 深度网络架构详解</p>
-        </div>
-
-        <div class="results-section">
-            <h2 style="color: #198754; text-align: center; margin-bottom: 30px;">真实野外环境测试成果 (Data Insights)</h2>
-            <div class="comparison-vbox">
-                <ul class="results-list">
-                    <li><b>最佳 F1 分数：</b>CNN 模型在混合测试集上达到了 <span class="metric-highlight">0.93</span> 的卓越 F1 指标，在野外数据集上性能稳定。</li>
-                    <li><b>传统方法大跨越：</b>实验证明，CNN 检测框架相较于传统的主流 HMM-GMM 方法，各项指标提升了 <span class="metric-highlight">~36%</span>。</li>
-                    <li><b>深度网络最优：</b>即使与更复杂的 CRNN 和 RNN-LSTM 架构相比，本研究提出的 CNN 架构由于剔除了时间平移依赖，实现了更稳健的检测精度。</li>
-                    <li><b>野外鲁棒性验证：</b>模型能成功抑制野生环境中复杂的虫鸣、雨声和突发干扰，精准定位到由于野外采集信噪比极低的白头叶猴声信号。</li>
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 25px; margin-bottom: 60px;">
+            <div style="flex: 1; min-width: 300px; background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-10px)';" onmouseout="this.style.transform='translateY(0)';">
+                <div style="font-size: 40px; margin-bottom: 15px;">📡</div>
+                <h3 style="color: #333; margin-bottom: 15px; font-size: 22px; border-left: 4px solid #198754; padding-left: 10px;">硬件部署与长距捕获</h3>
+                <ul style="color: #666; font-size: 15px; line-height: 1.8; padding-left: 20px;">
+                    <li style="margin-bottom: 10px;">不同于传统行为学观测，利用分布式的太阳能 ARU 录音机阵列进行大范围捕获。</li>
+                    <li style="margin-bottom: 10px;">设备安装于 3–4m 高金属杆，按动物活动节律 (05:00–12:00及15:00–20:00) 进行无缝连续录制。</li>
+                    <li>同步使用 44.1kHz 专业定向录音设备记录个体行为，构建高精度基准训练集。</li>
                 </ul>
-                <div style="flex: 1; text-align: center;">
-                     <div style="font-size: 60px; font-weight: bold; color: #198754; margin-bottom: 10px;">~36 <span style="font-size: 20px;">%</span></div>
-                     <p style="color: #666; font-size: 14px; opacity: 0.8;">基于深度学习检测(CNN) <br>相较 HMM 方法性能提升</p>
-                </div>
+            </div>
+            <div style="flex: 1; min-width: 300px; background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-10px)';" onmouseout="this.style.transform='translateY(0)';">
+                <div style="font-size: 40px; margin-bottom: 15px;">🧠</div>
+                <h3 style="color: #333; margin-bottom: 15px; font-size: 22px; border-left: 4px solid #198754; padding-left: 10px;">DeepADN 改进型网络</h3>
+                <ul style="color: #666; font-size: 15px; line-height: 1.8; padding-left: 20px;">
+                    <li style="margin-bottom: 10px;">摒弃传统的隐马尔可夫模型与图像转换，输入端直接提取 Fbank 多维声学特征。</li>
+                    <li style="margin-bottom: 10px;">基于 PANNs/CNN 架构，去除时间聚合算子，加入深层卷积捕捉时频依赖关系。</li>
+                    <li>引入 CBAM (通道+空间双重注意力机制)，在复杂混响中精准锁定叶猴发声特征。</li>
+                </ul>
+            </div>
+            <div style="flex: 1; min-width: 300px; background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-10px)';" onmouseout="this.style.transform='translateY(0)';">
+                <div style="font-size: 40px; margin-bottom: 15px;">📈</div>
+                <h3 style="color: #333; margin-bottom: 15px; font-size: 22px; border-left: 4px solid #198754; padding-left: 10px;">防过拟合与落地效益</h3>
+                <ul style="color: #666; font-size: 15px; line-height: 1.8; padding-left: 20px;">
+                    <li style="margin-bottom: 10px;">结合低信噪比自然环境音与高质量动物园录音，通过混合变调解决真实野外负样本不平衡问题。</li>
+                    <li style="margin-bottom: 10px;">测试集上 DeepADN 最佳配置达到 <b style="color:#d9534f; font-size: 18px;">98.22% 召回率</b>，F1 分数达 0.93。</li>
+                    <li>相较于传统方法性能提升约 36%，将原本繁重的人工听音复核工作量大幅削减约 <b style="color:#d9534f; font-size: 18px;">87%</b>。</li>
+                </ul>
             </div>
         </div>
-    </div>
 
-    <footer style="margin-top: 50px;">
-        <p>&copy; 2024 白头叶猴生态保护团队-声学监测实验室. All rights reserved.</p>
-        <p>支持单位：中国广西崇左白头叶猴国家级自然保护区.</p>
+        <h2 style="color: #333; margin-bottom: 25px; border-bottom: 2px dashed #ccc; padding-bottom: 10px; text-align: center;">核心技术图解</h2>
+        <div style="background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 30px; text-align: center;">
+            <p style="color: #666; margin-bottom: 20px;">系统采用 <b>Log-Mel 语谱图与 Fbank</b> 作为底层特征输入，并经过定制化的 CNN-4 网络处理：</p>
+            <img src="{{ url_for('static', filename='img/detection_framework.png') }}" alt="框架图" style="max-width: 100%; border-radius: 8px;">
+            <p style="color: #999; font-size: 13px; margin-top: 10px;">系统声学预处理与深度音频检测全流程框架 (Hong, et al.)</p>
+        </div>
+    </section>
+
+    <footer style="margin-top: 40px;">
+        <p>© 2026 白头叶猴生态保护团队-声学监测实验室. All rights reserved.</p>
     </footer>
 </body>
 </html>
