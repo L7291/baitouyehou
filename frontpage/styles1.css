@@ -602,4 +602,146 @@ header .logo img:hover {
 }
 
 /* ========== "了解更多"按钮灵动化优化 结束 ========== */
+/* ========== 输入框灵动化 开始 ========== */
 
+
+
+.chatbot-input input {
+
+  flex: 1;
+
+  padding: 12px 16px;
+
+  border: 2px solid #e0e0e0;
+
+  border-radius: 24px;
+
+  outline: none;
+
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  font-size: 14px;
+
+}
+
+
+
+.chatbot-input input:focus {
+
+  border-color: #198754;
+
+  box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.15);
+
+  transform: translateY(-1px);
+
+}
+
+
+
+.chatbot-input input::placeholder {
+
+  color: #999;
+
+  transition: color 0.3s ease;
+
+}
+
+
+
+.chatbot-input input:focus::placeholder {
+
+  color: #ccc;
+
+}
+
+
+
+.chatbot-input button {
+
+  margin-left: 10px;
+
+  padding: 12px 24px;
+
+  background: linear-gradient(135deg, #198754 0%, #28a745 100%);
+
+  color: white;
+
+  border: none;
+
+  border-radius: 24px;
+
+  cursor: pointer;
+
+  font-weight: 600;
+
+  font-size: 14px;
+
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  box-shadow: 0 2px 8px rgba(25, 135, 84, 0.3);
+
+  position: relative;
+
+  overflow: hidden;
+
+}
+
+
+
+.chatbot-input button::before {
+
+  content: '';
+
+  position: absolute;
+
+  top: 50%;
+
+  left: 50%;
+
+  width: 0;
+
+  height: 0;
+
+  background: rgba(255, 255, 255, 0.3);
+
+  border-radius: 50%;
+
+  transform: translate(-50%, -50%);
+
+  transition: width 0.4s ease, height 0.4s ease;
+
+}
+
+
+
+.chatbot-input button:hover::before {
+
+  width: 200px;
+
+  height: 200px;
+
+}
+
+
+
+.chatbot-input button:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 4px 12px rgba(25, 135, 84, 0.4);
+
+}
+
+
+
+.chatbot-input button:active {
+
+  transform: translateY(0);
+
+  box-shadow: 0 2px 6px rgba(25, 135, 84, 0.3);
+
+}
+
+
+
+/* ========== 输入框灵动化 结束 ========== */
