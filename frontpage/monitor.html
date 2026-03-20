@@ -107,11 +107,35 @@
             </div>
         </div>
 
-        <h2 style="color: #333; margin-bottom: 25px; border-bottom: 2px dashed #ccc; padding-bottom: 10px; text-align: center;">核心技术图解</h2>
-        <div style="background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 30px; text-align: center;">
-            <p style="color: #666; margin-bottom: 20px;">系统采用 <b>Log-Mel 语谱图与 Fbank</b> 作为底层特征输入，并经过定制化的 CNN-4 网络处理：</p>
-            <img src="{{ url_for('static', filename='img/detection_framework.png') }}" alt="框架图" style="max-width: 100%; border-radius: 8px;">
-            <p style="color: #999; font-size: 13px; margin-top: 10px;">系统声学预处理与深度音频检测全流程框架 (Hong, et al.)</p>
+       <h2 style="color: #333; margin-bottom: 40px; border-bottom: 2px dashed #ccc; padding-bottom: 15px; text-align: center; margin-top: 60px;">核心技术与网络架构详解</h2>
+
+        <div style="background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 30px; display: flex; flex-wrap: wrap; align-items: center; gap: 30px; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='translateY(0)';">
+            <div style="flex: 1; min-width: 300px;">
+                <h3 style="color: #198754; margin-bottom: 15px; font-size: 20px;">1. 原始输入：多维声学特征提取</h3>
+                <p style="color: #666; line-height: 1.8; text-align: justify;">为适应卷积网络对二维数据的处理能力，系统摒弃了传统方法，直接将录音分割为 12s 片段，并利用 <b>Log-Mel 语谱图与 Fbank</b> 作为原始输入。右图直观展示了白头叶猴长距离呼叫（目标信号）与复杂自然环境噪声在时频维度上的显著特征差异。</p>
+            </div>
+            <div style="flex: 1.5; min-width: 300px; text-align: center;">
+                <img src="{{ url_for('static', filename='img/langur_spec.png') }}" alt="声学特征提取" style="max-width: 100%; border-radius: 8px; border: 1px solid #eee;">
+                <p style="color: #999; font-size: 13px; margin-top: 10px;">Figure 1: 白头叶猴鸣叫声、自然噪声与 Log-Mel 语谱图对比</p>
+            </div>
+        </div>
+
+        <div style="background: #fdfdfd; border: 1px solid #e8f5e9; padding: 40px 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 30px; text-align: center; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='translateY(0)';">
+            <h3 style="color: #198754; margin-bottom: 15px; font-size: 20px;">2. 自动化流水线：声学预处理与检测全流程</h3>
+            <p style="color: #666; line-height: 1.8; margin-bottom: 25px; max-width: 800px; margin-left: auto; margin-right: auto;">上图提取的特征将直接输入到端到端检测框架中。该图展示了从野外被动声学采集设备的原始音频输入，经过预加重、分帧加窗处理，最终送入 DeepADN 网络输出二分类检测结果的完整自动化监测流水线。</p>
+            <img src="{{ url_for('static', filename='img/detection_framework.png') }}" alt="系统框架图" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <p style="color: #999; font-size: 13px; margin-top: 15px;">Figure 2: 深度音频检测系统整体架构流程图 (Hong, et al.)</p>
+        </div>
+
+        <div style="background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 60px; display: flex; flex-wrap: wrap; align-items: center; gap: 30px; flex-direction: row-reverse; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='translateY(0)';">
+            <div style="flex: 1; min-width: 300px;">
+                <h3 style="color: #198754; margin-bottom: 15px; font-size: 20px;">3. 核心引擎：改进型 CNN-4 深度网络</h3>
+                <p style="color: #666; line-height: 1.8; text-align: justify;">系统最终采用了性能极佳的改进型全卷积网络（CNN-4）。该网络通过深层卷积捕捉声音的时频依赖关系，并在网络中巧妙融入了 Batch Normalization 与 Dropout (p=0.2) 机制。结合 CBAM 空间+通道注意力模块，有效解决了真实野外数据极易造成的模型过拟合难题。</p>
+            </div>
+            <div style="flex: 1.5; min-width: 300px; text-align: center;">
+                <img src="{{ url_for('static', filename='img/cnn_architecture.png') }}" alt="CNN架构图" style="max-width: 100%; border-radius: 8px; border: 1px solid #eee;">
+                <p style="color: #999; font-size: 13px; margin-top: 10px;">Figure 3: DeepADN 核心模型——CNN-4 架构层级详解</p>
+            </div>
         </div>
     </section>
 
