@@ -82,214 +82,166 @@
         </div>
     </header>
 
-    <section id="work" class="work">
-        <h2>困难与展望</h2>
-
-        <div class="work-item fadeIn">
-            <h3>困难:</h3>
-            <div class="tt1" style="display: flex;justify-content:space-evenly;gap: 40px;">
-                <div class="t1" style="flex-wrap: 50%;align-self: center; ">
-                    <p><b>1.地理位置的挑战: </b></p>
-                    <p>白头叶猴栖息于喀斯特地貌区域，地势险峻，植被茂密，这给声学监测设备的部署和维护带来了极大的困难。设备需要能够在极端环境下稳定运行，同时，复杂的地形也增加了声音信号的采集难度，声波在山体间的反射和衍射导致信号失真和噪声增加。
-                    </p>
-                </div>
-                <div class="image" style="flex-wrap: 50%;">
-                    <img src="{{ url_for('static', filename='img/location.png') }}" alt="无法加载图片" style="width: 700px;">
-                </div>
-            </div>
-            <hr>
-            <br>
-            <div class="tt1" style="display: flex;justify-content:center;align-items: center;gap: 40px;">
-                <div class="image1" style="border-radius: 8px;width: 45%;object-fit:contain;">
-                    <img src="{{ url_for('static', filename='img/video1.png') }}" alt="无法加载图片" height="450px">
-                </div>
-                <div class="image1" style="border-radius: 8px;width: 45%;object-fit:contain;">
-                    <img src="{{ url_for('static', filename='img/video2.png') }}" alt="无法加载图片" height="450px">
-                </div>
-                <div class="t1" style="align-self: center; ">
-                    <p><b>2.监测方式的局限性:</b></p>
-                    <p>被动声学监测依赖于高灵敏度的声学传感器，需要长时间不间断地收录音频数据。这种方式对设备的续航能力和数据存储容量提出了很高的要求。此外，人工跟踪采集声音数据需要大量的时间和人力成本，且容易受到天气条件和地形限制的影响。
-                    </p>
-                </div>
-            </div>
-            <hr>
-            <br>
-            <div class="tt1" style="display: flex;justify-content: center;gap: 40px;">
-                <div class="t1" style="flex-wrap: 50%;align-self: center; ">
-                    <p><b>3. 叫声限制:</b></p>
-                    <p>白头叶猴种群的发声频率(频率多集中在 0.5 - 4kHz)，不如某些鸟类叫声高频，喀斯特地貌的风声混响（峰值能量3 - 5 kHz）、雨季雨滴撞击石灰岩的宽带噪声（1 - 10
-                        kHz）、同域分布的冠斑犀鸟（2 - 4 kHz鸣叫）、周边村寨的低频机械振动（小于1 kHz），并且喀斯特山体导致声波多径反射，信噪比普遍低于 - 5dB。</p>
-                </div>
-
-                <div class="image2" style="flex-wrap: 50%;">
-                    <img src="{{ url_for('static', filename='img/map.png') }}" alt="无法加载图片">
-                </div>
-            </div>
-            <hr>
-            <br>
-            <h3>未来的展望:</h3>
-            <div class="card-container">
-                <div class="card">
-                    <h3>1. 突破数据采集瓶颈</h3>
-                    <p>叶猴栖息地（如喀斯特石山）常存在强风、流水、虫鸣等环境噪声，导致原始录音中有效信号被掩盖。降噪技术能提取纯净的动物声纹，为建立物种声学数据库提供高质量数据，这是行为学研究和种群监测的基础。
-                    </p>
-                </div>
-                <div class="card">
-                    <h3>2. 揭示隐蔽的声学信号</h3>
-                    <p>叶猴的部分低频交流声（如警戒低吼、育幼呼唤）可能被环境噪声覆盖，降噪后能发现更多次声波或复合音节结构，帮助解析其复杂的社群语言规则，甚至发现人类尚未认知的交流模式。</p>
-                </div>
-                <div class="card">
-                    <h3>3. 支持人工智能建模</h3>
-                    <p>降噪后的清晰数据可训练更精准的AI模型（如声纹识别、叫声分类算法），推动自动物种识别系统的研发。</p>
-                </div>
-                <div class="card">
-                    <h3>4. 提升监测效率，优化保护决策案例</h3>
-                    <p>通过降噪 +
-                        声纹识别技术，可实时定位猴群位置和活动轨迹（如交配、觅食、冲突），动态评估栖息地利用效率，指导生态廊道建设。例如:云南高黎贡山通过降噪处理长臂猿声音数据，发现其避开人类活动区的迁徙规律，据此调整了保护区边界。
-                    </p>
-                </div>
-                <div class="card">
-                    <h3>5. 评估生态恢复效果</h3>
-                    <p>通过对比降噪前后的猴群叫声活跃度（如交流频率、声音多样性），可量化栖息地修复工程的成效。例如，广西喀斯特地区通过分析降噪后的声学数据，发现植被覆盖率每增加10%，叶猴群体交流行为增加23%。
-                    </p>
-                </div>
-            </div>
-            <h3 style="margin-top: 60px; color: #198754; text-align: center; border-bottom: 2px dashed #ccc; padding-bottom: 15px;">实时声学监测大屏 (模拟演示)</h3>
-<p style="text-align: center; color: #666; margin-bottom: 20px;">未来，依托深度降噪与声纹识别技术，本系统将实现复杂环境下白头叶猴声源的实时定位与活动热点可视化，为科学保护提供高效、智能的监测手段。</p>
-
-<div style="position: relative; max-width: 1000px; margin: 0 auto; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 2px solid #28a745;">
-    <!-- 底层：原图 (仅用于加载和获取尺寸) -->
-    <img id="mapImage" src="{{ url_for('static', filename='img/map1.jpg') }}" alt="喀斯特地形图" style="width: 100%; display: block; visibility: hidden;">
-    
-    <!-- 顶层：主画布 (绘制原图 + 黑色遮罩 + 热点) -->
-    <canvas id="heatmapCanvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></canvas>
-    
-    <!-- 离屏画布：专门存储热点层 (避免热点被遮罩覆盖后无法累积) -->
-    <canvas id="offscreenCanvas" style="display: none;"></canvas>
-
-    <div style="position: absolute; top: 20px; left: 20px; background: rgba(0,0,0,0.7); padding: 15px; border-radius: 8px; color: #00ff00; font-family: monospace; border: 1px solid #198754;">
-        <div style="font-size: 14px; margin-bottom: 5px;">🔴 监测状态: <span id="monitorStatus">扫描中...</span></div>
-        <div style="font-size: 12px; color: #aaa;">捕获有效叫声: <span id="callCount" style="color: white; font-weight: bold;">0</span> 次</div>
-    </div>
-</div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // 核心元素
-        const mainCanvas = document.getElementById('heatmapCanvas');
-        const mainCtx = mainCanvas.getContext('2d');
-        const offscreenCanvas = document.getElementById('offscreenCanvas');
-        const offscreenCtx = offscreenCanvas.getContext('2d');
-        const img = document.getElementById('mapImage');
+    <section id="prospects-system" style="padding: 60px 20px; max-width: 1200px; margin: 0 auto; animation: fadeIn 1s;">
         
-        // 状态变量
-        let callCount = 0;
-        const countDisplay = document.getElementById('callCount');
-        let isImgLoaded = false;
-        let totalBlackOpacity = 0; // 累计黑色遮罩透明度 (0=全亮 → 0.8=接近全黑)
-        const maxBlackOpacity = 0.8; // 最终变暗的程度
-        // 关键调整：加快变暗速度 → 约1-3分钟达到最大暗度（适配演示）
-        const blackIncrement = 0.005; // 从0.00005调至0.005，速度提升100倍
+        <h1 style="text-align: center; color: #198754; margin-bottom: 50px; font-size: 36px; font-weight: bold;">困难与展望</h1>
 
-        // 1. 统一尺寸初始化
-        function initCanvasSize() {
-            if (!img.complete || !isImgLoaded) return;
-            
-            // 同步所有画布尺寸到原图
-            mainCanvas.width = img.width;
-            mainCanvas.height = img.height;
-            offscreenCanvas.width = img.width;
-            offscreenCanvas.height = img.height;
-            
-            // 初始绘制：100%明亮的原图
-            mainCtx.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
-            mainCtx.drawImage(img, 0, 0);
-            img.style.visibility = 'visible';
-        }
+        <h3 style="color: #333; margin-bottom: 25px; font-size: 24px; border-left: 5px solid #198754; padding-left: 15px;">项目面临的困难:</h3>
+        
+        <div class="tt1" style="display: flex; justify-content:space-between; align-items: center; gap: 40px; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 30px;">
+            <div class="t1" style="flex: 1;">
+                <p style="color: #198754; font-size: 20px; margin-bottom: 15px;"><b>1. 地理位置的挑战:</b></p>
+                <p style="color: #555; line-height: 1.8; font-size: 16px; text-align: justify;">白头叶猴栖息于喀斯特地貌区域，地势险峻，植被茂密，这给声学监测设备的部署和维护带来了极大的困难。设备需要能够在极端环境下稳定运行，同时，复杂的地形也增加了声音信号的采集难度，声波在山体间的反射和衍射导致信号失真和噪声增加。</p>
+            </div>
+            <div class="image" style="flex: 1; text-align: center;">
+                <img src="{{ url_for('static', filename='img/location.png') }}" alt="地理位置" style="max-width: 100%; border-radius: 8px;">
+            </div>
+        </div>
 
-        // 2. 图片加载完成后初始化
-        img.onload = function() {
-            isImgLoaded = true;
-            initCanvasSize();
-        };
-        window.addEventListener('resize', initCanvasSize);
+        <div class="tt1" style="display: flex; justify-content:space-between; align-items: center; gap: 40px; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 30px;">
+            <div class="image1" style="flex: 1; text-align: center;">
+                <img src="{{ url_for('static', filename='img/video1.png') }}" alt="设备" style="max-width: 100%; max-height: 350px; border-radius: 8px; object-fit: contain;">
+            </div>
+            <div class="image1" style="flex: 1; text-align: center;">
+                <img src="{{ url_for('static', filename='img/video2.png') }}" alt="设备" style="max-width: 100%; max-height: 350px; border-radius: 8px; object-fit: contain;">
+            </div>
+            <div class="t1" style="flex: 1.5;">
+                <p style="color: #198754; font-size: 20px; margin-bottom: 15px;"><b>2. 监测方式的局限性:</b></p>
+                <p style="color: #555; line-height: 1.8; font-size: 16px; text-align: justify;">被动声学监测依赖于高灵敏度的声学传感器，需要长时间不间断地收录音频数据。这种方式对设备的续航能力和数据存储容量提出了很高的要求。此外，人工跟踪采集声音数据需要大量的时间和人力成本，且容易受到天气条件和地形限制的影响。</p>
+            </div>
+        </div>
 
-        // 3. 绘制热点 (仅绘制在离屏画布，避免被黑色遮罩覆盖)
-        function drawHeatPoint(x, y, intensity) {
-            const radius = intensity * 30;
-            const gradient = offscreenCtx.createRadialGradient(x, y, 0, x, y, radius);
-            
-            // 热点配色 (更鲜艳，确保变暗后仍可见)
-            gradient.addColorStop(0, `rgba(255, 0, 0, ${intensity})`);        // 核心红
-            gradient.addColorStop(0.4, `rgba(255, 200, 0, ${intensity * 0.9})`); // 亮黄
-            gradient.addColorStop(0.8, `rgba(0, 255, 0, ${intensity * 0.6})`);   // 亮绿
-            gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');                      // 透明
+        <div class="tt1" style="display: flex; justify-content:space-between; align-items: center; gap: 40px; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 50px;">
+            <div class="t1" style="flex: 1;">
+                <p style="color: #198754; font-size: 20px; margin-bottom: 15px;"><b>3. 叫声限制:</b></p>
+                <p style="color: #555; line-height: 1.8; font-size: 16px; text-align: justify;">白头叶猴种群的发声频率(多集中在 0.5 - 4kHz)，不如某些鸟类叫声高频。喀斯特地貌的风声混响（峰值能量3 - 5 kHz）、雨季雨滴撞击石灰岩的宽带噪声（1 - 10 kHz）、同域分布的冠斑犀鸟（2 - 4 kHz鸣叫）、周边村寨的低频机械振动（小于1 kHz），并且喀斯特山体导致声波多径反射，信噪比普遍低于 -5dB。</p>
+            </div>
+            <div class="image2" style="flex: 1; text-align: center;">
+                <img src="{{ url_for('static', filename='img/map.png') }}" alt="叫声限制" style="max-width: 100%; border-radius: 8px;">
+            </div>
+        </div>
 
-            offscreenCtx.beginPath();
-            offscreenCtx.arc(x, y, radius, 0, Math.PI * 2);
-            offscreenCtx.fillStyle = gradient;
-            offscreenCtx.fill();
-        }
+        <hr style="border: 0; border-top: 2px dashed #ccc; margin: 50px 0;">
 
-        // 4. 核心渲染逻辑 (原图+遮罩+热点)
-        function renderFrame() {
-            if (!isImgLoaded) return;
+        <h3 style="color: #333; margin-bottom: 25px; font-size: 24px; border-left: 5px solid #198754; padding-left: 15px;">未来的展望:</h3>
+        <div class="card-container">
+            <div class="card">
+                <h3 style="color: #198754; margin-bottom: 15px; font-size: 18px;">1. 突破数据采集瓶颈</h3>
+                <p style="color: #666; font-size: 14px; line-height: 1.6;">叶猴栖息地常存在强风、流水、虫鸣等环境噪声。降噪技术能提取纯净的动物声纹，为建立物种声学数据库提供高质量数据，这是行为学研究和种群监测的基础。</p>
+            </div>
+            <div class="card">
+                <h3 style="color: #198754; margin-bottom: 15px; font-size: 18px;">2. 揭示隐蔽的声学信号</h3>
+                <p style="color: #666; font-size: 14px; line-height: 1.6;">叶猴的部分低频交流声可能被环境噪声覆盖，降噪后能发现更多次声波或复合音节结构，帮助解析其复杂的社群语言规则，甚至发现人类尚未认知的交流模式。</p>
+            </div>
+            <div class="card">
+                <h3 style="color: #198754; margin-bottom: 15px; font-size: 18px;">3. 支持人工智能建模</h3>
+                <p style="color: #666; font-size: 14px; line-height: 1.6;">降噪后的清晰数据可训练更精准的AI模型（如声纹识别、叫声分类算法），推动自动物种识别系统的研发。</p>
+            </div>
+            <div class="card">
+                <h3 style="color: #198754; margin-bottom: 15px; font-size: 18px;">4. 提升监测效率与决策</h3>
+                <p style="color: #666; font-size: 14px; line-height: 1.6;">通过降噪+声纹识别，可实时定位猴群位置和活动轨迹，动态评估栖息地利用效率，指导生态廊道建设。</p>
+            </div>
+            <div class="card">
+                <h3 style="color: #198754; margin-bottom: 15px; font-size: 18px;">5. 评估生态恢复效果</h3>
+                <p style="color: #666; font-size: 14px; line-height: 1.6;">对比降噪前后的猴群叫声活跃度，可量化栖息地修复工程成效。分析声学数据可揭示植被覆盖率与猴群交流行为的关联。</p>
+            </div>
+        </div>
 
-            // 步骤1：清空主画布，重新绘制100%明亮的原图
-            mainCtx.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
-            mainCtx.drawImage(img, 0, 0);
+        <h3 style="margin-top: 80px; color: #198754; text-align: center; border-bottom: 2px dashed #ccc; padding-bottom: 15px; font-size: 26px;">实时声学监测大屏 (模拟演示)</h3>
+        <p style="text-align: center; color: #666; margin-bottom: 30px; font-size: 16px;">未来，依托深度降噪与声纹识别技术，本系统将实现复杂环境下白头叶猴声源的实时定位与活动热点可视化，为科学保护提供高效、智能的监测手段。</p>
 
-            // 步骤2：叠加黑色遮罩 (模拟原图慢慢变黑)
-            if (totalBlackOpacity < maxBlackOpacity) {
-                totalBlackOpacity += blackIncrement;
-                // 确保不超过最大透明度
-                totalBlackOpacity = Math.min(totalBlackOpacity, maxBlackOpacity);
-            }
-            mainCtx.fillStyle = `rgba(0, 0, 0, ${totalBlackOpacity})`;
-            mainCtx.fillRect(0, 0, mainCanvas.width, mainCanvas.height);
+        <div style="position: relative; max-width: 1000px; margin: 0 auto; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 2px solid #28a745;">
+            <img id="mapImage" src="{{ url_for('static', filename='img/map1.jpg') }}" alt="喀斯特地形图" style="width: 100%; display: block; visibility: hidden;">
+            <canvas id="heatmapCanvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></canvas>
+            <canvas id="offscreenCanvas" style="display: none;"></canvas>
 
-            // 步骤3：叠加热点层 (热点不受遮罩影响，始终清晰)
-            mainCtx.drawImage(offscreenCanvas, 0, 0);
+            <div style="position: absolute; top: 20px; left: 20px; background: rgba(0,0,0,0.7); padding: 15px; border-radius: 8px; color: #00ff00; font-family: monospace; border: 1px solid #198754;">
+                <div style="font-size: 14px; margin-bottom: 5px;">🔴 监测状态: <span id="monitorStatus">扫描中...</span></div>
+                <div style="font-size: 12px; color: #aaa;">捕获有效叫声: <span id="callCount" style="color: white; font-weight: bold;">0</span> 次</div>
+            </div>
+        </div>
 
-            // 步骤4：热点缓慢消散 (仅作用于离屏画布的热点)
-            offscreenCtx.fillStyle = 'rgba(0, 0, 0, 0.001)';
-            offscreenCtx.fillRect(0, 0, offscreenCanvas.width, offscreenCanvas.height);
-        }
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const mainCanvas = document.getElementById('heatmapCanvas');
+                const mainCtx = mainCanvas.getContext('2d');
+                const offscreenCanvas = document.getElementById('offscreenCanvas');
+                const offscreenCtx = offscreenCanvas.getContext('2d');
+                const img = document.getElementById('mapImage');
+                
+                let callCount = 0;
+                const countDisplay = document.getElementById('callCount');
+                let isImgLoaded = false;
+                let totalBlackOpacity = 0; 
+                const maxBlackOpacity = 0.8; 
+                const blackIncrement = 0.005; 
 
-        // 5. 模拟探测逻辑 (也可适当加快热点生成频率，适配演示)
-        function simulateDetection() {
-            if (!isImgLoaded) {
-                setTimeout(simulateDetection, 100);
-                return;
-            }
+                function initCanvasSize() {
+                    if (!img.complete || !isImgLoaded) return;
+                    mainCanvas.width = img.width;
+                    mainCanvas.height = img.height;
+                    offscreenCanvas.width = img.width;
+                    offscreenCanvas.height = img.height;
+                    mainCtx.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
+                    mainCtx.drawImage(img, 0, 0);
+                    img.style.visibility = 'visible';
+                }
 
-            // 随机生成热点坐标 (集中在中间区域)
-            const x = mainCanvas.width * (0.1 + Math.random() * 0.8);
-            const y = mainCanvas.height * (0.1 + Math.random() * 0.8);
-            const intensity = 0.7 + Math.random() * 0.3; // 热点强度 (0.7-1.0，更亮)
+                img.onload = function() {
+                    isImgLoaded = true;
+                    initCanvasSize();
+                };
+                window.addEventListener('resize', initCanvasSize);
 
-            // 绘制新热点
-            drawHeatPoint(x, y, intensity);
-            
-            // 更新计数
-            callCount++;
-            countDisplay.innerText = callCount;
+                function drawHeatPoint(x, y, intensity) {
+                    const radius = intensity * 30;
+                    const gradient = offscreenCtx.createRadialGradient(x, y, 0, x, y, radius);
+                    gradient.addColorStop(0, `rgba(255, 0, 0, ${intensity})`);        
+                    gradient.addColorStop(0.4, `rgba(255, 200, 0, ${intensity * 0.9})`); 
+                    gradient.addColorStop(0.8, `rgba(0, 255, 0, ${intensity * 0.6})`);   
+                    gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');                      
+                    offscreenCtx.beginPath();
+                    offscreenCtx.arc(x, y, radius, 0, Math.PI * 2);
+                    offscreenCtx.fillStyle = gradient;
+                    offscreenCtx.fill();
+                }
 
-            // 渲染当前帧 (原图+遮罩+热点)
-            renderFrame();
+                function renderFrame() {
+                    if (!isImgLoaded) return;
+                    mainCtx.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
+                    mainCtx.drawImage(img, 0, 0);
+                    if (totalBlackOpacity < maxBlackOpacity) {
+                        totalBlackOpacity += blackIncrement;
+                        totalBlackOpacity = Math.min(totalBlackOpacity, maxBlackOpacity);
+                    }
+                    mainCtx.fillStyle = `rgba(0, 0, 0, ${totalBlackOpacity})`;
+                    mainCtx.fillRect(0, 0, mainCanvas.width, mainCanvas.height);
+                    mainCtx.drawImage(offscreenCanvas, 0, 0);
+                    offscreenCtx.fillStyle = 'rgba(0, 0, 0, 0.001)';
+                    offscreenCtx.fillRect(0, 0, offscreenCanvas.width, offscreenCanvas.height);
+                }
 
-            // 调整：加快热点生成频率 → 1-3秒一次（演示时更快看到热点累积）
-            const nextDelay = 1000 + Math.random() * 2000;
-            setTimeout(simulateDetection, nextDelay);
-        }
+                function simulateDetection() {
+                    if (!isImgLoaded) {
+                        setTimeout(simulateDetection, 100);
+                        return;
+                    }
+                    const x = mainCanvas.width * (0.1 + Math.random() * 0.8);
+                    const y = mainCanvas.height * (0.1 + Math.random() * 0.8);
+                    const intensity = 0.7 + Math.random() * 0.3; 
+                    drawHeatPoint(x, y, intensity);
+                    callCount++;
+                    countDisplay.innerText = callCount;
+                    renderFrame();
+                    const nextDelay = 1000 + Math.random() * 2000;
+                    setTimeout(simulateDetection, nextDelay);
+                }
 
-        // 启动模拟
-        setTimeout(() => {
-            simulateDetection();
-        }, 500);
-    });
-</script>
-
+                setTimeout(() => {
+                    simulateDetection();
+                }, 500);
+            });
+        </script>
     </section>
 
     <!-- <section id="team" class="team" style="padding: 40px 20px;">
