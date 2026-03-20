@@ -253,6 +253,28 @@
         <p>数据来源: 中国广西崇左白头叶猴国家级自然保护区,(一般基于猴王的叫声, 因其余白头叶猴的发声机会较少, 且难以人为捕捉)</p>
     </section>
     <script>
+
+
+
+    // ========== 音频互斥播放功能 开始 ==========
+        document.addEventListener('DOMContentLoaded', function () {
+            const audios = document.querySelectorAll('audio');
+            audios.forEach(audio => {
+                audio.addEventListener('play', function () {
+                    // 当当前音频开始播放时，循环检查页面上所有的音频
+                    audios.forEach(otherAudio => {
+                        // 如果发现其他音频不是当前正在点击的这个，就把它暂停
+                        if (otherAudio !== audio) {
+                            otherAudio.pause();
+                        }
+                    });
+                });
+            });
+        });
+        // ========== 音频互斥播放功能 结束 ==========
+
+        // ========== 小机器人功能 开始 ==========
+        // (下面是你原本的代码...)
         // function resethtmlfontsize(){
         // 	document.ddocumentElement.style.fontSize=screen.width /10 +'px';	
         // }
