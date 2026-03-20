@@ -91,33 +91,36 @@
         <h2>我们的工作</h2>
         <div class="work-item fadeIn">
             <h3>2.白头叶猴的声音</h3>
-            <div class="content">
-                <div class="text1">
-                    <p><b>声学特征</b></p>
-                    <ul>
+            
+            <div class="content" style="display: flex; align-items: center; justify-content: center; gap: 40px; margin-bottom: 40px;">
+                <div class="text1" style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                    <p style="text-align: center; font-size: 22px; margin-bottom: 20px; color: #198754;"><b>声学特征</b></p>
+                    <ul style="line-height: 2.2; color: #555; font-size: 15px;">
                         <li>白头叶猴大部分叫声没有谐波、频率较高、带宽较大。</li>
                         <li>白头叶猴至少能发出17种叫声，其中成年个体叫声有11种，存在性别特异性。</li>
-                        <li>成年雄性特有叫声5种，成年雄猴作为家庭群的首领，会发出三种专属叫声：脉冲声、激动鸣叫声和低吼声，用于抵御外来雄猴入侵或宣示领地主权，这些声音常伴随肢体行为（如奔跑、摇晃树枝），传播距离可达500米以上，且三种叫声常组合使用，类似人类语言的“句子结构”。
-                        </li>
+                        <li>成年雄性特有叫声5种，成年雄猴作为家庭群的首领，会发出三种专属叫声：脉冲声、激动鸣叫声和低吼声，用于抵御外来雄猴入侵或宣示领地主权，这些声音常伴随肢体行为（如奔跑、摇晃树枝），传播距离可达500米以上，且三种叫声常组合使用，类似人类语言的“句子结构”。</li>
                     </ul>
                 </div>
-                <div class="mvoice">
-                    <img src="{{ url_for('static', filename='img/mvoice.png') }}" alt="无法加载图片" style="width: 600px;">
+                <div class="mvoice" style="flex: 1; text-align: center;">
+                    <img src="{{ url_for('static', filename='img/mvoice.png') }}" alt="声学特征图谱" style="max-width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
                 </div>
             </div>
-            <hr>
-            <div class="content">
-                <div class="image3">
-                    <img src="{{ url_for('static', filename='img/monkeybaby.png') }}" alt="无法加载图片"
-                        style="width: 600px;">
+            
+            <hr style="border: 0; border-top: 1px dashed #ddd; margin: 40px 0;">
+            
+            <div class="content" style="display: flex; align-items: center; justify-content: center; gap: 40px; margin-top: 40px;">
+                <div class="image3" style="flex: 1; text-align: center;">
+                    <img src="{{ url_for('static', filename='img/monkeybaby.png') }}" alt="幼猴交流" style="max-width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
                 </div>
-                <div class="text1">
-                    <p><b>雌猴与幼猴的群内交流</b></p>
-                    <ul>
-                        <li>雌猴：成年雌性2种叫声，通过短促的“联系叫声”维持群体移动或觅食时的稳定性，冲突时声音频率和时长随激烈程度变化（轻微冲突高频短促，激烈冲突低频持续）。</li>
-                        <li>幼猴：婴猴和青少年猴通过特定叫声与母亲或群体建立联系，如金黄色婴猴的尖叫声可能触发母猴的抚育行为。研究还发现，幼猴叫声可能携带个体识别信息。</li>
+                <div class="text1" style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                    <p style="text-align: center; font-size: 22px; margin-bottom: 20px; color: #198754;"><b>雌猴与幼猴的群内交流</b></p>
+                    <ul style="line-height: 2.2; color: #555; font-size: 15px;">
+                        <li><b>雌猴：</b>成年雌性2种叫声，通过短促的“联系叫声”维持群体移动或觅食时的稳定性，冲突时声音频率和时长随激烈程度变化（轻微冲突高频短促，激烈冲突低频持续）。</li>
+                        <li><b>幼猴：</b>婴猴和青少年猴通过特定叫声与母亲或群体建立联系，如金黄色婴猴的尖叫声可能触发母猴的抚育行为。研究还发现，幼猴叫声可能携带个体识别信息。</li>
                     </ul>
-                    <p>成年雌猴和青少年猴会根据威胁等级调整警报声：低威胁时使用双音节警报声，高威胁（如捕食者靠近）则发出三音节警报声，这种分层响应机制有助于群体高效避险。</p>
+                    <p style="margin-top: 15px; line-height: 1.8; color: #555; font-size: 15px; background-color: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #198754;">
+                        成年雌猴和青少年猴会根据威胁等级调整警报声：低威胁时使用双音节警报声，高威胁（如捕食者靠近）则发出三音节警报声，这种分层响应机制有助于群体高效避险。
+                    </p>
                 </div>
             </div>
         </div>
