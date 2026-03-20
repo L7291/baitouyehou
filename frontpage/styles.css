@@ -382,3 +382,16 @@ footer a {
     color: white;
     text-decoration: none;
 }
+
+/* ========================================== */
+/* 修复下拉菜单“死亡断层”，搭一座透明的桥 */
+/* ========================================== */
+.nav .droplist::before {
+    content: "";
+    position: absolute;
+    top: -30px; /* 向上延伸 30px 的透明区域，刚好盖住缝隙 */
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background: transparent;
+}
