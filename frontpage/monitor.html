@@ -73,7 +73,8 @@
         </div>
     </header>
 
-    <section id="monitoring-system" style="padding: 60px 20px; max-width: 1200px; margin: 0 auto; animation: fadeIn 1s;">
+    <section id="work" class="work" style="padding: 40px 20px; max-width: 1200px; margin: 0 auto;">
+        <div class="work-item fadeIn" style="background: transparent; box-shadow: none;">
         <h1 style="text-align: center; color: #ffffff; margin-bottom: 15px; font-size: 36px; font-weight: bold; text-shadow: 0 2px 5px rgba(0,0,0,0.15);">4.声学哨兵：智能生态声学监测体系</h1>
         
         <p style="text-align: center; color: #ffffff; opacity: 0.95; margin-bottom: 50px; font-size: 16px; line-height: 1.8; max-width: 900px; margin-left: auto; margin-right: auto; text-shadow: 0 1px 3px rgba(0,0,0,0.1);">
@@ -125,8 +126,8 @@
 
         <div style="background: #fdfdfd; border: 1px solid #e8f5e9; padding: 40px 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 30px; text-align: center; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='translateY(0)';">
             <h3 style="color: #198754; margin-bottom: 15px; font-size: 20px;">2. 自动化流水线：声学预处理与检测全流程</h3>
-            <p style="color: #666; line-height: 1.8; margin-bottom: 25px; max-width: 800px; margin-left: auto; margin-right: auto;">上图提取的特征将直接输入到端到端检测框架中。该图展示了从野外被动声学采集设备的原始音频输入，经过预加重、分帧加窗处理，最终送入 DeepADN 网络输出二分类检测结果的完整自动化监测流水线。</p>
             <img src="{{ url_for('static', filename='img/detection_framework.png') }}" alt="系统框架图" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <p style="color: #666; line-height: 1.8; margin-bottom: 25px; max-width: 800px; margin-left: auto; margin-right: auto;">上图提取的特征将直接输入到端到端检测框架中。该图展示了从野外被动声学采集设备的原始音频输入，经过预加重、分帧加窗处理，最终送入 DeepADN 网络输出二分类检测结果的完整自动化监测流水线。</p>
             <p style="color: #999; font-size: 13px; margin-top: 15px;">Figure 2: 深度音频检测系统整体架构流程图 (Hong, et al.)</p>
         </div>
 
@@ -146,7 +147,7 @@
                 style="padding: 12px 30px; background-color: white; color: #198754; border: 2px solid #198754; text-decoration: none; border-radius: 30px; font-size: 16px; font-weight: bold; transition: background 0.2s;">⬅
                 上一页：降噪展示</a>
         </div>
-        
+        </div>
     </section>
 
     <section id="contact" class="contact" ">
