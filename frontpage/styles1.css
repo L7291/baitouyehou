@@ -602,145 +602,347 @@ header .logo img:hover {
 }
 
 /* ========== "了解更多"按钮灵动化优化 结束 ========== */
-/* ========== 输入框灵动化 开始 ========== */
+/* ========== 聊天消息灵动化优化 开始 ========== */
 
 
 
-.chatbot-input input {
+/* 消息容器基础样式 - 添加入场动画 */
 
-  flex: 1;
+.message {
+
+  margin-bottom: 12px;
 
   padding: 12px 16px;
 
-  border: 2px solid #e0e0e0;
+  border-radius: 16px;
 
-  border-radius: 24px;
+  max-width: 80%;
 
-  outline: none;
-
-  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  word-wrap: break-word;
 
   font-size: 14px;
 
-}
-
-
-
-.chatbot-input input:focus {
-
-  border-color: #198754;
-
-  box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.15);
-
-  transform: translateY(-1px);
-
-}
-
-
-
-.chatbot-input input::placeholder {
-
-  color: #999;
-
-  transition: color 0.3s ease;
-
-}
-
-
-
-.chatbot-input input:focus::placeholder {
-
-  color: #ccc;
-
-}
-
-
-
-.chatbot-input button {
-
-  margin-left: 10px;
-
-  padding: 12px 24px;
-
-  background: linear-gradient(135deg, #198754 0%, #28a745 100%);
-
-  color: white;
-
-  border: none;
-
-  border-radius: 24px;
-
-  cursor: pointer;
-
-  font-weight: 600;
-
-  font-size: 14px;
-
-  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-
-  box-shadow: 0 2px 8px rgba(25, 135, 84, 0.3);
+  line-height: 1.6;
 
   position: relative;
 
-  overflow: hidden;
+  /* 入场动画：淡入 + 轻微上浮 */
+
+  animation: messageSlideIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+
+  opacity: 0;
+
+  transform: translateY(10px);
+
+  /* 悬停微反馈 */
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 
 }
 
 
 
-.chatbot-input button::before {
+.message:hover {
+
+  transform: translateY(-2px) scale(1.01);
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+}
+
+
+
+/* 用户消息 - 绿色渐变 + 光晕 */
+
+.message.user {
+
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+
+  color: white;
+
+  margin-left: auto;
+
+  border-bottom-right-radius: 4px;
+
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+
+}
+
+
+
+.message.user:hover {
+
+  box-shadow: 0 6px 16px rgba(76, 175, 80, 0.4);
+
+}
+
+
+
+/* 助手消息 - 白色卡片 + 生态绿边框 */
+
+.message.assistant {
+
+  background: white;
+
+  color: #333;
+
+  margin-right: auto;
+
+  border-bottom-left-radius: 4px;
+
+  border-left: 3px solid #198754;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+}
+
+
+
+.message.assistant:hover {
+
+  box-shadow: 0 4px 12px rgba(25, 135, 84, 0.15);
+
+  border-left-color: #28a745;
+
+}
+
+
+
+/* 消息入场动画 - 从下方滑入 */
+
+@keyframes messageSlideIn {
+
+  0% {
+
+​    opacity: 0;
+
+​    transform: translateY(15px) scale(0.98);
+
+  }
+
+  100% {
+
+​    opacity: 1;
+
+​    transform: translateY(0) scale(1);
+
+  }
+
+}
+
+
+
+/* 加载中消息 - 呼吸脉冲效果 */
+
+.message.loading {
+
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+
+  background-size: 200% 100%;
+
+  animation: loadingShimmer 1.5s infinite, messageSlideIn 0.4s ease forwards;
+
+  color: transparent;
+
+  border-radius: 16px;
+
+}
+
+
+
+@keyframes loadingShimmer {
+
+  0% {
+
+​    background-position: 200% 0;
+
+  }
+
+  100% {
+
+​    background-position: -200% 0;
+
+  }
+
+}
+
+
+
+/* 消息时间戳（可选）- 淡入显示 */
+
+.message::after {
 
   content: '';
 
+  display: block;
+
+  font-size: 11px;
+
+  color: rgba(255, 255, 255, 0.7);
+
+  margin-top: 4px;
+
+  text-align: right;
+
+  opacity: 0;
+
+  transition: opacity 0.3s ease;
+
+}
+
+
+
+.message:hover::after {
+
+  opacity: 1;
+
+}
+
+
+
+/* 助手消息的特殊标识 - 小叶子图标 */
+
+.message.assistant::before {
+
+  content: '🌿';
+
   position: absolute;
 
-  top: 50%;
+  top: -8px;
 
-  left: 50%;
+  left: -8px;
 
-  width: 0;
+  font-size: 16px;
 
-  height: 0;
-
-  background: rgba(255, 255, 255, 0.3);
+  background: #198754;
 
   border-radius: 50%;
 
-  transform: translate(-50%, -50%);
+  width: 24px;
 
-  transition: width 0.4s ease, height 0.4s ease;
+  height: 24px;
 
-}
+  display: flex;
 
+  align-items: center;
 
-
-.chatbot-input button:hover::before {
-
-  width: 200px;
-
-  height: 200px;
-
-}
-
-
-
-.chatbot-input button:hover {
-
-  transform: translateY(-2px);
-
-  box-shadow: 0 4px 12px rgba(25, 135, 84, 0.4);
-
-}
-
-
-
-.chatbot-input button:active {
-
-  transform: translateY(0);
+  justify-content: center;
 
   box-shadow: 0 2px 6px rgba(25, 135, 84, 0.3);
 
+  animation: iconBreathe 2s infinite ease-in-out;
+
 }
+
+
+
+@keyframes iconBreathe {
+
+  0%, 100% {
+
+​    transform: scale(1);
+
+​    box-shadow: 0 2px 6px rgba(25, 135, 84, 0.3);
+
+  }
+
+  50% {
+
+​    transform: scale(1.1);
+
+​    box-shadow: 0 4px 10px rgba(25, 135, 84, 0.5);
+
+  }
+
+}
+
+
+
+/* 用户消息的特殊标识 - 小人图标 */
+
+.message.user::before {
+
+  content: '👤';
+
+  position: absolute;
+
+  top: -8px;
+
+  right: -8px;
+
+  font-size: 16px;
+
+  background: #4CAF50;
+
+  border-radius: 50%;
+
+  width: 24px;
+
+  height: 24px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-shadow: 0 2px 6px rgba(76, 175, 80, 0.3);
+
+}
+
+
+
+/* 消息容器滚动条美化 */
+
+.chatbot-messages {
+
+  scrollbar-width: thin;
+
+  scrollbar-color: #198754 rgba(0, 0, 0, 0.1);
+
+}
+
+
+
+.chatbot-messages::-webkit-scrollbar {
+
+  width: 6px;
+
+}
+
+
+
+.chatbot-messages::-webkit-scrollbar-track {
+
+  background: rgba(0, 0, 0, 0.05);
+
+  border-radius: 3px;
+
+}
+
+
+
+.chatbot-messages::-webkit-scrollbar-thumb {
+
+  background: linear-gradient(180deg, #198754, #28a745);
+
+  border-radius: 3px;
+
+  transition: background 0.3s ease;
+
+}
+
+
+
+.chatbot-messages::-webkit-scrollbar-thumb:hover {
+
+  background: linear-gradient(180deg, #28a745, #34ce57);
+
+}
+
+
+
+/* ========== 聊天消息灵动化优化 结束 ========== */
 
 
 
