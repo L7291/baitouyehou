@@ -145,6 +145,13 @@
     let zrIndex = 0;
     const track = document.querySelector('.zr-carousel-track');
     const dots = document.querySelectorAll('.zr-dot');
+    
+    // 🌟 1. 抓取整个轮播图的父容器（用于监测鼠标是否移入）
+    const carouselContainer = track.parentElement; 
+    
+    // 🌟 2. 声明定时器变量和时间（6秒=6000毫秒）
+    let autoSlideTimer;
+    const intervalTime = 6000; 
 
     function updateZrCarousel() {
         track.style.transform = `translateX(-${zrIndex * 100}%)`;
@@ -153,21 +160,55 @@
         });
     }
 
-    function moveZrSlide(direction) {
+    // 🌟 3. 给函数加个标记，判断是“人点的”还是“机器自动轮播的”
+    function moveZrSlide(direction, isAuto = false) {
         zrIndex = (zrIndex + direction + 3) % 3;
         updateZrCarousel();
+        
+        
+        if (!isAuto) {
+            resetAutoPlay();
+        }
     }
 
     function currentZrSlide(index) {
         zrIndex = index;
         updateZrCarousel();
+        
+        resetAutoPlay();
     }
-    
+
     // 初始化指示器颜色
     updateZrCarousel();
-    
-    // 自动播放 (每 5 秒滑动一次)
-    setInterval(() => { moveZrSlide(1); }, 5000);
+
+    // 🌟 4. 封装播放与暂停的核心逻辑
+    function startAutoPlay() {
+        clearInterval(autoSlideTimer); // 启动前先清空旧的，防叠加
+        autoSlideTimer = setInterval(() => { 
+            moveZrSlide(1, true); // true 表示这是系统自动翻页的
+        }, intervalTime);
+    }
+
+    function stopAutoPlay() {
+        clearInterval(autoSlideTimer);
+    }
+
+    function resetAutoPlay() {
+        stopAutoPlay();
+        startAutoPlay();
+    }
+
+    // 🌟 5. 加入鼠标悬停感应魔法
+    if (carouselContainer) {
+        
+        carouselContainer.addEventListener('mouseenter', stopAutoPlay);
+       
+        carouselContainer.addEventListener('mouseleave', startAutoPlay);
+    }
+
+    // 网页加载完毕，启动第一轮自动播放
+    startAutoPlay();
+
 </script>
 
     <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin: 40px 20px;">
