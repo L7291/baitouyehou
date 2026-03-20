@@ -73,80 +73,84 @@
         </div>
     </header>
 
-    <section id="work" class="work" style="padding: 40px 20px; max-width: 1200px; margin: 0 auto;">
-        <div class="work-item fadeIn" style="background: transparent; box-shadow: none;">
-        <h1 style="text-align: center; color: #ffffff; margin-bottom: 15px; font-size: 36px; font-weight: bold; text-shadow: 0 2px 5px rgba(0,0,0,0.15);">4.声学哨兵：智能生态声学监测体系</h1>
+    <section id="work" class="work" style="padding-top: 100px; padding-bottom: 60px;">
         
-        <p style="text-align: center; color: #ffffff; opacity: 0.95; margin-bottom: 50px; font-size: 16px; line-height: 1.8; max-width: 900px; margin-left: auto; margin-right: auto; text-shadow: 0 1px 3px rgba(0,0,0,0.1);">
-            采用被动声学监测（PAM）结合 <b>DeepADN 深度音频检测网络</b>，自动识别白头叶猴长距离呼叫。为复杂喀斯特地貌下的极危物种提供非侵入、长期、高精度的自动化守护方案。
-        </p>
+        <h2 style="text-align: center; color: white; margin-bottom: 30px; font-size: 32px; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">我们的工作</h2>
 
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 25px; margin-bottom: 60px;">
-            <div style="flex: 1; min-width: 300px; background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-10px)';" onmouseout="this.style.transform='translateY(0)';">
-                <div style="font-size: 40px; margin-bottom: 15px;">📡</div>
-                <h3 style="color: #333; margin-bottom: 15px; font-size: 22px; border-left: 4px solid #198754; padding-left: 10px;">硬件部署与长距捕获</h3>
-                <ul style="color: #666; font-size: 15px; line-height: 1.8; padding-left: 20px;">
-                    <li style="margin-bottom: 10px;">利用分布式的太阳能 ARU 录音机阵列进行大范围捕获。</li>
-                    <li style="margin-bottom: 10px;">设备安装于 3–4m 高金属杆，按动物活动节律进行无缝连续录制。</li>
-                    <li>同步使用 44.1kHz 专业定向录音设备记录个体行为，构建高精度基准训练集。</li>
-                </ul>
-            </div>
-            <div style="flex: 1; min-width: 300px; background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-10px)';" onmouseout="this.style.transform='translateY(0)';">
-                <div style="font-size: 40px; margin-bottom: 15px;">🧠</div>
-                <h3 style="color: #333; margin-bottom: 15px; font-size: 22px; border-left: 4px solid #198754; padding-left: 10px;">DeepADN 改进型网络</h3>
-                <ul style="color: #666; font-size: 15px; line-height: 1.8; padding-left: 20px;">
-                    <li style="margin-bottom: 10px;">摒弃图像转换，输入端直接提取 Fbank 等多维声学特征。</li>
-                    <li style="margin-bottom: 10px;">基于 PANNs/CNN 架构加入深层卷积捕捉时频依赖关系。</li>
-                    <li>引入 CBAM (通道+空间双重注意力机制)，在复杂混响中精准锁定叶猴发声特征。</li>
-                </ul>
-            </div>
-            <div style="flex: 1; min-width: 300px; background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-10px)';" onmouseout="this.style.transform='translateY(0)';">
-                <div style="font-size: 40px; margin-bottom: 15px;">📈</div>
-                <h3 style="color: #333; margin-bottom: 15px; font-size: 22px; border-left: 4px solid #198754; padding-left: 10px;">防过拟合与落地效益</h3>
-                <ul style="color: #666; font-size: 15px; line-height: 1.8; padding-left: 20px;">
-                    <li style="margin-bottom: 10px;">结合低信噪比自然环境音与高质量录音，通过混合变调解决真实野外负样本不平衡问题。</li>
-                    <li style="margin-bottom: 10px;">测试集上 DeepADN 最佳配置达到 <b style="color:#d9534f; font-size: 18px;">98.22% 召回率</b>。</li>
-                    <li>相较于传统方法性能提升，将原本繁重的人工听音复核工作量大幅削减约 <b style="color:#d9534f; font-size: 18px;">87%</b>。</li>
-                </ul>
-            </div>
-        </div>
+        <div class="work-item fadeIn" style="background-color: white; border-radius: 16px; padding: 40px 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 1200px; margin: 0 auto;">
+            
+            <h3 style="text-align: center; color: #198754; margin-bottom: 15px; font-size: 28px; font-weight: bold;">4. 声学哨兵：智能生态声学监测体系</h3>
+            
+            <p style="text-align: center; color: #555; margin-bottom: 50px; font-size: 16px; line-height: 1.8; max-width: 900px; margin-left: auto; margin-right: auto;">
+                采用被动声学监测（PAM）结合 <b>DeepADN 深度音频检测网络</b>，自动识别白头叶猴长距离呼叫。为复杂喀斯特地貌下的极危物种提供非侵入、长期、高精度的自动化守护方案。
+            </p>
 
-       <h2 style="color: #333; margin-bottom: 40px; border-bottom: 2px dashed #ccc; padding-bottom: 15px; text-align: center; margin-top: 60px;">核心技术与网络架构详解</h2>
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 25px; margin-bottom: 60px;">
+                <div style="flex: 1; min-width: 300px; background: #f4f9f5; padding: 30px; border-radius: 12px; border: 1px solid #e8f5e9;">
+                    <div style="font-size: 40px; margin-bottom: 15px;">📡</div>
+                    <h4 style="color: #333; margin-bottom: 15px; font-size: 20px; border-left: 4px solid #198754; padding-left: 10px;">硬件部署与长距捕获</h4>
+                    <ul style="color: #666; font-size: 15px; line-height: 1.8; padding-left: 20px;">
+                        <li style="margin-bottom: 10px;">利用分布式的太阳能 ARU 录音机阵列进行大范围捕获。</li>
+                        <li style="margin-bottom: 10px;">设备安装于 3–4m 高金属杆，按动物活动节律无缝连续录制。</li>
+                        <li>同步使用 44.1kHz 专业录音设备，构建高精度基准训练集。</li>
+                    </ul>
+                </div>
+                <div style="flex: 1; min-width: 300px; background: #f4f9f5; padding: 30px; border-radius: 12px; border: 1px solid #e8f5e9;">
+                    <div style="font-size: 40px; margin-bottom: 15px;">🧠</div>
+                    <h4 style="color: #333; margin-bottom: 15px; font-size: 20px; border-left: 4px solid #198754; padding-left: 10px;">DeepADN 改进型网络</h4>
+                    <ul style="color: #666; font-size: 15px; line-height: 1.8; padding-left: 20px;">
+                        <li style="margin-bottom: 10px;">摒弃图像转换，输入端直接提取 Fbank 等多维声学特征。</li>
+                        <li style="margin-bottom: 10px;">基于 PANNs/CNN 架构加入深层卷积捕捉时频依赖关系。</li>
+                        <li>引入 CBAM 双重注意力机制，精准锁定叶猴发声特征。</li>
+                    </ul>
+                </div>
+                <div style="flex: 1; min-width: 300px; background: #f4f9f5; padding: 30px; border-radius: 12px; border: 1px solid #e8f5e9;">
+                    <div style="font-size: 40px; margin-bottom: 15px;">📈</div>
+                    <h4 style="color: #333; margin-bottom: 15px; font-size: 20px; border-left: 4px solid #198754; padding-left: 10px;">防过拟合与落地效益</h4>
+                    <ul style="color: #666; font-size: 15px; line-height: 1.8; padding-left: 20px;">
+                        <li style="margin-bottom: 10px;">结合低信噪比环境音，通过混合变调解决负样本不平衡。</li>
+                        <li style="margin-bottom: 10px;">测试集上 DeepADN 最佳配置达到 <b style="color:#d9534f; font-size: 18px;">98.22% 召回率</b>。</li>
+                        <li>相较传统方法，将人工听音复核工作量大幅削减约 <b style="color:#d9534f; font-size: 18px;">87%</b>。</li>
+                    </ul>
+                </div>
+            </div>
 
-        <div style="background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 30px; display: flex; flex-wrap: wrap; align-items: center; gap: 30px; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='translateY(0)';">
-            <div style="flex: 1; min-width: 300px;">
-                <h3 style="color: #198754; margin-bottom: 15px; font-size: 20px;">1. 原始输入：多维声学特征提取</h3>
-                <p style="color: #666; line-height: 1.8; text-align: justify;">为适应卷积网络对二维数据的处理能力，系统摒弃了传统方法，直接将录音分割为 12s 片段，并利用 <b>Log-Mel 语谱图与 Fbank</b> 作为原始输入。右图直观展示了白头叶猴长距离呼叫（目标信号）与复杂自然环境噪声在时频维度上的显著特征差异。</p>
-            </div>
-            <div style="flex: 1.5; min-width: 300px; text-align: center;">
-                <img src="{{ url_for('static', filename='img/langur_spec.png') }}" alt="声学特征提取" style="max-width: 100%; border-radius: 8px; border: 1px solid #eee;">
-                <p style="color: #999; font-size: 13px; margin-top: 10px;">Figure 1: 白头叶猴鸣叫声、自然噪声与 Log-Mel 语谱图对比</p>
-            </div>
-        </div>
+            <hr style="border: 0; border-top: 2px dashed #eee; margin: 50px 0;">
 
-        <div style="background: #fdfdfd; border: 1px solid #e8f5e9; padding: 40px 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 30px; text-align: center; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='translateY(0)';">
-            <h3 style="color: #198754; margin-bottom: 15px; font-size: 20px;">2. 自动化流水线：声学预处理与检测全流程</h3>
-            <img src="{{ url_for('static', filename='img/detection_framework.png') }}" alt="系统框架图" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-            <p style="color: #666; line-height: 1.8; margin-bottom: 25px; max-width: 800px; margin-left: auto; margin-right: auto;">上图提取的特征将直接输入到端到端检测框架中。该图展示了从野外被动声学采集设备的原始音频输入，经过预加重、分帧加窗处理，最终送入 DeepADN 网络输出二分类检测结果的完整自动化监测流水线。</p>
-            <p style="color: #999; font-size: 13px; margin-top: 15px;">Figure 2: 深度音频检测系统整体架构流程图 (Hong, et al.)</p>
-        </div>
+            <h4 style="color: #333; margin-bottom: 40px; text-align: center; font-size: 24px;">核心技术与网络架构详解</h4>
 
-        <div style="background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 60px; display: flex; flex-wrap: wrap; align-items: center; gap: 30px; flex-direction: row-reverse; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='translateY(0)';">
-            <div style="flex: 1; min-width: 300px;">
-                <h3 style="color: #198754; margin-bottom: 15px; font-size: 20px;">3. 核心引擎：改进型 CNN-4 深度网络</h3>
-                <p style="color: #666; line-height: 1.8; text-align: justify;">系统最终采用了性能极佳的改进型全卷积网络（CNN-4）。该网络通过深层卷积捕捉声音的时频依赖关系，并在网络中巧妙融入了 Batch Normalization 与 Dropout (p=0.2) 机制。结合 CBAM 空间+通道注意力模块，有效解决了真实野外数据极易造成的模型过拟合难题。</p>
+            <div style="padding: 20px; margin-bottom: 30px; display: flex; flex-wrap: wrap; align-items: center; gap: 30px;">
+                <div style="flex: 1; min-width: 300px;">
+                    <h4 style="color: #198754; margin-bottom: 15px; font-size: 18px;">1. 原始输入：多维声学特征提取</h4>
+                    <p style="color: #666; line-height: 1.8; text-align: justify; font-size: 15px;">系统摒弃传统方法，直接将录音分割为 12s 片段，并利用 <b>Log-Mel 语谱图与 Fbank</b> 作为原始输入。右图直观展示了叶猴长距离呼叫与自然环境噪声的显著特征差异。</p>
+                </div>
+                <div style="flex: 1.5; min-width: 300px; text-align: center;">
+                    <img src="{{ url_for('static', filename='img/langur_spec.png') }}" alt="声学特征提取" style="max-width: 100%; border-radius: 8px; border: 1px solid #ddd;">
+                </div>
             </div>
-            <div style="flex: 1.5; min-width: 300px; text-align: center;">
-                <img src="{{ url_for('static', filename='img/cnn_architecture.png') }}" alt="CNN架构图" style="max-width: 100%; border-radius: 8px; border: 1px solid #eee;">
-                <p style="color: #999; font-size: 13px; margin-top: 10px;">Figure 3: DeepADN 核心模型——CNN-4 架构层级详解</p>
+
+            <div style="padding: 20px; margin-bottom: 30px; text-align: center;">
+                <h4 style="color: #198754; margin-bottom: 15px; font-size: 18px;">2. 自动化流水线：声学预处理与检测全流程</h4>
+                <img src="{{ url_for('static', filename='img/detection_framework.png') }}" alt="系统框架图" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-bottom: 15px;">
+                <p style="color: #666; line-height: 1.8; font-size: 15px; max-width: 800px; margin: 0 auto;">从被动声学采集设备的原始音频输入，经过预加重、分帧加窗处理，最终送入 DeepADN 网络输出二分类检测结果。</p>
             </div>
-        </div>
-        
-    <div style="display: flex; justify-content: center; gap: 20px; margin: 40px 0; padding-bottom: 20px;">
-            <a href="work2.html"
-                style="padding: 12px 30px; background-color: white; color: #198754; border: 2px solid #198754; text-decoration: none; border-radius: 30px; font-size: 16px; font-weight: bold; transition: background 0.2s;">⬅
-                上一页：降噪展示</a>
-        </div>
+
+            <div style="padding: 20px; margin-bottom: 50px; display: flex; flex-wrap: wrap; align-items: center; gap: 30px; flex-direction: row-reverse;">
+                <div style="flex: 1; min-width: 300px;">
+                    <h4 style="color: #198754; margin-bottom: 15px; font-size: 18px;">3. 核心引擎：改进型 CNN-4 深度网络</h4>
+                    <p style="color: #666; line-height: 1.8; text-align: justify; font-size: 15px;">系统采用性能极佳的改进型全卷积网络（CNN-4）。网络中巧妙融入了 Batch Normalization 与 Dropout，并结合 CBAM 双重注意力模块，有效解决了野外数据的模型过拟合难题。</p>
+                </div>
+                <div style="flex: 1.5; min-width: 300px; text-align: center;">
+                    <img src="{{ url_for('static', filename='img/cnn_architecture.png') }}" alt="CNN架构图" style="max-width: 100%; border-radius: 8px; border: 1px solid #ddd;">
+                </div>
+            </div>
+            
+            <div style="display: flex; justify-content: center; gap: 20px; margin-top: 40px;">
+                <a href="work2.html" style="padding: 10px 25px; background-color: white; color: #198754; border: 2px solid #198754; text-decoration: none; border-radius: 30px; font-size: 16px; font-weight: bold;">⬅ 上一页：降噪展示</a>
+                
+                <a href="work3.html" style="padding: 10px 25px; background: #198754; color: white; border: 2px solid #198754; text-decoration: none; border-radius: 30px; font-size: 16px; font-weight: bold;">下一页：困难与展望 ➡</a>
+            </div>
+
         </div>
     </section>
 
