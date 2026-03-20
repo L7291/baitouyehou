@@ -84,71 +84,81 @@
 
     <section id="prospects-system" style="padding: 60px 20px; max-width: 1200px; margin: 0 auto; animation: fadeIn 1s;">
         
-        <h1 style="text-align: center; color: #198754; margin-bottom: 50px; font-size: 36px; font-weight: bold;">困难与展望</h1>
+        <h1 style="text-align: center; color: #198754; margin-bottom: 15px; font-size: 36px; font-weight: bold;">困难与展望</h1>
+        <p style="text-align: center; color: #555; margin-bottom: 50px; font-size: 16px; line-height: 1.8; max-width: 900px; margin-left: auto; margin-right: auto;">
+            在复杂的喀斯特地貌中进行野生动物被动声学监测，我们面临着多重挑战。但正是这些严苛的自然限制，凸显了我们降噪技术的必要性，并指引了未来的优化方向。
+        </p>
 
-        <h3 style="color: #333; margin-bottom: 25px; font-size: 24px; border-left: 5px solid #198754; padding-left: 15px;">项目面临的困难:</h3>
-        
-        <div class="tt1" style="display: flex; justify-content:space-between; align-items: center; gap: 40px; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 30px;">
-            <div class="t1" style="flex: 1;">
-                <p style="color: #198754; font-size: 20px; margin-bottom: 15px;"><b>1. 地理位置的挑战:</b></p>
-                <p style="color: #555; line-height: 1.8; font-size: 16px; text-align: justify;">白头叶猴栖息于喀斯特地貌区域，地势险峻，植被茂密，这给声学监测设备的部署和维护带来了极大的困难。设备需要能够在极端环境下稳定运行，同时，复杂的地形也增加了声音信号的采集难度，声波在山体间的反射和衍射导致信号失真和噪声增加。</p>
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 25px; margin-bottom: 60px;">
+            <div style="flex: 1; min-width: 300px; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-10px)';" onmouseout="this.style.transform='translateY(0)';">
+                <div style="font-size: 40px; margin-bottom: 15px;">⛰️</div>
+                <h3 style="color: #333; margin-bottom: 15px; font-size: 22px; border-left: 4px solid #198754; padding-left: 10px;">地理位置的挑战</h3>
+                <p style="color: #666; font-size: 15px; line-height: 1.8; text-align: justify;">栖息于喀斯特地貌区域，地势险峻植被茂密，给设备部署带来极大困难。复杂地形更导致声波在山体间的反射和衍射，造成信号严重失真和多径噪声增加。</p>
             </div>
-            <div class="image" style="flex: 1; text-align: center;">
-                <img src="{{ url_for('static', filename='img/location.png') }}" alt="地理位置" style="max-width: 100%; border-radius: 8px;">
+            <div style="flex: 1; min-width: 300px; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-10px)';" onmouseout="this.style.transform='translateY(0)';">
+                <div style="font-size: 40px; margin-bottom: 15px;">🔋</div>
+                <h3 style="color: #333; margin-bottom: 15px; font-size: 22px; border-left: 4px solid #198754; padding-left: 10px;">监测方式的局限</h3>
+                <p style="color: #666; font-size: 15px; line-height: 1.8; text-align: justify;">被动声学监测需长时间不间断收录音频，对野外设备的续航与存储容量要求极高。此外，人工跟踪采集耗费巨大人力成本，且极易受恶劣天气与地形的限制。</p>
+            </div>
+            <div style="flex: 1; min-width: 300px; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-10px)';" onmouseout="this.style.transform='translateY(0)';">
+                <div style="font-size: 40px; margin-bottom: 15px;">🐒</div>
+                <h3 style="color: #333; margin-bottom: 15px; font-size: 22px; border-left: 4px solid #198754; padding-left: 10px;">极低信噪比限制</h3>
+                <p style="color: #666; font-size: 15px; line-height: 1.8; text-align: justify;">猴群发声频率易被风声(3-5kHz)、雨滴撞击声、同域鸟类及周边村寨低频机械振动彻底掩蔽。叠加环境干扰，原始收集的音频信噪比普遍低于 -5dB。</p>
             </div>
         </div>
 
-        <div class="tt1" style="display: flex; justify-content:space-between; align-items: center; gap: 40px; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 30px;">
-            <div class="image1" style="flex: 1; text-align: center;">
-                <img src="{{ url_for('static', filename='img/video1.png') }}" alt="设备" style="max-width: 100%; max-height: 350px; border-radius: 8px; object-fit: contain;">
+        <h3 style="color: #333; margin-bottom: 40px; border-bottom: 2px dashed #ccc; padding-bottom: 15px; text-align: center; font-size: 26px;">现场环境与设备部署图解</h3>
+
+        <div style="background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 30px; display: flex; flex-wrap: wrap; align-items: center; gap: 30px; border: 1px solid #f0f0f0;">
+            <div style="flex: 1; text-align: center;">
+                <img src="{{ url_for('static', filename='img/location.png') }}" alt="喀斯特地貌" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                <p style="color: #999; font-size: 13px; margin-top: 10px;">图1: 极其陡峭与复杂的喀斯特保护区地形</p>
             </div>
-            <div class="image1" style="flex: 1; text-align: center;">
-                <img src="{{ url_for('static', filename='img/video2.png') }}" alt="设备" style="max-width: 100%; max-height: 350px; border-radius: 8px; object-fit: contain;">
-            </div>
-            <div class="t1" style="flex: 1.5;">
-                <p style="color: #198754; font-size: 20px; margin-bottom: 15px;"><b>2. 监测方式的局限性:</b></p>
-                <p style="color: #555; line-height: 1.8; font-size: 16px; text-align: justify;">被动声学监测依赖于高灵敏度的声学传感器，需要长时间不间断地收录音频数据。这种方式对设备的续航能力和数据存储容量提出了很高的要求。此外，人工跟踪采集声音数据需要大量的时间和人力成本，且容易受到天气条件和地形限制的影响。</p>
+            <div style="flex: 1; text-align: center;">
+                <img src="{{ url_for('static', filename='img/map.png') }}" alt="地图分布" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                <p style="color: #999; font-size: 13px; margin-top: 10px;">图2: 声学站点部署分布及信号干扰挑战</p>
             </div>
         </div>
 
-        <div class="tt1" style="display: flex; justify-content:space-between; align-items: center; gap: 40px; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 50px;">
-            <div class="t1" style="flex: 1;">
-                <p style="color: #198754; font-size: 20px; margin-bottom: 15px;"><b>3. 叫声限制:</b></p>
-                <p style="color: #555; line-height: 1.8; font-size: 16px; text-align: justify;">白头叶猴种群的发声频率(多集中在 0.5 - 4kHz)，不如某些鸟类叫声高频。喀斯特地貌的风声混响（峰值能量3 - 5 kHz）、雨季雨滴撞击石灰岩的宽带噪声（1 - 10 kHz）、同域分布的冠斑犀鸟（2 - 4 kHz鸣叫）、周边村寨的低频机械振动（小于1 kHz），并且喀斯特山体导致声波多径反射，信噪比普遍低于 -5dB。</p>
+        <div style="background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 60px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 30px; border: 1px solid #f0f0f0;">
+            <div style="flex: 1; text-align: center;">
+                <img src="{{ url_for('static', filename='img/video1.png') }}" alt="设备1" style="max-height: 350px; max-width: 100%; border-radius: 8px; object-fit: contain;">
             </div>
-            <div class="image2" style="flex: 1; text-align: center;">
-                <img src="{{ url_for('static', filename='img/map.png') }}" alt="叫声限制" style="max-width: 100%; border-radius: 8px;">
+            <div style="flex: 1; text-align: center;">
+                <img src="{{ url_for('static', filename='img/video2.png') }}" alt="设备2" style="max-height: 350px; max-width: 100%; border-radius: 8px; object-fit: contain;">
             </div>
+            <p style="color: #999; font-size: 13px; width: 100%; text-align: center; margin-top: -10px;">图3: 需要长时间续航的被动声学记录仪(ARU)现场安装</p>
         </div>
 
         <hr style="border: 0; border-top: 2px dashed #ccc; margin: 50px 0;">
 
-        <h3 style="color: #333; margin-bottom: 25px; font-size: 24px; border-left: 5px solid #198754; padding-left: 15px;">未来的展望:</h3>
-        <div class="card-container">
-            <div class="card">
-                <h3 style="color: #198754; margin-bottom: 15px; font-size: 18px;">1. 突破数据采集瓶颈</h3>
-                <p style="color: #666; font-size: 14px; line-height: 1.6;">叶猴栖息地常存在强风、流水、虫鸣等环境噪声。降噪技术能提取纯净的动物声纹，为建立物种声学数据库提供高质量数据，这是行为学研究和种群监测的基础。</p>
+        <h3 style="color: #333; margin-bottom: 40px; border-bottom: 2px dashed #ccc; padding-bottom: 15px; text-align: center; font-size: 26px;">未来的展望</h3>
+        
+        <div style="display: flex; flex-wrap: wrap; gap: 25px; margin-bottom: 60px;">
+            <div style="flex: 1; min-width: 45%; background: #fdfdfd; border: 1px solid #e8f5e9; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='translateY(0)';">
+                <h4 style="color: #198754; margin-bottom: 10px; font-size: 18px;">1. 突破数据采集瓶颈</h4>
+                <p style="color: #666; font-size: 14px; line-height: 1.6; text-align: justify;">降噪技术能从强风、流水中提取纯净的动物声纹，为建立物种声学数据库提供高质量数据，这是行为学研究和种群监测的基石。</p>
             </div>
-            <div class="card">
-                <h3 style="color: #198754; margin-bottom: 15px; font-size: 18px;">2. 揭示隐蔽的声学信号</h3>
-                <p style="color: #666; font-size: 14px; line-height: 1.6;">叶猴的部分低频交流声可能被环境噪声覆盖，降噪后能发现更多次声波或复合音节结构，帮助解析其复杂的社群语言规则，甚至发现人类尚未认知的交流模式。</p>
+            <div style="flex: 1; min-width: 45%; background: #fdfdfd; border: 1px solid #e8f5e9; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='translateY(0)';">
+                <h4 style="color: #198754; margin-bottom: 10px; font-size: 18px;">2. 揭示隐蔽的声学信号</h4>
+                <p style="color: #666; font-size: 14px; line-height: 1.6; text-align: justify;">部分低频交流声极易被噪声覆盖，降噪后能发现更多次声波或复合音节结构，帮助我们深入解析其复杂的社群语言规则。</p>
             </div>
-            <div class="card">
-                <h3 style="color: #198754; margin-bottom: 15px; font-size: 18px;">3. 支持人工智能建模</h3>
-                <p style="color: #666; font-size: 14px; line-height: 1.6;">降噪后的清晰数据可训练更精准的AI模型（如声纹识别、叫声分类算法），推动自动物种识别系统的研发。</p>
+            <div style="flex: 1; min-width: 45%; background: #fdfdfd; border: 1px solid #e8f5e9; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='translateY(0)';">
+                <h4 style="color: #198754; margin-bottom: 10px; font-size: 18px;">3. 支持人工智能建模</h4>
+                <p style="color: #666; font-size: 14px; line-height: 1.6; text-align: justify;">降噪后的高信噪比数据，可以直接用于训练更精准的声纹识别、叫声分类 AI 算法，推动自动物种识别系统的加速落地。</p>
             </div>
-            <div class="card">
-                <h3 style="color: #198754; margin-bottom: 15px; font-size: 18px;">4. 提升监测效率与决策</h3>
-                <p style="color: #666; font-size: 14px; line-height: 1.6;">通过降噪+声纹识别，可实时定位猴群位置和活动轨迹，动态评估栖息地利用效率，指导生态廊道建设。</p>
+            <div style="flex: 1; min-width: 45%; background: #fdfdfd; border: 1px solid #e8f5e9; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='translateY(0)';">
+                <h4 style="color: #198754; margin-bottom: 10px; font-size: 18px;">4. 提升监测效率与决策</h4>
+                <p style="color: #666; font-size: 14px; line-height: 1.6; text-align: justify;">结合深度学习，可实现实时定位猴群位置和活动轨迹，动态评估栖息地利用效率，为保护区和生态廊道建设提供数据指导。</p>
             </div>
-            <div class="card">
-                <h3 style="color: #198754; margin-bottom: 15px; font-size: 18px;">5. 评估生态恢复效果</h3>
-                <p style="color: #666; font-size: 14px; line-height: 1.6;">对比降噪前后的猴群叫声活跃度，可量化栖息地修复工程成效。分析声学数据可揭示植被覆盖率与猴群交流行为的关联。</p>
+            <div style="flex: 1; min-width: 100%; background: #fdfdfd; border: 1px solid #e8f5e9; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='translateY(0)';">
+                <h4 style="color: #198754; margin-bottom: 10px; font-size: 18px;">5. 评估生态恢复效果</h4>
+                <p style="color: #666; font-size: 14px; line-height: 1.6; text-align: justify;">对比生态修复前后的猴群叫声活跃度（如交流频率），可直接量化栖息地修复工程成效。分析声学数据可直观揭示植被覆盖率与猴群活跃度的正相关性。</p>
             </div>
         </div>
 
-        <h3 style="margin-top: 80px; color: #198754; text-align: center; border-bottom: 2px dashed #ccc; padding-bottom: 15px; font-size: 26px;">实时声学监测大屏 (模拟演示)</h3>
-        <p style="text-align: center; color: #666; margin-bottom: 30px; font-size: 16px;">未来，依托深度降噪与声纹识别技术，本系统将实现复杂环境下白头叶猴声源的实时定位与活动热点可视化，为科学保护提供高效、智能的监测手段。</p>
+        <h3 style="margin-top: 80px; color: #198754; text-align: center; border-bottom: 2px dashed #ccc; padding-bottom: 15px; font-size: 26px;">未来应用：实时声学监测大屏 (模拟演示)</h3>
+        <p style="text-align: center; color: #666; margin-bottom: 30px; font-size: 16px;">依托深度降噪与声纹识别技术，本系统最终将实现白头叶猴声源的实时定位与活动热点可视化，为科学保护提供高效、智能的“千里眼与顺风耳”。</p>
 
         <div style="position: relative; max-width: 1000px; margin: 0 auto; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 2px solid #28a745;">
             <img id="mapImage" src="{{ url_for('static', filename='img/map1.jpg') }}" alt="喀斯特地形图" style="width: 100%; display: block; visibility: hidden;">
