@@ -79,29 +79,49 @@
 
             <h4 style="color: #333; margin-bottom: 40px; text-align: center; font-size: 28px;">核心技术与网络架构详解</h4>
 
-            <div style="padding: 20px; margin-bottom: 30px; display: flex; flex-wrap: wrap; align-items: center; gap: 30px;">
+          <div style="padding: 20px; margin-bottom: 30px; display: flex; flex-wrap: wrap; align-items: center; gap: 30px;">
                 <div style="flex: 1; min-width: 300px;">
-                    <h4 style="color: #198754; margin-bottom: 15px; font-size: 20px;">1. 原始输入：多维声学特征提取</h4>
-                    <p style="color: #666; line-height: 1.8; text-align: justify; font-size: 16px;">系统摒弃传统方法，直接将录音分割为 12s 片段，并利用 <b>Log-Mel 语谱图与 Fbank</b> 作为原始输入。右图直观展示了叶猴长距离呼叫与自然环境噪声的显著特征差异。</p>
+                    <h4 style="color: #198754; margin-bottom: 15px; font-size: 30px;">1. 监测阵列：复杂喀斯特生境下的设备部署</h4>
+                    <p style="color: #666; line-height: 1.8; text-align: justify; font-size: 20px;">
+                        一切智能分析的前提是高质量的底层数据。在地形极其崎岖、植被茂密的喀斯特石山生境中，传统的追踪监测难以实现全天候覆盖。为此，我们在广西崇左自然保护区内部署了<b>分布式的太阳能自动声学记录仪（ARUs）阵列</b>。右图展示了声学哨兵的野外监测站位分布，这些设备以无缝接力的方式，跨越旱季与雨季，在白头叶猴活跃时段持续采集声音数据，为后续的深度学习模型提供了海量、真实的声学生态支撑。
+                    </p>
                 </div>
                 <div style="flex: 1.5; min-width: 300px; text-align: center;">
-                    <img src="{{ url_for('static', filename='img/langur_spec.png') }}" alt="声学特征提取" style="width: 1000px;height: auto; border-radius: 8px; border: 1px solid #ddd;">
+                    <img src="{{ url_for('static', filename='img/langur_spec.png') }}" alt="声学设备部署分布图" style="width: 100%; max-width: 900px; height: auto; border-radius: 8px; border: 1px solid #ddd; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
                 </div>
             </div>
 
-            <div style="padding: 20px; margin-bottom: 30px; text-align: center;">
-                <h4 style="color: #198754; margin-bottom: 15px; font-size: 20px;">2. 自动化流水线：声学预处理与检测全流程</h4>
-                <img src="{{ url_for('static', filename='img/detection_framework.png') }}" alt="系统框架图" style="width: 1000px;height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-bottom: 15px;">
-                <p style="color: #666; line-height: 1.8; font-size: 16px; max-width: 800px; margin: 0 auto;">从被动声学采集设备的原始音频输入，经过预加重、分帧加窗处理，最终送入 DeepADN 网络输出二分类检测结果。</p>
-            </div>
-
-            <div style="padding: 20px; margin-bottom: 50px; display: flex; flex-wrap: wrap; align-items: center; gap: 30px; flex-direction: row-reverse;">
+            <div style="padding: 20px; margin-bottom: 30px; display: flex; flex-wrap: wrap; align-items: center; gap: 30px; flex-direction: row-reverse;">
                 <div style="flex: 1; min-width: 300px;">
-                    <h4 style="color: #198754; margin-bottom: 15px; font-size: 20px;">3. 核心引擎：改进型 CNN-4 深度网络</h4>
-                    <p style="color: #666; line-height: 1.8; text-align: justify; font-size: 16px;">系统采用性能极佳的改进型全卷积网络（CNN-4）。网络中巧妙融入了 Batch Normalization 与 Dropout，并结合 CBAM 双重注意力模块，有效解决了野外数据的模型过拟合难题。</p>
+                    <h4 style="color: #198754; margin-bottom: 15px; font-size: 30px;">2. 原始输入：多维声学特征的精准剥离</h4>
+                    <p style="color: #666; line-height: 1.8; text-align: justify; font-size: 20px;">
+                        传统方法通常将声音转换为二维语谱图，但在处理长音频时极易因降采样丢失细节。系统摒弃了这一途径，将录音切割为 <b>12秒连续非重叠片段</b>，并直接提取 <b>Fbank（Filter Bank Energy）</b> 等底层特征。左图直观展示了目标信号（白头叶猴呼叫）与强风、雨滴、虫鸣等自然噪声在时频维度的显著差异。Fbank 采用对数变换压缩动态范围，能在不丢失高频信息的前提下，完美锁定复杂声场中的关键信号。
+                    </p>
                 </div>
                 <div style="flex: 1.5; min-width: 300px; text-align: center;">
-                    <img src="{{ url_for('static', filename='img/cnn_architecture.png') }}" alt="CNN架构图" style="width: 1000px;height: auto; border-radius: 8px; border: 1px solid #ddd;">
+                    <img src="{{ url_for('static', filename='img/feature_compare.png') }}" alt="声学特征对比图" style="width: 100%; max-width: 900px; height: auto; border-radius: 8px; border: 1px solid #ddd;">
+                </div>
+            </div>
+
+            <div style="padding: 20px; margin-bottom: 50px; text-align: center;">
+                <h4 style="color: #198754; margin-bottom: 25px; font-size: 22px;">3. 核心技术：端到端声学预处理与深度检测网络</h4>
+                
+                <img src="{{ url_for('static', filename='img/detection_framework.png') }}" alt="端到端检测系统架构" style="width: 100%; max-width: 1100px; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 30px;">
+                
+                <div style="display: flex; flex-wrap: wrap; gap: 30px; text-align: left; max-width: 1100px; margin: 0 auto;">
+                    <div style="flex: 1; min-width: 300px; background: #f8fdf9; padding: 25px; border-radius: 8px; border-left: 4px solid #198754;">
+                        <h5 style="color: #333; margin-bottom: 10px; font-size: 18px;">📍自动化声学特征提取流水线</h5>
+                        <p style="color: #666; line-height: 1.8; font-size: 15px; margin: 0; text-align: justify;">
+                            一维原始音频信号首先进入预处理阶段，进行<b>预加重（Pre-Emphasis）</b>以补偿高频损失，接着进行<b>分帧与加窗（Framing & Windowing）</b>。随后，通过<b>短时傅里叶变换（STFT）</b>与 <b>Mel 滤波器组（Mel Filtering）</b>进行非线性频率合并，并运用对数变换（Logarithm），最终输出多维时频矩阵（如 Fbank 特征）。这一过程完美保留了声音的动态范围，实现了从物理声波到 AI 深度数据的科学转换。
+                        </p>
+                    </div>
+                    
+                    <div style="flex: 1; min-width: 300px; background: #f8fdf9; padding: 25px; border-radius: 8px; border-left: 4px solid #f0ad4e;">
+                        <h5 style="color: #333; margin-bottom: 10px; font-size: 18px;">📍定制型 DeepADN 检测网络</h5>
+                        <p style="color: #666; line-height: 1.8; font-size: 15px; margin: 0; text-align: justify;">
+                            系统的检测核心是级联的 <b>DeepADN 深度卷积网络</b>。为了应对野外极低信噪比的严峻挑战，网络创新性地在卷积层之间嵌入了 <b>CBAM（通道与空间双重注意力机制）</b>，使模型能像人类一样“选择性聚焦”目标物种的发声频段。配合 <b>Batch Normalization</b> 稳定分布以及 <b>Dropout</b> 防止过拟合，模型最终通过全局池化（GAMP）输出高精度检测结果，在测试集上召回率高达 98.22%。
+                        </p>
+                    </div>
                 </div>
             </div>
             
