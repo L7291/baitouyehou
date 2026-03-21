@@ -169,86 +169,112 @@
     startAutoPlay();
 
 </script>
-
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin: 40px 20px;">
-
-        <div
-            style="flex: 1; min-width: 300px; max-width: 580px; background: white; border-radius: 20px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
-            <h3
-                style="color: #198754; border-bottom: 3px solid #198754; padding-bottom: 10px; margin-bottom: 20px; font-size: 24px; display: inline-block;">
-                📄 研究文章</h3>
-            <div style="display: flex; flex-direction: column; gap: 15px;">
-                <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/ajpa.70021" target="_blank"
-                    style="display: flex; justify-content: space-between; align-items: center; padding: 15px; background: #f8f9fa; border-radius: 12px; text-decoration: none; color: #333; transition: all 0.3s;"
-                    onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';"
-                    onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
-                    <span style="font-weight: 500; line-height: 1.4; flex: 1; margin-right: 15px;">Comparative
-                        Behavioral Ecology of All-Male and Bisexual Groups of White...</span>
-                    <span
-                        style="color: #888; font-size: 13px; white-space: nowrap; background: #e9ecef; padding: 4px 10px; border-radius: 20px;">2025-2</span>
-                </a>
-                <a href="https://www.science.org/doi/10.1126/science.ado6810" target="_blank"
-                    style="display: flex; justify-content: space-between; align-items: center; padding: 15px; background: #f8f9fa; border-radius: 12px; text-decoration: none; color: #333; transition: all 0.3s;"
-                    onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';"
-                    onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
-                    <span style="font-weight: 500; line-height: 1.4; flex: 1; margin-right: 15px;">Hope for limestone
-                        langurs’ conservation | Science</span>
-                    <span
-                        style="color: #888; font-size: 13px; white-space: nowrap; background: #e9ecef; padding: 4px 10px; border-radius: 20px;">2024-5</span>
-                </a>
-                <a href="https://www.zoores.ac.cn/article/doi/10.24272/j.issn.2095-8137.2022.147" target="_blank"
-                    style="display: flex; justify-content: space-between; align-items: center; padding: 15px; background: #f8f9fa; border-radius: 12px; text-decoration: none; color: #333; transition: all 0.3s;"
-                    onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';"
-                    onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
-                    <span style="font-weight: 500; line-height: 1.4; flex: 1; margin-right: 15px;">Vocal repertoire of
-                        the critically endangered white-headed langur...</span>
-                    <span
-                        style="color: #888; font-size: 13px; white-space: nowrap; background: #e9ecef; padding: 4px 10px; border-radius: 20px;">2022-9</span>
-                </a>
-                <a href="https://www.ecologica.cn/html/2021/21/stxb202008262208.htm" target="_blank"
-                    style="display: flex; justify-content: space-between; align-items: center; padding: 15px; background: #f8f9fa; border-radius: 12px; text-decoration: none; color: #333; transition: all 0.3s;"
-                    onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';"
-                    onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
-                    <span
-                        style="font-weight: 500; line-height: 1.4; flex: 1; margin-right: 15px;">广西扶绥白头叶猴对栖息地的选择与利用</span>
-                    <span
-                        style="color: #888; font-size: 13px; white-space: nowrap; background: #e9ecef; padding: 4px 10px; border-radius: 20px;">2021-07</span>
-                </a>
+<div style="max-width: 1000px; margin: 50px auto; background: white; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); overflow: hidden;">
+        
+        <div style="display: flex; justify-content: center; background: #f4f9f5; border-bottom: 2px solid #e8f5e9;">
+            <div id="tab-article" onmouseenter="switchTab('article')" 
+                 style="flex: 1; text-align: center; padding: 20px 0; cursor: pointer; font-size: 22px; font-weight: bold; color: #198754; border-bottom: 3px solid #198754; transition: all 0.3s ease;">
+                 📄 研究文章
+            </div>
+            <div id="tab-media" onmouseenter="switchTab('media')" 
+                 style="flex: 1; text-align: center; padding: 20px 0; cursor: pointer; font-size: 22px; font-weight: bold; color: #888; border-bottom: 3px solid transparent; transition: all 0.3s ease;">
+                 📸 图片 & 视频
             </div>
         </div>
 
-        <div
-            style="flex: 1; min-width: 300px; max-width: 580px; background: white; border-radius: 20px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
-            <h3
-                style="color: #198754; border-bottom: 3px solid #198754; padding-bottom: 10px; margin-bottom: 20px; font-size: 24px; display: inline-block;">
-                📸 图片 & 视频</h3>
-            <div style="display: flex; flex-direction: column; gap: 15px;">
-                <a href="https://www.vcg.com/creative-image/baitouyehou/" target="_blank"
-                    style="display: flex; align-items: center; padding: 15px; background: #f8f9fa; border-radius: 12px; text-decoration: none; color: #333; transition: all 0.3s;"
+        <div style="padding: 30px 40px;">
+            
+            <div id="content-article" style="display: flex; flex-direction: column; gap: 15px; animation: fadeIn 0.5s;">
+                <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/ajpa.70021" target="_blank"
+                    style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: #f8f9fa; border-radius: 12px; text-decoration: none; color: #333; transition: all 0.3s;"
                     onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';"
                     onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
-                    <span style="font-size: 20px; margin-right: 15px;">🖼️</span>
+                    <span style="font-weight: 500; line-height: 1.4; flex: 1; margin-right: 15px;">Comparative Behavioral Ecology of All-Male and Bisexual Groups of White...</span>
+                    <span style="color: #888; font-size: 13px; white-space: nowrap; background: #e9ecef; padding: 4px 12px; border-radius: 20px;">2025-2</span>
+                </a>
+                <a href="https://www.science.org/doi/10.1126/science.ado6810" target="_blank"
+                    style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: #f8f9fa; border-radius: 12px; text-decoration: none; color: #333; transition: all 0.3s;"
+                    onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';"
+                    onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
+                    <span style="font-weight: 500; line-height: 1.4; flex: 1; margin-right: 15px;">Hope for limestone langurs’ conservation | Science</span>
+                    <span style="color: #888; font-size: 13px; white-space: nowrap; background: #e9ecef; padding: 4px 12px; border-radius: 20px;">2024-5</span>
+                </a>
+                <a href="https://www.zoores.ac.cn/article/doi/10.24272/j.issn.2095-8137.2022.147" target="_blank"
+                    style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: #f8f9fa; border-radius: 12px; text-decoration: none; color: #333; transition: all 0.3s;"
+                    onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';"
+                    onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
+                    <span style="font-weight: 500; line-height: 1.4; flex: 1; margin-right: 15px;">Vocal repertoire of the critically endangered white-headed langur...</span>
+                    <span style="color: #888; font-size: 13px; white-space: nowrap; background: #e9ecef; padding: 4px 12px; border-radius: 20px;">2022-9</span>
+                </a>
+                <a href="https://www.ecologica.cn/html/2021/21/stxb202008262208.htm" target="_blank"
+                    style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: #f8f9fa; border-radius: 12px; text-decoration: none; color: #333; transition: all 0.3s;"
+                    onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';"
+                    onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
+                    <span style="font-weight: 500; line-height: 1.4; flex: 1; margin-right: 15px;">广西扶绥白头叶猴对栖息地的选择与利用</span>
+                    <span style="color: #888; font-size: 13px; white-space: nowrap; background: #e9ecef; padding: 4px 12px; border-radius: 20px;">2021-07</span>
+                </a>
+            </div>
+
+            <div id="content-media" style="display: none; flex-direction: column; gap: 15px; animation: fadeIn 0.5s;">
+                <a href="https://www.vcg.com/creative-image/baitouyehou/" target="_blank"
+                    style="display: flex; align-items: center; padding: 15px 20px; background: #f8f9fa; border-radius: 12px; text-decoration: none; color: #333; transition: all 0.3s;"
+                    onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';"
+                    onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
+                    <span style="font-size: 24px; margin-right: 20px;">🖼️</span>
                     <span style="font-weight: 500; line-height: 1.4;">白头叶猴素材及高清图片下载 - 视觉中国</span>
                 </a>
                 <a href="https://tv.cctv.com/2022/03/31/VIDEDvDn84cTstyJCNZkAted220331.shtml" target="_blank"
-                    style="display: flex; align-items: center; padding: 15px; background: #f8f9fa; border-radius: 12px; text-decoration: none; color: #333; transition: all 0.3s;"
+                    style="display: flex; align-items: center; padding: 15px 20px; background: #f8f9fa; border-radius: 12px; text-decoration: none; color: #333; transition: all 0.3s;"
                     onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';"
                     onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
-                    <span style="font-size: 20px; margin-right: 15px;">▶️</span>
+                    <span style="font-size: 24px; margin-right: 20px;">▶️</span>
                     <span style="font-weight: 500; line-height: 1.4;">[远方的家] 神奇动物在中国——近距离观察珍稀叶猴家族</span>
                 </a>
-                <a href="https://www.bilibili.com/video/BV18V4y1j7XK/?spm_id_from=333.337.search-card.all.click&vd_source=23d43dbe43f7944a1708e2d86663e876"
-                    target="_blank"
-                    style="display: flex; align-items: center; padding: 15px; background: #f8f9fa; border-radius: 12px; text-decoration: none; color: #333; transition: all 0.3s;"
+                <a href="https://www.bilibili.com/video/BV18V4y1j7XK/?spm_id_from=333.337.search-card.all.click&vd_source=23d43dbe43f7944a1708e2d86663e876" target="_blank"
+                    style="display: flex; align-items: center; padding: 15px 20px; background: #f8f9fa; border-radius: 12px; text-decoration: none; color: #333; transition: all 0.3s;"
                     onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';"
                     onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
-                    <span style="font-size: 20px; margin-right: 15px;">📺</span>
+                    <span style="font-size: 24px; margin-right: 20px;">📺</span>
                     <span style="font-weight: 500; line-height: 1.4;">《美丽中国说》独山王者白头叶猴 [4K HDR] - 哔哩哔哩</span>
                 </a>
             </div>
+
         </div>
-       
     </div>
+
+    <script>
+        function switchTab(tabName) {
+            // 获取DOM元素
+            const tabArticle = document.getElementById('tab-article');
+            const tabMedia = document.getElementById('tab-media');
+            const contentArticle = document.getElementById('content-article');
+            const contentMedia = document.getElementById('content-media');
+
+            // 如果鼠标滑过的是“研究文章”
+            if (tabName === 'article') {
+                // 激活样式
+                tabArticle.style.color = '#198754';
+                tabArticle.style.borderBottom = '3px solid #198754';
+                // 变灰未激活样式
+                tabMedia.style.color = '#888';
+                tabMedia.style.borderBottom = '3px solid transparent';
+                // 切换内容显示
+                contentArticle.style.display = 'flex';
+                contentMedia.style.display = 'none';
+            } 
+            // 如果鼠标滑过的是“图片与视频”
+            else if (tabName === 'media') {
+                tabMedia.style.color = '#198754';
+                tabMedia.style.borderBottom = '3px solid #198754';
+                tabArticle.style.color = '#888';
+                tabArticle.style.borderBottom = '3px solid transparent';
+                contentMedia.style.display = 'flex';
+                contentArticle.style.display = 'none';
+            }
+        }
+    </script>
+
+        
 
 <section style="background: linear-gradient(135deg, #198754, #0f5132); color: white; padding: 60px 20px; margin-top: 50px;">
         <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
