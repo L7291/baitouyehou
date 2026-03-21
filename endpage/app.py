@@ -17,7 +17,10 @@ app = Flask(__name__,
 CORS(app)
 
 # 用户数据文件路径
-USER_DATA_FILE = 'users.json'
+
+base_dir = os.path.abspath(os.path.dirname(__file__))
+
+USER_DATA_FILE = os.path.join(base_dir, 'users.json')
 
 # ========== 1：添加系统角色设定 ==========
 SYSTEM_PROMPT = """你是一个生态小助手，专门帮助用户了解白头叶猴保护知识和声音降噪技术。
