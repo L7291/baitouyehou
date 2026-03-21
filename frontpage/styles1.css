@@ -739,3 +739,23 @@ header .logo img:hover {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     z-index: 10;
 }
+
+/* ========================================== */
+/* 声学哨兵页面：三个功能卡片的悬浮上移动画 */
+/* ========================================== */
+.hover-card {
+    /* 采用贝塞尔曲线，让动画有“先快后慢”的呼吸感，而不是生硬的匀速 */
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
+    position: relative;
+    top: 0;
+}
+
+.hover-card:hover {
+    top: -10px; /* 鼠标放上去时，卡片向上浮动 10px */
+    transform: scale(1.02); /* 伴随极其轻微的放大，增加立体感 */
+    /* 加上项目主题生态绿色的弥散阴影 */
+    box-shadow: 0 15px 30px rgba(25, 135, 84, 0.15) !important; 
+    /* 背景变回纯白，与底部区分开，显得更干净凸出 */
+    background: #ffffff !important; 
+    border-color: rgba(25, 135, 84, 0.2) !important;
+}
