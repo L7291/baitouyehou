@@ -172,14 +172,74 @@
 <div style="max-width: 1000px; margin: 50px auto; background: white; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); overflow: hidden;">
         
         <div style="display: flex; justify-content: center; background: #f4f9f5; border-bottom: 2px solid #e8f5e9;">
-            <div id="tab-article" onmouseenter="switchTab('article')" 
-     style="flex: 1; text-align: center; padding: 20px 0; cursor: pointer; font-size: 22px; font-weight: bold; color: #198754; border-bottom: 3px solid #198754; transition: all 0.3s ease;">
-     <svg t="1774103226249" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9339" width="24" height="24" style="vertical-align: middle; margin-right: 8px; fill: #198754;">
-         <path d="M900.02 288c-34.59-59.92-128.55-64.12-238.06-35.42C631.85 143.24 581.29 64 511.97 64c-63.16 0-117.07 68.32-150.12 188.44-107.69-28-202.92-24.92-238.07 35.56-26.89 46.48-7.42 113.26 54.89 187.74C188.76 487.78 200.1 499.96 212 512c-11.9 12.04-23.24 24.22-33.33 36.26C116.36 622.74 96.9 689.52 123.78 736c20.17 35 62.74 52.78 122.53 52.78 39.12-0.86 77.98-6.6 115.67-17.08C391.68 878.94 441.95 960 511.97 960s119.88-79.24 149.84-188.58a474.464 474.464 0 0 0 117.07 17.22c56.01 0 99.85-15.82 121.13-52.64 31.51-54.6 0-135.52-88.22-224 78.29-79.52 123.1-163.66 88.23-224zM511.97 120c31.51 0 70.02 53.48 96.63 148.54a993.591 993.591 0 0 0-96.63 38.64 964.09 964.09 0 0 0-96.63-38.64C443.35 166.2 483.12 120 511.97 120zM172.38 316c21.29-36.96 129.53-35.56 274.61 23.94-8.68 4.76-17.36 9.52-26.05 14a1065.475 1065.475 0 0 0-168.05 119.14c-11.06-11.2-21.56-22.4-30.95-33.6-44.24-52.36-63.15-99.82-49.56-123.48z m0 392c-14-23.66 5.32-71.12 49.29-123.9 9.38-11.2 19.89-22.4 30.95-33.6a977.014 977.014 0 0 0 81.78 63.7c3.06 34.59 7.97 68.98 14.71 103.04-102.37 27.02-162.31 15.68-176.73-9.24z m339.59 196c-42.71 0-95.5-94.08-116.65-249.76 8.4 5.18 16.94 10.36 25.62 15.4a1069.298 1069.298 0 0 0 187.65 85.82C581.99 850.52 543.48 904 511.97 904zM621.2 701.14a1007.607 1007.607 0 0 1-172.25-80.08A1015.031 1015.031 0 0 1 293.79 512a1014.54 1014.54 0 0 1 155.16-109.06 1007.254 1007.254 0 0 1 172.25-80.08A1005.73 1005.73 0 0 1 638 512c0.38 63.44-5.25 126.76-16.8 189.14zM851.57 316c21.15 36.68-33.89 129.64-157.54 225.68V512c0.15-68.93-6.37-137.71-19.47-205.38 95.36-24.92 161.18-17.92 177.01 9.38z m0 392c-15.83 27.3-81.64 34.3-177.01 9.38a991.257 991.257 0 0 0 14.84-102.76 963.244 963.244 0 0 0 81.93-64.4c74.49 75.32 94.66 132.86 80.24 157.78z" p-id="9340"></path>
-         <path d="M511.97 428c-46.4 0-84.02 37.61-84.02 84s37.62 84 84.02 84c46.41 0 84.02-37.61 84.02-84s-37.61-84-84.02-84z m0 112c-15.47 0-28.01-12.54-28.01-28 0-15.47 12.54-28 28.01-28 15.47 0 28.01 12.54 28.01 28s-12.54 28-28.01 28z" p-id="9341"></path>
-     </svg>
-     研究文章
-</div>
+           <div id="content-article" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; animation: fadeIn 0.5s;">
+                
+                <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/ajpa.70021" target="_blank" 
+                   style="display: flex; flex-direction: column; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #f0f0f0; text-decoration: none; transition: all 0.3s ease;"
+                   onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 25px rgba(25,135,84,0.15)'; this.querySelector('img').style.transform='scale(1.08)'; this.querySelector('h4').style.color='#198754';"
+                   onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.05)'; this.querySelector('img').style.transform='scale(1)'; this.querySelector('h4').style.color='#333';">
+                    <div style="height: 180px; overflow: hidden;">
+                        <img src="{{ url_for('static', filename='img/article1.jpg') }}" alt="论文1" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                    </div>
+                    <div style="padding: 20px; background: #fcfdfc; flex: 1; display: flex; flex-direction: column;">
+                        <h4 style="margin: 0 0 10px 0; font-size: 16px; line-height: 1.5; color: #333; transition: color 0.3s ease; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">1. Comparative Behavioral Ecology of All-Male and Bisexual Groups...</h4>
+                        <p style="margin: 0; color: #777; font-size: 13px; line-height: 1.6; text-align: justify; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;">本文研究比较了白头叶猴全雄性群体和混合群体在饮食、时间分配和活动范围方面的差异。研究结果部分证实，全雄性群体采取的行为策略与雌雄同体群体有所不同。这种策略代表了在觅食、竞争风险与繁殖机会之间的权衡。</p>
+                    </div>
+                </a>
+
+                <a href="https://www.science.org/doi/10.1126/science.ado6810" target="_blank" 
+                   style="display: flex; flex-direction: column; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #f0f0f0; text-decoration: none; transition: all 0.3s ease;"
+                   onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 25px rgba(25,135,84,0.15)'; this.querySelector('img').style.transform='scale(1.08)'; this.querySelector('h4').style.color='#198754';"
+                   onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.05)'; this.querySelector('img').style.transform='scale(1)'; this.querySelector('h4').style.color='#333';">
+                    <div style="height: 180px; overflow: hidden;">
+                        <img src="{{ url_for('static', filename='img/article2.jpg') }}" alt="论文2" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                    </div>
+                    <div style="padding: 20px; background: #fcfdfc; flex: 1; display: flex; flex-direction: column;">
+                        <h4 style="margin: 0 0 10px 0; font-size: 16px; line-height: 1.5; color: #333; transition: color 0.3s ease; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">2. Hope for limestone langurs’ conservation | Science</h4>
+                        <p style="margin: 0; color: #777; font-size: 13px; line-height: 1.6; text-align: justify; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;">通过二十多年的针对性保护，白头叶猴种群从20世纪80年代的约200只恢复至2023年的1400多只。非法狩猎和栖息地丧失曾是主要威胁，保护区建设、反盗猎等行动成效显著。但栖息地破碎化依然存在，保护工作仍需继续。</p>
+                    </div>
+                </a>
+
+                <a href="https://www.zoores.ac.cn/article/doi/10.24272/j.issn.2095-8137.2022.147" target="_blank" 
+                   style="display: flex; flex-direction: column; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #f0f0f0; text-decoration: none; transition: all 0.3s ease;"
+                   onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 25px rgba(25,135,84,0.15)'; this.querySelector('img').style.transform='scale(1.08)'; this.querySelector('h4').style.color='#198754';"
+                   onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.05)'; this.querySelector('img').style.transform='scale(1)'; this.querySelector('h4').style.color='#333';">
+                    <div style="height: 180px; overflow: hidden;">
+                        <img src="{{ url_for('static', filename='img/article3.jpg') }}" alt="论文3" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                    </div>
+                    <div style="padding: 20px; background: #fcfdfc; flex: 1; display: flex; flex-direction: column;">
+                        <h4 style="margin: 0 0 10px 0; font-size: 16px; line-height: 1.5; color: #333; transition: color 0.3s ease; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">3. Vocal repertoire of the critically endangered white-headed langur...</h4>
+                        <p style="margin: 0; color: #777; font-size: 13px; line-height: 1.6; text-align: justify; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;">研究团队通过观察得出叫声种类与群体结构相关，不同性别、年龄的叫声差异反映社会角色分工；雄性长距离叫声频率低、持续时间短，利于在开阔石山环境传播，可作为声学监测的目标信号。</p>
+                    </div>
+                </a>
+
+                <a href="https://www.ecologica.cn/html/2021/21/stxb202008262208.htm" target="_blank" 
+                   style="display: flex; flex-direction: column; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #f0f0f0; text-decoration: none; transition: all 0.3s ease;"
+                   onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 25px rgba(25,135,84,0.15)'; this.querySelector('img').style.transform='scale(1.08)'; this.querySelector('h4').style.color='#198754';"
+                   onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.05)'; this.querySelector('img').style.transform='scale(1)'; this.querySelector('h4').style.color='#333';">
+                    <div style="height: 180px; overflow: hidden;">
+                        <img src="{{ url_for('static', filename='img/article4.jpg') }}" alt="论文4" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                    </div>
+                    <div style="padding: 20px; background: #fcfdfc; flex: 1; display: flex; flex-direction: column;">
+                        <h4 style="margin: 0 0 10px 0; font-size: 16px; line-height: 1.5; color: #333; transition: color 0.3s ease; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">4. 广西扶绥白头叶猴对栖息地的选择与利用</h4>
+                        <p style="margin: 0; color: #777; font-size: 13px; line-height: 1.6; text-align: justify; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;">白头叶猴在喀斯特环境中主要在崖壁活动、在乔木上觅食和休息。栖息地的利用受温度影响：气温高时多在乔木上，气温低时则更多利用崖壁和裸岩。这是在觅食利益与捕食风险之间权衡的结果。</p>
+                    </div>
+                </a>
+
+                <a href="https://github.com/L7291/baitouyehou/blob/main/frontpage/voice/21-Deep%20Audio%20Detection%20Networks%20from%20Passive%20Acoustic%20Monitoring%20of%20a%20Critically%20Endangered%20Primate.pdf" target="_blank" 
+                   style="display: flex; flex-direction: column; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #f0f0f0; text-decoration: none; transition: all 0.3s ease;"
+                   onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 25px rgba(25,135,84,0.15)'; this.querySelector('img').style.transform='scale(1.08)'; this.querySelector('h4').style.color='#198754';"
+                   onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.05)'; this.querySelector('img').style.transform='scale(1)'; this.querySelector('h4').style.color='#333';">
+                    <div style="height: 180px; overflow: hidden;">
+                        <img src="{{ url_for('static', filename='img/article5.jpg') }}" alt="论文5" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                    </div>
+                    <div style="padding: 20px; background: #fcfdfc; flex: 1; display: flex; flex-direction: column;">
+                        <h4 style="margin: 0 0 10px 0; font-size: 16px; line-height: 1.5; color: #333; transition: color 0.3s ease; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">5. Deep Audio Detection Networks from Passive Acoustic Monitoring...</h4>
+                        <p style="margin: 0; color: #777; font-size: 13px; line-height: 1.6; text-align: justify; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;">本研究提出 DeepADN 模型，直接提取音频的 Fbank 声学特征，结合 CNN 和 CBAM 注意力机制，在野外噪声环境下对白头叶猴叫声的召回率达到 98.22%，人工审核量减少 87%。该模型具备跨物种迁移能力。</p>
+                    </div>
+                </a>
+
+            </div>
             <div id="tab-media" onmouseenter="switchTab('media')" 
      style="flex: 1; text-align: center; padding: 20px 0; cursor: pointer; font-size: 22px; font-weight: bold; color: #888; border-bottom: 3px solid transparent; transition: all 0.3s ease;">
      <svg t="1774103528932" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="14243" width="24" height="24" style="vertical-align: middle; margin-right: 8px; fill: #888;">
