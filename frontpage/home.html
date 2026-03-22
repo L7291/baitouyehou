@@ -261,16 +261,21 @@
 
             </div>
 
-           <div id="content-media" style="display: none; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; animation: fadeIn 0.5s;">
+          <div id="content-media" style="display: none; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; animation: fadeIn 0.5s;">
                 
                 <a href="https://www.vcg.com/creative-image/baitouyehou/" target="_blank" 
                    style="display: flex; flex-direction: column; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #f0f0f0; text-decoration: none; transition: all 0.3s ease;"
                    onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 15px 30px rgba(25,135,84,0.15)'; this.querySelector('.media-img').style.transform='scale(1.08)'; this.querySelector('.play-btn').style.transform='scale(1.1)'; this.querySelector('.play-btn').style.background='#198754'; this.querySelector('h4').style.color='#198754';"
                    onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.05)'; this.querySelector('.media-img').style.transform='scale(1)'; this.querySelector('.play-btn').style.transform='scale(1)'; this.querySelector('.play-btn').style.background='rgba(0,0,0,0.6)'; this.querySelector('h4').style.color='#333';">
                     <div style="height: 200px; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center;">
-                        <img class="media-img" src="{{ url_for('static', filename='img/media1.jpg') }}" alt="高清图库" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; position: absolute; top: 0; left: 0;">
+                        <img class="media-img" src="{{ url_for('static', filename='img/media1.png') }}" alt="高清图库" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; position: absolute; top: 0; left: 0;">
                         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.2); z-index: 1;"></div>
-                        <div class="play-btn" style="position: relative; z-index: 10; width: 56px; height: 56px; border-radius: 50%; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; font-size: 24px; color: white; transition: all 0.3s ease; backdrop-filter: blur(4px);">🖼️</div>
+                        <div class="play-btn" style="position: relative; z-index: 10; width: 56px; height: 56px; border-radius: 50%; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; font-size: 24px; color: white; transition: all 0.3s ease; backdrop-filter: blur(4px);">
+    <svg t="1774019120471" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1248" width="24" height="24" style="fill: #ffffff;">
+        <path d="M928 160H96c-17.7 0-32 14.3-32 32v640c0 17.7 14.3 32 32 32h832c17.7 0 32-14.3 32-32V192c0-17.7-14.3-32-32-32z m-40 632H136v-39.9l138.5-164.3 150.1 178L658.1 489 888 761.6V792z m0-129.8L664.2 396.8c-3.2-3.8-9-3.8-12.2 0L424.6 666.4l-144-170.7c-3.2-3.8-9-3.8-12.2 0L136 652.7V232h752v430.2z" p-id="1249"></path>
+        <path d="M304 456c48.6 0 88-39.4 88-88s-39.4-88-88-88-88 39.4-88 88 39.4 88 88 88z m0-116c15.5 0 28 12.5 28 28s-12.5 28-28 28-28-12.5-28-28 12.5-28 28-28z" p-id="1250"></path>
+    </svg>
+</div>
                         <div style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.75); color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; z-index: 10; backdrop-filter: blur(2px);">100+ 高清图</div>
                     </div>
                     <div style="padding: 20px; background: #fcfdfc; flex: 1;">
@@ -284,7 +289,7 @@
                    onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 15px 30px rgba(25,135,84,0.15)'; this.querySelector('.media-img').style.transform='scale(1.08)'; this.querySelector('.play-btn').style.transform='scale(1.1)'; this.querySelector('.play-btn').style.background='#198754'; this.querySelector('h4').style.color='#198754';"
                    onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.05)'; this.querySelector('.media-img').style.transform='scale(1)'; this.querySelector('.play-btn').style.transform='scale(1)'; this.querySelector('.play-btn').style.background='rgba(0,0,0,0.6)'; this.querySelector('h4').style.color='#333';">
                     <div style="height: 200px; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center;">
-                        <img class="media-img" src="{{ url_for('static', filename='img/media2.jpg') }}" alt="CCTV纪录片" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; position: absolute; top: 0; left: 0;">
+                        <img class="media-img" src="{{ url_for('static', filename='img/media2.png') }}" alt="CCTV纪录片" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; position: absolute; top: 0; left: 0;">
                         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.2); z-index: 1;"></div>
                         <div class="play-btn" style="position: relative; z-index: 10; width: 56px; height: 56px; border-radius: 50%; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; font-size: 20px; color: white; transition: all 0.3s ease; backdrop-filter: blur(4px); padding-left: 4px;">▶</div>
                         <div style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.75); color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; z-index: 10; backdrop-filter: blur(2px);">CCTV-4</div>
@@ -300,7 +305,7 @@
                    onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 15px 30px rgba(25,135,84,0.15)'; this.querySelector('.media-img').style.transform='scale(1.08)'; this.querySelector('.play-btn').style.transform='scale(1.1)'; this.querySelector('.play-btn').style.background='#198754'; this.querySelector('h4').style.color='#198754';"
                    onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.05)'; this.querySelector('.media-img').style.transform='scale(1)'; this.querySelector('.play-btn').style.transform='scale(1)'; this.querySelector('.play-btn').style.background='rgba(0,0,0,0.6)'; this.querySelector('h4').style.color='#333';">
                     <div style="height: 200px; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center;">
-                        <img class="media-img" src="{{ url_for('static', filename='img/media3.jpg') }}" alt="B站视频" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; position: absolute; top: 0; left: 0;">
+                        <img class="media-img" src="{{ url_for('static', filename='img/media3.png') }}" alt="B站视频1" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; position: absolute; top: 0; left: 0;">
                         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.2); z-index: 1;"></div>
                         <div class="play-btn" style="position: relative; z-index: 10; width: 56px; height: 56px; border-radius: 50%; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; font-size: 20px; color: white; transition: all 0.3s ease; backdrop-filter: blur(4px); padding-left: 4px;">▶</div>
                         <div style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.75); color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; z-index: 10; backdrop-filter: blur(2px);">4K HDR</div>
@@ -308,6 +313,38 @@
                     <div style="padding: 20px; background: #fcfdfc; flex: 1;">
                         <h4 style="margin: 0 0 10px 0; font-size: 18px; line-height: 1.4; color: #333; transition: color 0.3s ease;">《美丽中国说》独山王者白头叶猴 [4K HDR]</h4>
                         <p style="margin: 0; color: #777; font-size: 14px; line-height: 1.5;">Bilibili 热门野生动物纪录片，超高清 4K 画质展现白头叶猴在悬崖峭壁间灵动跳跃的极致视觉体验。</p>
+                    </div>
+                </a>
+
+                <a href="https://www.bilibili.com/video/BV18Z421p7BR/" target="_blank" 
+                   style="display: flex; flex-direction: column; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #f0f0f0; text-decoration: none; transition: all 0.3s ease;"
+                   onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 15px 30px rgba(25,135,84,0.15)'; this.querySelector('.media-img').style.transform='scale(1.08)'; this.querySelector('.play-btn').style.transform='scale(1.1)'; this.querySelector('.play-btn').style.background='#198754'; this.querySelector('h4').style.color='#198754';"
+                   onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.05)'; this.querySelector('.media-img').style.transform='scale(1)'; this.querySelector('.play-btn').style.transform='scale(1)'; this.querySelector('.play-btn').style.background='rgba(0,0,0,0.6)'; this.querySelector('h4').style.color='#333';">
+                    <div style="height: 200px; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center;">
+                        <img class="media-img" src="{{ url_for('static', filename='img/media4.png') }}" alt="B站视频2" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; position: absolute; top: 0; left: 0;">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.2); z-index: 1;"></div>
+                        <div class="play-btn" style="position: relative; z-index: 10; width: 56px; height: 56px; border-radius: 50%; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; font-size: 20px; color: white; transition: all 0.3s ease; backdrop-filter: blur(4px); padding-left: 4px;">▶</div>
+                        <div style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.75); color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; z-index: 10; backdrop-filter: blur(2px);">Bilibili</div>
+                    </div>
+                    <div style="padding: 20px; background: #fcfdfc; flex: 1;">
+                        <h4 style="margin: 0 0 10px 0; font-size: 18px; line-height: 1.4; color: #333; transition: color 0.3s ease;">探秘白头叶猴自然保护区：悬崖上的精灵</h4>
+                        <p style="margin: 0; color: #777; font-size: 14px; line-height: 1.5;">Bilibili 优质生态科普视频，带你走进广西崇左，近距离了解白头叶猴的真实生存现状与生态保护工作。</p>
+                    </div>
+                </a>
+
+                <a href="https://www.bilibili.com/video/BV1KY4y1V7e4/" target="_blank" 
+                   style="display: flex; flex-direction: column; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #f0f0f0; text-decoration: none; transition: all 0.3s ease;"
+                   onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 15px 30px rgba(25,135,84,0.15)'; this.querySelector('.media-img').style.transform='scale(1.08)'; this.querySelector('.play-btn').style.transform='scale(1.1)'; this.querySelector('.play-btn').style.background='#198754'; this.querySelector('h4').style.color='#198754';"
+                   onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.05)'; this.querySelector('.media-img').style.transform='scale(1)'; this.querySelector('.play-btn').style.transform='scale(1)'; this.querySelector('.play-btn').style.background='rgba(0,0,0,0.6)'; this.querySelector('h4').style.color='#333';">
+                    <div style="height: 200px; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center;">
+                        <img class="media-img" src="{{ url_for('static', filename='img/media5.png') }}" alt="B站视频3" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; position: absolute; top: 0; left: 0;">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.2); z-index: 1;"></div>
+                        <div class="play-btn" style="position: relative; z-index: 10; width: 56px; height: 56px; border-radius: 50%; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; font-size: 20px; color: white; transition: all 0.3s ease; backdrop-filter: blur(4px); padding-left: 4px;">▶</div>
+                        <div style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.75); color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; z-index: 10; backdrop-filter: blur(2px);">高清影像</div>
+                    </div>
+                    <div style="padding: 20px; background: #fcfdfc; flex: 1;">
+                        <h4 style="margin: 0 0 10px 0; font-size: 18px; line-height: 1.4; color: #333; transition: color 0.3s ease;">绝壁上的生灵：白头叶猴珍贵影像记录</h4>
+                        <p style="margin: 0; color: #777; font-size: 14px; line-height: 1.5;">Bilibili 优秀生态记录短片，展示白头叶猴家族在喀斯特石山上的繁衍与生活，画面生动且极具科研参考价值。</p>
                     </div>
                 </a>
 
