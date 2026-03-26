@@ -41,7 +41,7 @@
         </div>
     </header>
 
-   <section id="work" class="work">
+  <section id="work" class="work">
         <h2>我们的工作</h2>
         <div class="work-item fadeIn">
             <h3>3.对叶猴声音的识别与降噪</h3>
@@ -50,9 +50,9 @@
                 <div class="image">
                     <img src="{{ url_for('static', filename='voice/pic1.png') }}" alt="无法加载图片" style="width: 800px; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
                 </div>
-                <div class="vbox1" style="padding-left: 50px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                <div class="vbox1" style="padding-left: 50px; padding-right: 80px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
                     <div class="vboxt">
-                        <p style="line-height: 1.8; color: #555; font-size: 16px; text-align: justify;">关于白头叶猴的声音, 大家也可能想不到, 白头叶猴可爱的外表下, 却是与其他灵长类动物截然不同的声音, 左图是我们未降噪的图像, 可以看到原本的环境中存在着不少的噪音，给我们的工作加上了不小的难度。</p>
+                        <p style="line-height: 1.9; color: #555; font-size: 16px; text-align: justify;">关于白头叶猴的声音, 大家也可能想不到, 白头叶猴可爱的外表下, 却是与其他灵长类动物截然不同的声音, 左图是我们未降噪的图像, 可以看到原本的环境中存在着不少的噪音，给我们的工作加上了不小的难度。</p>
                     </div>
                     <audio controls style="margin-top: 20px; width: 100%; max-width: 400px;">
                         <source src="{{ url_for('static', filename='voice/noisy1.wav') }}" type="audio/wav">
@@ -64,9 +64,9 @@
                 <div class="image">
                     <img src="{{ url_for('static', filename='voice/pic2.png') }}" alt="无法加载图片" style="width: 800px; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
                 </div>
-                <div class="vbox1" style="padding-left: 50px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                <div class="vbox1" style="padding-left: 50px; padding-right: 80px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
                     <div class="vboxt">
-                        <p style="line-height: 1.8; color: #555; font-size: 16px; text-align: justify;">为支撑声学哨兵 (DeepADN 模型) 的精准检测，底层环境音频的清洗是不可或缺的环节。左图展示了 RNNoise 预处理模型在剥离复杂喀斯特环境噪声上的表现。我们在保证长距离呼叫特征不失真的前提下，滤除了干扰自动检测的高频虫鸣与流水宽带噪声。</p>
+                        <p style="line-height: 1.9; color: #555; font-size: 16px; text-align: justify;">为支撑声学哨兵 (DeepADN 模型) 的精准检测，底层环境音频的清洗是不可或缺的环节。左图展示了 RNNoise 预处理模型在剥离复杂喀斯特环境噪声上的表现。我们在保证长距离呼叫特征不失真的前提下，滤除了干扰自动检测的高频虫鸣与流水宽带噪声。</p>
                     </div>
                     <audio controls style="margin-top: 20px; width: 100%; max-width: 400px;">
                         <source src="{{ url_for('static', filename='voice/clean1_.wav') }}" type="audio/wav">
@@ -85,9 +85,9 @@
                 <div class="image">
                     <img src="{{ url_for('static', filename='voice/bird_noisy.png') }}" alt="鸟类含噪" style="width: 800px; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
                 </div>
-                <div class="vbox1" style="padding-left: 50px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                <div class="vbox1" style="padding-left: 50px; padding-right: 80px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
                     <div class="vboxt">
-                        <p style="line-height: 1.8; color: #555; font-size: 16px; text-align: justify;"><b>原始环境音（含噪）：</b>从左侧语谱图可见，鸟类鸣唱由直达 10kHz 以上的高频复合音节（垂直/倾斜亮线）组成。但其背景中充斥着一层均匀的、紫红色的宽带环境底噪，波形图的非鸣唱区间也伴有明显的毛刺干扰。</p>
+                        <p style="line-height: 1.9; color: #555; font-size: 16px; text-align: justify;"><b>原始环境音（含噪）：</b>从左侧语谱图可见，鸟类鸣唱由直达 10kHz 以上的高频复合音节（垂直/倾斜亮线）组成。但其背景中充斥着一层均匀的、紫红色的宽带环境底噪，波形图的非鸣唱区间也伴有明显的毛刺干扰。</p>
                     </div>
                     <audio controls style="margin-top: 20px; width: 100%; max-width: 400px;"><source src="{{ url_for('static', filename='voice/bird_noisy.wav') }}" type="audio/wav"></audio>
                 </div>
@@ -97,9 +97,9 @@
                 <div class="image">
                     <img src="{{ url_for('static', filename='voice/bird_clean.png') }}" alt="鸟类降噪" style="width: 800px; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
                 </div>
-                <div class="vbox1" style="padding-left: 50px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                <div class="vbox1" style="padding-left: 50px; padding-right: 80px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
                     <div class="vboxt">
-                        <p style="line-height: 1.8; color: #555; font-size: 16px; text-align: justify;"><b>专用模型降噪后：</b>针对鸟类特征重新训练的模型实现了极高的信噪比提升。语谱图背景被彻底净化（呈现纯黑状态），波形图的静默区恢复为平滑直线。最重要的是，鸟叫的精细高频结构被完美保留，无任何频率截断或失真。</p>
+                        <p style="line-height: 1.9; color: #555; font-size: 16px; text-align: justify;"><b>专用模型降噪后：</b>针对鸟类特征重新训练的模型实现了极高的信噪比提升。语谱图背景被彻底净化（呈现纯黑状态），波形图的静默区恢复为平滑直线。最重要的是，鸟叫的精细高频结构被完美保留，无任何频率截断或失真。</p>
                     </div>
                     <audio controls style="margin-top: 20px; width: 100%; max-width: 400px;"><source src="{{ url_for('static', filename='voice/bird_clean.wav') }}" type="audio/wav"></audio>
                 </div>
@@ -113,9 +113,9 @@
                 <div class="image">
                     <img src="{{ url_for('static', filename='voice/frog_noisy.png') }}" alt="蛙类含噪" style="width: 800px; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
                 </div>
-                <div class="vbox1" style="padding-left: 50px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                <div class="vbox1" style="padding-left: 50px; padding-right: 80px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
                     <div class="vboxt">
-                        <p style="line-height: 1.8; color: #555; font-size: 16px; text-align: justify;"><b>原始强干扰环境（含噪）：</b>这是一个极具挑战性的样本。从左图可见，0~5kHz 频段被高强度、连续不断的宽带噪声（极厚的红黄色能量带，推测为密集虫鸣或强白噪）完全占据。蛙类的周期性叫声在波形图和语谱图中几乎被彻底掩蔽。</p>
+                        <p style="line-height: 1.9; color: #555; font-size: 16px; text-align: justify;"><b>原始强干扰环境（含噪）：</b>这是一个极具挑战性的样本。从左图可见，0~5kHz 频段被高强度、连续不断的宽带噪声（极厚的红黄色能量带，推测为密集虫鸣或强白噪）完全占据。蛙类的周期性叫声在波形图和语谱图中几乎被彻底掩蔽。</p>
                     </div>
                     <audio controls style="margin-top: 20px; width: 100%; max-width: 400px;"><source src="{{ url_for('static', filename='voice/frog_noisy.wav') }}" type="audio/wav"></audio>
                 </div>
@@ -125,9 +125,9 @@
                 <div class="image">
                     <img src="{{ url_for('static', filename='voice/frog_clean.png') }}" alt="蛙类降噪" style="width: 800px; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
                 </div>
-                <div class="vbox1" style="padding-left: 50px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                <div class="vbox1" style="padding-left: 50px; padding-right: 80px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
                     <div class="vboxt">
-                        <p style="line-height: 1.8; color: #555; font-size: 16px; text-align: justify;"><b>专用模型剥离后：</b>模型展现了惊人的信号分离能力。那层厚重的连续噪声带被强效“抽干”，原本深埋其中的蛙叫声显露出了其真实的形态——清晰、节奏分明的垂直脉冲信号。波形图也从杂乱无章恢复成了有规律的起伏，为后续自动化计群提供了干净的数据源。</p>
+                        <p style="line-height: 1.9; color: #555; font-size: 16px; text-align: justify;"><b>专用模型剥离后：</b>模型展现了惊人的信号分离能力。那层厚重的连续噪声带被强效“抽干”，原本深埋其中的蛙叫声显露出了其真实的形态——清晰、节奏分明的垂直脉冲信号。波形图也从杂乱无章恢复成了有规律的起伏，为后续自动化计群提供了干净的数据源。</p>
                     </div>
                     <audio controls style="margin-top: 20px; width: 100%; max-width: 400px;"><source src="{{ url_for('static', filename='voice/frog_clean.wav') }}" type="audio/wav"></audio>
                 </div>
@@ -143,7 +143,6 @@
             </div>
         </div>
     </section>
-
     <!-- <section id="team" class="team" style="padding: 40px 20px;">
         <h2 style="text-align: center; color: #333; margin-bottom: 30px; font-size: 28px; font-weight: bold;">我们的团队</h2>
 
